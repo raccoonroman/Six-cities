@@ -1,5 +1,6 @@
 import * as React from 'react';
-import withReviewFormState from '../../hocs/with-review-form-state';
+import {connect} from 'react-redux';
+import * as operations from '../../operations';
 
 
 const STARS_QUANTITY = 5;
@@ -17,20 +18,34 @@ const StarValue = {
 };
 
 interface Props {
-  formState: {
-    rating: number;
-    text: string;
-    isFormDisabled: boolean;
-  };
-  onRatingChange: (evt) => void;
-  onTextChange: (evt) => void;
-  onFormSubmit: (evt) => void;
+  offerId: number;
+  postComment: (commentData: object, offerId: number, enableForm: Function, clearForm: Function) => void;
 }
 
 const ReviewsForm: React.FC<Props> = (props: Props) => {
-  const {formState, onRatingChange, onTextChange, onFormSubmit} = props;
-  const {rating, text, isFormDisabled} = formState;
-  const isSubmitAllowed = rating > 0 && text.length >= TextLength.MIN && text.length <= TextLength.MAX;
+  const {offerId, postComment} = props;
+  const formInitialState = {rating: `0`, review: ``};
+  const [formState, setFormState] = React.useState(formInitialState);
+  const [isFormDisabled, setIsFormDisabled] = React.useState(false);
+  const {rating, review} = formState;
+
+  const enableForm = () => setIsFormDisabled(false);
+  const clearForm = () => setFormState(formInitialState);
+
+  const handleInputChange = ({target}) => {
+    setFormState(Object.assign({}, formState, {
+      [target.name]: target.value,
+    }));
+  };
+
+  const handleFormSubmit = (evt) => {
+    evt.preventDefault();
+    const comment = {rating, comment: review};
+    setIsFormDisabled(true);
+    postComment(comment, offerId, enableForm, clearForm);
+  };
+
+  const isSubmitAllowed = (+rating > 0) && (review.length >= TextLength.MIN) && (review.length <= TextLength.MAX);
 
   const renderStars = () => {
     const result = [];
@@ -39,8 +54,8 @@ const ReviewsForm: React.FC<Props> = (props: Props) => {
       result.push(
           <React.Fragment key={`star` + i}>
             <input
-              onChange={onRatingChange}
-              checked={rating === i}
+              onChange={handleInputChange}
+              checked={+rating === i}
               className="form__rating-input visually-hidden"
               name="rating"
               value={i}
@@ -62,14 +77,14 @@ const ReviewsForm: React.FC<Props> = (props: Props) => {
 
 
   return (
-    <form onSubmit={onFormSubmit} className="reviews__form form" action="#" method="post">
+    <form onSubmit={handleFormSubmit} className="reviews__form form" action="#" method="post">
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <div className="reviews__rating-form form__rating">
         {renderStars()}
       </div>
       <textarea
-        value={text}
-        onChange={onTextChange}
+        value={review}
+        onChange={handleInputChange}
         className="reviews__textarea form__textarea"
         id="review"
         name="review"
@@ -86,4 +101,10 @@ const ReviewsForm: React.FC<Props> = (props: Props) => {
   );
 };
 
-export default withReviewFormState(ReviewsForm);
+const mapDispatchToProps = (dispatch) => ({
+  postComment(commentData, offerId, enableForm, clearForm) {
+    dispatch(operations.postComment(commentData, offerId, enableForm, clearForm));
+  },
+});
+
+export default connect(null, mapDispatchToProps)(ReviewsForm);

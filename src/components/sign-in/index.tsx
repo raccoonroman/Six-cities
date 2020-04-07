@@ -1,20 +1,35 @@
 import * as React from 'react';
+import {connect} from 'react-redux';
+import {RouteComponentProps} from 'react-router-dom';
+import * as operations from '../../operations';
 import Header from '../header';
-import withLoginFormState from '../../hocs/with-login-form-state';
 
 
-interface Props {
-  formState: {
-    email: string;
-    password: string;
-  };
-  onInputChange: (evt) => void;
-  onFormSubmit: (evt) => void;
+type Props = RouteComponentProps & {
+  login: (authData: object, goToPreviousPage: Function) => void;
 }
 
 const SignIn: React.FC<Props> = (props: Props) => {
-  const {formState, onInputChange, onFormSubmit} = props;
+  const {history, login} = props;
+  const [formState, setFormState] = React.useState({
+    email: ``,
+    password: ``,
+  });
+
   const {email, password} = formState;
+
+  const goToPreviousPage = () => history.goBack();
+
+  const handleInputChange = ({target}) => {
+    setFormState(Object.assign({}, formState, {
+      [target.name]: target.value,
+    }));
+  };
+
+  const handleFormSubmit = (evt) => {
+    evt.preventDefault();
+    login({login: email, password}, goToPreviousPage);
+  };
 
   return (
     <div className="page page--gray page--login">
@@ -24,12 +39,12 @@ const SignIn: React.FC<Props> = (props: Props) => {
         <div className="page__login-container container">
           <section className="login">
             <h1 className="login__title">Sign in</h1>
-            <form onSubmit={onFormSubmit} className="login__form form" action="#" method="post">
+            <form onSubmit={handleFormSubmit} className="login__form form" action="#" method="post">
               <div className="login__input-wrapper form__input-wrapper">
                 <label className="visually-hidden">E-mail</label>
                 <input
                   value={email}
-                  onChange={onInputChange}
+                  onChange={handleInputChange}
                   className="login__input form__input"
                   type="email"
                   name="email"
@@ -41,7 +56,7 @@ const SignIn: React.FC<Props> = (props: Props) => {
                 <label className="visually-hidden">Password</label>
                 <input
                   value={password}
-                  onChange={onInputChange}
+                  onChange={handleInputChange}
                   className="login__input form__input"
                   type="password"
                   name="password"
@@ -58,4 +73,10 @@ const SignIn: React.FC<Props> = (props: Props) => {
   );
 };
 
-export default withLoginFormState(SignIn);
+const mapDispatchToProps = (dispatch) => ({
+  login(authData, goToPreviousPage) {
+    dispatch(operations.login(authData, goToPreviousPage));
+  },
+});
+
+export default connect(null, mapDispatchToProps)(SignIn);
