@@ -1,7 +1,7 @@
 import MockAdapter from 'axios-mock-adapter';
-import {createAPI} from '../api.js';
-import {loadOffers} from './operations.js';
-import {ActionType} from '../const.js';
+import {createAPI} from '../api';
+import {loadOffers} from './index';
+import {ActionType} from '../const';
 
 
 const api = createAPI();

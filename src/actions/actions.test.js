@@ -1,5 +1,5 @@
-import * as actions from './actions.js';
-import {ActionType, AuthorizationStatus} from '../const.js';
+import * as actions from './index';
+import {ActionType, AuthorizationStatus} from '../const';
 
 
 const mock = [

@@ -1,4 +1,4 @@
-import {DEFAULT_CITIES, ActionType, AuthorizationStatus} from '../const.js';
+import {DEFAULT_CITIES, ActionType, AuthorizationStatus} from '../const';
 import {
   offers,
   cities,
@@ -6,7 +6,7 @@ import {
   userData,
   commentsByOffer,
   nearbyOffers,
-} from './reducer.js';
+} from './index';
 
 
 const mockOffers = [

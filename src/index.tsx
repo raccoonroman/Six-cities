@@ -6,7 +6,7 @@ import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import {AuthorizationStatus} from './const';
 import App from './components/app/app';
-import reducer from './reducer/reducer';
+import reducer from './reducer';
 import {requireAuthorization} from './actions/actions';
 import {loadOffers, checkAuth} from './operations/operations';
 import {createAPI} from './api';

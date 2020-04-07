@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Offer} from '../../types';
 import {SortType, CardType} from '../../const';
-import Sorting from '../../components/sorting/sorting';
+import Sorting from '../../components/sorting';
 
 
 const sortTypes = [

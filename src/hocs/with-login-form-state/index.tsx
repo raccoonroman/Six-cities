@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import {RouteComponentProps} from 'react-router-dom';
-import * as operations from '../../operations/operations';
+import * as operations from '../../operations';
 
 
 type Props = RouteComponentProps & {
