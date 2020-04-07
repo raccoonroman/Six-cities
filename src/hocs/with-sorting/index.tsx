@@ -30,55 +30,37 @@ interface Props {
   onCardHover: (offerId: number | null) => Function;
 }
 
-interface State {
-  sortBy: string;
-}
-
 const withSorting = (Component) => {
-  class WithSorting extends React.PureComponent<Props, State> {
-    constructor(props) {
-      super(props);
-      this._handleSortTypeChange = this._handleSortTypeChange.bind(this);
-      this.state = {
-        sortBy: SortType.POPULAR,
-      };
-    }
+  const WithSorting: React.FC<Props> = (props: Props) => {
+    const {history, offers, currentCity, onCardHover} = props;
+    const [sortType, setSortType] = React.useState(SortType.POPULAR);
 
-    _handleSortTypeChange(sortType) {
-      this.setState({sortBy: sortType});
-    }
+    const handleSortTypeChange = (sortType) => setSortType(sortType);
 
-    _getSortedOffers(offers, sortType) {
+    const getSortedOffers = (offers, sortType) => {
       const {sort} = sortTypes.find(({name}) => sortType === name);
       return sort(offers);
     }
 
-    render() {
-      const {sortBy} = this.state;
-      const {history, offers, currentCity, onCardHover} = this.props;
-
-      const sortedOffers = this._getSortedOffers(offers, sortBy);
-
-      return (
-        <section className="cities__places places">
-          <h2 className="visually-hidden">Places</h2>
-          <b className="places__found">
-            {offers.length} places to stay in {currentCity}
-          </b>
-          <Sorting
-            sortBy={sortBy}
-            onSortTypeChange={this._handleSortTypeChange}
-          />
-          <Component
-            history={history}
-            className={`cities__places-list places__list`}
-            cardsType={CardType.CITY}
-            offers={sortedOffers}
-            onCardHover={onCardHover}
-          />
-        </section>
-      );
-    }
+    return (
+      <section className="cities__places places">
+        <h2 className="visually-hidden">Places</h2>
+        <b className="places__found">
+          {offers.length} places to stay in {currentCity}
+        </b>
+        <Sorting
+          sortBy={sortType}
+          onSortTypeChange={handleSortTypeChange}
+        />
+        <Component
+          history={history}
+          className={`cities__places-list places__list`}
+          cardsType={CardType.CITY}
+          offers={getSortedOffers(offers, sortType)}
+          onCardHover={onCardHover}
+        />
+      </section>
+    );
   }
 
   return WithSorting;
