@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import cn from 'classnames';
 import {Offer} from '../../types';
 import {getOffersByCity} from '../../utils';
-import withHoveredCard from '../../hocs/with-hovered-card';
 import withSorting from '../../hocs/with-sorting';
 import {getCurrentCity, getMappedOffers} from '../../selectors';
 import Header from '../header';
@@ -16,15 +15,17 @@ interface Props {
   history: object;
   currentCity: string;
   offers: Offer[];
-  hoveredCardId: number | null;
-  onCardHover: (offerId: number | null) => Function;
 }
 
 const OffersListWithSorting = withSorting(OffersList);
 
+
 const Main: React.FC<Props> = (props: Props) => {
-  const {history, currentCity, offers, hoveredCardId, onCardHover} = props;
+  const {history, currentCity, offers} = props;
   const offersByCity = getOffersByCity(currentCity, offers);
+
+  const [hoveredCardId, setHoveredCardId] = React.useState(null);
+  const handleOfferCardHover = (id) => () => setHoveredCardId(id);
 
   const renderOffersList = () => {
     if (!offersByCity.length) {
@@ -45,21 +46,7 @@ const Main: React.FC<Props> = (props: Props) => {
         history={history}
         offers={offersByCity}
         currentCity={currentCity}
-        onCardHover={onCardHover}
-      />
-    );
-  };
-
-  const renderMap = () => {
-    if (!offersByCity.length) {
-      return null;
-    }
-
-    return (
-      <Map
-        className="cities__map map"
-        offers={offersByCity}
-        currentOfferId={hoveredCardId}
+        onCardHover={handleOfferCardHover}
       />
     );
   };
@@ -89,7 +76,13 @@ const Main: React.FC<Props> = (props: Props) => {
             {renderOffersList()}
 
             <div className="cities__right-section">
-              {renderMap()}
+              {!!offersByCity.length && (
+                <Map
+                  className="cities__map map"
+                  offers={offersByCity}
+                  currentOfferId={hoveredCardId}
+                />
+              )}
             </div>
           </div>
         </div>
@@ -103,4 +96,4 @@ const mapStateToProps = (state) => ({
   offers: getMappedOffers(state),
 });
 
-export default connect(mapStateToProps)(withHoveredCard(Main));
+export default connect(mapStateToProps)(Main);
