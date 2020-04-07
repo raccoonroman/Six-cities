@@ -5,8 +5,8 @@ import {Link, RouteComponentProps} from 'react-router-dom';
 import {Offer} from '../../types';
 import {CardType, AppRoute} from '../../const';
 import {getRatingStarsStyle, isAuthorized} from '../../utils';
-import {getAuthorizationStatus} from '../../selectors/selectors';
-import * as operations from '../../operations/operations';
+import {getAuthorizationStatus} from '../../selectors';
+import * as operations from '../../operations';
 
 
 type Props = RouteComponentProps & {

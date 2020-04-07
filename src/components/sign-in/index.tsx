@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Header from '../header/header';
-import withLoginFormState from '../../hocs/with-login-form-state/with-login-form-state';
+import Header from '../header';
+import withLoginFormState from '../../hocs/with-login-form-state';
 
 
 interface Props {

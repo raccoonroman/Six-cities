@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {BrowserRouter} from 'react-router-dom';
 import {AuthorizationStatus} from '../../const';
-import Header from './header';
+import Header from './index';
 
 
 const mockStore = configureStore([]);

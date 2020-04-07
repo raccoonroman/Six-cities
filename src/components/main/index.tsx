@@ -3,13 +3,13 @@ import {connect} from 'react-redux';
 import cn from 'classnames';
 import {Offer} from '../../types';
 import {getOffersByCity} from '../../utils';
-import withHoveredCard from '../../hocs/with-hovered-card/with-hovered-card';
-import withSorting from '../../hocs/with-sorting/with-sorting';
-import {getCurrentCity, getMappedOffers} from '../../selectors/selectors';
-import Header from '../header/header';
-import CitiesList from '../cities-list/cities-list';
-import OffersList from '../offers-list/offers-list';
-import Map from '../map/map';
+import withHoveredCard from '../../hocs/with-hovered-card';
+import withSorting from '../../hocs/with-sorting';
+import {getCurrentCity, getMappedOffers} from '../../selectors';
+import Header from '../header';
+import CitiesList from '../cities-list';
+import OffersList from '../offers-list';
+import Map from '../map';
 
 
 interface Props {

@@ -5,12 +5,12 @@ import cn from 'classnames';
 import {Offer} from '../../types';
 import {CardType, AppRoute} from '../../const';
 import {getRatingStarsStyle, isAuthorized} from '../../utils';
-import * as operations from '../../operations/operations';
-import {getMappedOffers, getMappedNearbyOffers, getAuthorizationStatus} from '../../selectors/selectors';
-import Header from '../header/header';
-import Reviews from '../reviews/reviews';
-import Map from '../map/map';
-import OffersList from '../offers-list/offers-list';
+import * as operations from '../../operations';
+import {getMappedOffers, getMappedNearbyOffers, getAuthorizationStatus} from '../../selectors';
+import Header from '../header';
+import Reviews from '../reviews';
+import Map from '../map';
+import OffersList from '../offers-list';
 
 
 const MAX_IMAGES = 6;

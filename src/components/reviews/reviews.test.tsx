@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {AuthorizationStatus} from '../../const';
 import {CommentRaw} from '../../types';
-import Reviews from './reviews';
+import Reviews from './index';
 
 
 const mockStore = configureStore([]);

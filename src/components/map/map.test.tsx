@@ -2,7 +2,7 @@ import * as React from "react";
 import {configure, mount} from "enzyme";
 import * as Adapter from "enzyme-adapter-react-16";
 import {Offer} from '../../types';
-import Map from "./map";
+import Map from "./index";
 
 
 configure({adapter: new Adapter()});

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import withReviewFormState from '../../hocs/with-review-form-state/with-review-form-state';
+import withReviewFormState from '../../hocs/with-review-form-state';
 
 
 const STARS_QUANTITY = 5;

@@ -5,10 +5,10 @@ import {Link} from 'react-router-dom';
 import {Offer} from '../../types';
 import {CardType, AppRoute} from '../../const';
 import {getCitiesByOffers, getOffersByCity} from '../../utils';
-import {getFavoriteOffers} from '../../selectors/selectors';
-import {setCity} from '../../actions/actions';
-import Header from '../header/header';
-import OffersList from '../offers-list/offers-list';
+import {getFavoriteOffers} from '../../selectors';
+import {setCity} from '../../actions';
+import Header from '../header';
+import OffersList from '../offers-list';
 
 
 interface Props {

@@ -3,11 +3,11 @@ import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {AppRoute} from '../../const';
 import {isAuthorized} from '../../utils';
-import {getAuthorizationStatus} from '../../selectors/selectors';
-import Main from '../main/main';
-import SignIn from '../sign-in/sign-in';
-import OfferDetails from '../offer-details/offer-details';
-import Favorites from '../favorites/favorites';
+import {getAuthorizationStatus} from '../../selectors';
+import Main from '../main';
+import SignIn from '../sign-in';
+import OfferDetails from '../offer-details';
+import Favorites from '../favorites';
 
 
 interface Props {

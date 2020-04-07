@@ -7,7 +7,7 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import {AuthorizationStatus, AppRoute} from '../../const';
 import {createAPI} from '../../api';
 import {OfferRaw} from '../../types';
-import OfferDetails from './offer-details';
+import OfferDetails from './index';
 
 
 const onUnauthorized = () => {

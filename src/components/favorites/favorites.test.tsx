@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 import {BrowserRouter} from 'react-router-dom';
 import {AuthorizationStatus} from '../../const';
 import {OfferRaw} from '../../types';
-import Favorites from './favorites';
+import Favorites from './index';
 
 
 const mockStore = configureStore([]);

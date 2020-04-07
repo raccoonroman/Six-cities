@@ -2,8 +2,8 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import {Comment} from '../../types';
 import {getRatingStarsStyle, isAuthorized} from '../../utils';
-import {getAuthorizationStatus, getTenSortedComments} from '../../selectors/selectors';
-import ReviewsForm from '../reviews-form/reviews-form';
+import {getAuthorizationStatus, getTenSortedComments} from '../../selectors';
+import ReviewsForm from '../reviews-form';
 
 
 interface Props {

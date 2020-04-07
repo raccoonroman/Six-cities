@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import {SortType} from '../../const';
-import Sorting from './sorting';
+import Sorting from './index';
 
 
 const handleSortTypeChange = () => {

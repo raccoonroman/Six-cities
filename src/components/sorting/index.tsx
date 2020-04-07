@@ -1,7 +1,7 @@
 import * as React from 'react';
 import cn from 'classnames';
 import {SortType} from '../../const';
-import withListOpenState from '../../hocs/with-list-open-state/with-list-open-state';
+import withListOpenState from '../../hocs/with-list-open-state';
 
 
 interface Props {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import withLeaflet from '../../hocs/with-leaflet/with-leaflet';
+import withLeaflet from '../../hocs/with-leaflet';
 
 
 interface Props {

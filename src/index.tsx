@@ -5,10 +5,10 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import {AuthorizationStatus} from './const';
-import App from './components/app/app';
+import App from './components/app';
 import reducer from './reducer';
-import {requireAuthorization} from './actions/actions';
-import {loadOffers, checkAuth} from './operations/operations';
+import {requireAuthorization} from './actions';
+import {loadOffers, checkAuth} from './operations';
 import {createAPI} from './api';
 
 
