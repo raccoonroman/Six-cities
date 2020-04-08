@@ -1,4 +1,4 @@
-import {AuthorizationStatus} from './const';
+import {AuthorizationStatus} from '@/const';
 
 
 export const getRatingStarsStyle = (rating) => ({width: `${rating / 5 * 100}%`});

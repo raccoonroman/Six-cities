@@ -1,15 +1,14 @@
 {
   "compilerOptions": {
-    "rootDir": "./src",
-    "outDir": "./dist",
-    "sourceMap": true,
+    "outDir": "build",
+    "baseUrl": "src",
     "module": "commonjs",
     "target": "es2016",
     "jsx": "react",
-    "allowSyntheticDefaultImports": false
+    "paths": {
+      "@/*": ["*"]
+    }
   },
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }

@@ -1,10 +1,14 @@
 const path = require(`path`);
+const TsconfigPathsPlugin = require(`tsconfig-paths-webpack-plugin`);
 
 module.exports = {
-  entry: `./src/index.tsx`,
+  mode: process.env.NODE_ENV,
+  devtool: `none`,
+  context: path.resolve(__dirname, `src`),
+  entry: `index.tsx`,
   output: {
     filename: `bundle.js`,
-    path: path.join(__dirname, `public`)
+    path: path.resolve(__dirname, `public`)
   },
   devServer: {
     contentBase: path.join(__dirname, `public`),
@@ -13,22 +17,10 @@ module.exports = {
     historyApiFallback: true,
   },
   module: {
-    rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: `babel-loader`,
-        },
-      },
-      {
-        test: /\.(tsx|ts)?$/,
-        loader: `ts-loader`
-      }
-    ],
+    rules: [{ test: /\.(tsx|ts)?$/, loader: `ts-loader` }],
   },
   resolve: {
+    plugins: [new TsconfigPathsPlugin()],
     extensions: [`.ts`, `.tsx`, `.js`, `json`]
   },
-  devtool: `source-map`,
 };
