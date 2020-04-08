@@ -30,11 +30,10 @@ interface Props {
 
 const LeafletMap: React.FC<Props> = (props: Props) => {
   const {mapType, offers, currentOfferId} = props;
-  console.log(offers);
   const isStaticActiveOffer = mapType === MapType.STATIC_ACTIVE_OFFER;
   const isHoveredActiveOffer = mapType === MapType.HOVERED_ACTIVE_OFFER;
 
-  const {location: cityLocation, name: cityName} = offers[0].city;
+  const {location: cityLocation} = offers[0].city;
   const {latitude, longitude, zoom} = cityLocation;
 
   const mapSectionClass = cn({

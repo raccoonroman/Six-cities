@@ -2,28 +2,27 @@
 
 exports[`Render <Main /> 1`] = `
 <div
-  className="page page--gray page--main"
+  class="page page--gray page--main"
 >
   <header
-    className="header"
+    class="header"
   >
     <div
-      className="container"
+      class="container"
     >
       <div
-        className="header__wrapper"
+        class="header__wrapper"
       >
         <div
-          className="header__left"
+          class="header__left"
         >
           <a
-            className="header__logo-link"
+            class="header__logo-link"
             href="/"
-            onClick={[Function]}
           >
             <img
               alt="6 cities logo"
-              className="header__logo"
+              class="header__logo"
               height="41"
               src="/img/logo.svg"
               width="81"
@@ -31,24 +30,23 @@ exports[`Render <Main /> 1`] = `
           </a>
         </div>
         <nav
-          className="header__nav"
+          class="header__nav"
         >
           <ul
-            className="header__nav-list"
+            class="header__nav-list"
           >
             <li
-              className="header__nav-item user"
+              class="header__nav-item user"
             >
               <a
-                className="header__nav-link header__nav-link--profile"
+                class="header__nav-link header__nav-link--profile"
                 href="/login"
-                onClick={[Function]}
               >
                 <div
-                  className="header__avatar-wrapper user__avatar-wrapper"
+                  class="header__avatar-wrapper user__avatar-wrapper"
                 />
                 <span
-                  className="header__login"
+                  class="header__login"
                 >
                   Sign in
                 </span>
@@ -60,29 +58,28 @@ exports[`Render <Main /> 1`] = `
     </div>
   </header>
   <main
-    className="page__main page__main--index"
+    class="page__main page__main--index"
   >
     <h1
-      className="visually-hidden"
+      class="visually-hidden"
     >
       Cities
     </h1>
     <div
-      className="tabs"
+      class="tabs"
     >
       <section
-        className="locations container"
+        class="locations container"
       >
         <ul
-          className="locations__list tabs__list"
+          class="locations__list tabs__list"
         >
           <li
-            className="locations__item"
+            class="locations__item"
           >
             <a
-              className="locations__item-link tabs__item tabs__item--active"
+              class="locations__item-link tabs__item tabs__item--active"
               href="#"
-              onClick={[Function]}
             >
               <span>
                 Vinnytsya
@@ -90,12 +87,11 @@ exports[`Render <Main /> 1`] = `
             </a>
           </li>
           <li
-            className="locations__item"
+            class="locations__item"
           >
             <a
-              className="locations__item-link tabs__item"
+              class="locations__item-link tabs__item"
               href="#"
-              onClick={[Function]}
             >
               <span>
                 Lviv
@@ -103,12 +99,11 @@ exports[`Render <Main /> 1`] = `
             </a>
           </li>
           <li
-            className="locations__item"
+            class="locations__item"
           >
             <a
-              className="locations__item-link tabs__item"
+              class="locations__item-link tabs__item"
               href="#"
-              onClick={[Function]}
             >
               <span>
                 Kyiv
@@ -119,21 +114,21 @@ exports[`Render <Main /> 1`] = `
       </section>
     </div>
     <div
-      className="cities"
+      class="cities"
     >
       <div
-        className="cities__places-container container"
+        class="cities__places-container container"
       >
         <section
-          className="cities__places places"
+          class="cities__places places"
         >
           <h2
-            className="visually-hidden"
+            class="visually-hidden"
           >
             Places
           </h2>
           <b
-            className="places__found"
+            class="places__found"
           >
             2
              places to stay in 
@@ -141,81 +136,73 @@ exports[`Render <Main /> 1`] = `
           </b>
           <form
             action="#"
-            className="places__sorting"
+            class="places__sorting"
             method="get"
           >
             <span
-              className="places__sorting-caption"
+              class="places__sorting-caption"
             >
               Sort by 
             </span>
             <span
-              className="places__sorting-type"
-              onClick={[Function]}
-              tabIndex={0}
+              class="places__sorting-type"
+              tabindex="0"
             >
               Popular
               <svg
-                className="places__sorting-arrow"
+                class="places__sorting-arrow"
                 height="4"
                 width="7"
               >
                 <use
-                  xlinkHref="#icon-arrow-select"
+                  xlink:href="#icon-arrow-select"
                 />
               </svg>
             </span>
             <ul
-              className="places__options places__options--custom"
+              class="places__options places__options--custom"
             >
               <li
-                className="places__option places__option--active"
-                onClick={[Function]}
-                tabIndex={0}
+                class="places__option places__option--active"
+                tabindex="0"
               >
                 Popular
               </li>
               <li
-                className="places__option"
-                onClick={[Function]}
-                tabIndex={0}
+                class="places__option"
+                tabindex="0"
               >
                 Price: low to high
               </li>
               <li
-                className="places__option"
-                onClick={[Function]}
-                tabIndex={0}
+                class="places__option"
+                tabindex="0"
               >
                 Price: high to low
               </li>
               <li
-                className="places__option"
-                onClick={[Function]}
-                tabIndex={0}
+                class="places__option"
+                tabindex="0"
               >
                 Top rated first
               </li>
             </ul>
           </form>
           <div
-            className="cities__places-list places__list"
+            class="cities__places-list places__list"
           >
             <article
-              className="cities__place-card place-card"
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
+              class="cities__place-card place-card"
             >
               <div
-                className="cities__image-wrapper place-card__image-wrapper"
+                class="cities__image-wrapper place-card__image-wrapper"
               >
                 <a
                   href="/offer/100490"
-                  onClick={[Function]}
                 >
                   <img
                     alt="The best title ever"
-                    className="place-card__image"
+                    class="place-card__image"
                     height="200"
                     src="https://i.picsum.photos/id/22/400/200.jpg"
                     width="260"
@@ -223,106 +210,97 @@ exports[`Render <Main /> 1`] = `
                 </a>
               </div>
               <div
-                className="place-card__info"
+                class="place-card__info"
               >
                 <div
-                  className="place-card__price-wrapper"
+                  class="place-card__price-wrapper"
                 >
                   <div
-                    className="place-card__price"
+                    class="place-card__price"
                   >
                     <b
-                      className="place-card__price-value"
+                      class="place-card__price-value"
                     >
                       €
                       333
                     </b>
                     <span
-                      className="place-card__price-text"
+                      class="place-card__price-text"
                     >
                        / night
                     </span>
                   </div>
                   <button
-                    className="place-card__bookmark-button button"
-                    onClick={[Function]}
+                    class="place-card__bookmark-button button"
                     type="button"
                   >
                     <svg
-                      className="place-card__bookmark-icon"
+                      class="place-card__bookmark-icon"
                       height="19"
                       width="18"
                     >
                       <use
-                        xlinkHref="#icon-bookmark"
+                        xlink:href="#icon-bookmark"
                       />
                     </svg>
                     <span
-                      className="visually-hidden"
+                      class="visually-hidden"
                     >
                       To bookmarks
                     </span>
                   </button>
                 </div>
                 <div
-                  className="place-card__rating rating"
+                  class="place-card__rating rating"
                 >
                   <div
-                    className="place-card__stars rating__stars"
+                    class="place-card__stars rating__stars"
                   >
                     <span
-                      style={
-                        Object {
-                          "width": "60%",
-                        }
-                      }
+                      style="width: 60%;"
                     />
                     <span
-                      className="visually-hidden"
+                      class="visually-hidden"
                     >
                       Rating
                     </span>
                   </div>
                 </div>
                 <h2
-                  className="place-card__name"
+                  class="place-card__name"
                 >
                   <a
                     href="/offer/100490"
-                    onClick={[Function]}
                   >
                     The best title ever
                   </a>
                 </h2>
                 <p
-                  className="place-card__type"
+                  class="place-card__type"
                 >
                   apartment
                 </p>
               </div>
             </article>
             <article
-              className="cities__place-card place-card"
-              onMouseEnter={[Function]}
-              onMouseLeave={[Function]}
+              class="cities__place-card place-card"
             >
               <div
-                className="place-card__mark"
+                class="place-card__mark"
               >
                 <span>
                   Premium
                 </span>
               </div>
               <div
-                className="cities__image-wrapper place-card__image-wrapper"
+                class="cities__image-wrapper place-card__image-wrapper"
               >
                 <a
                   href="/offer/100491"
-                  onClick={[Function]}
                 >
                   <img
                     alt="Some title"
-                    className="place-card__image"
+                    class="place-card__image"
                     height="200"
                     src="https://i.picsum.photos/id/23/400/200.jpg"
                     width="260"
@@ -330,79 +308,73 @@ exports[`Render <Main /> 1`] = `
                 </a>
               </div>
               <div
-                className="place-card__info"
+                class="place-card__info"
               >
                 <div
-                  className="place-card__price-wrapper"
+                  class="place-card__price-wrapper"
                 >
                   <div
-                    className="place-card__price"
+                    class="place-card__price"
                   >
                     <b
-                      className="place-card__price-value"
+                      class="place-card__price-value"
                     >
                       €
                       900
                     </b>
                     <span
-                      className="place-card__price-text"
+                      class="place-card__price-text"
                     >
                        / night
                     </span>
                   </div>
                   <button
-                    className="place-card__bookmark-button button place-card__bookmark-button--active"
-                    onClick={[Function]}
+                    class="place-card__bookmark-button button place-card__bookmark-button--active"
                     type="button"
                   >
                     <svg
-                      className="place-card__bookmark-icon"
+                      class="place-card__bookmark-icon"
                       height="19"
                       width="18"
                     >
                       <use
-                        xlinkHref="#icon-bookmark"
+                        xlink:href="#icon-bookmark"
                       />
                     </svg>
                     <span
-                      className="visually-hidden"
+                      class="visually-hidden"
                     >
                       To bookmarks
                     </span>
                   </button>
                 </div>
                 <div
-                  className="place-card__rating rating"
+                  class="place-card__rating rating"
                 >
                   <div
-                    className="place-card__stars rating__stars"
+                    class="place-card__stars rating__stars"
                   >
                     <span
-                      style={
-                        Object {
-                          "width": "100%",
-                        }
-                      }
+                      style="width: 100%;"
                     />
                     <span
-                      className="visually-hidden"
+                      class="visually-hidden"
                     >
                       Rating
                     </span>
                   </div>
                 </div>
                 <h2
-                  className="place-card__name"
+                  class="place-card__name"
                 >
                   <a
                     href="/offer/100491"
-                    onClick={[Function]}
                   >
                     Some title
                   </a>
                 </h2>
                 <p
-                  className="place-card__type"
+                  class="place-card__type"
                 >
                   room
                 </p>
@@ -411,14 +383,135 @@ exports[`Render <Main /> 1`] = `
           </div>
         </section>
         <div
-          className="cities__right-section"
+          class="cities__right-section"
         >
           <section
-            className="cities__map map"
+            class="cities__map map"
           >
             <div
-              id="map"
-            />
+              class="leaflet-container leaflet-grab leaflet-touch-drag"
+              style="position: relative;"
+              tabindex="0"
+            >
+              <div
+                class="leaflet-pane leaflet-map-pane"
+                style="left: 0px; top: 0px;"
+              >
+                <div
+                  class="leaflet-pane leaflet-tile-pane"
+                >
+                  <div
+                    class="leaflet-layer "
+                    style="z-index: 1;"
+                  >
+                    <div
+                      class="leaflet-tile-container leaflet-zoom-animated"
+                      style="z-index: 18; left: 0px; top: 0px;"
+                    >
+                      <img
+                        alt=""
+                        class="leaflet-tile"
+                        role="presentation"
+                        src="https://c.basemaps.cartocdn.com/rastertiles/voyager/12/2103/1346.png"
+                        style="width: 256px; height: 256px; left: -178px; top: -26px;"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="leaflet-pane leaflet-shadow-pane"
+                />
+                <div
+                  class="leaflet-pane leaflet-overlay-pane"
+                />
+                <div
+                  class="leaflet-pane leaflet-marker-pane"
+                >
+                  <img
+                    alt=""
+                    class="leaflet-marker-icon leaflet-zoom-hide leaflet-interactive"
+                    src="/img/pin.svg"
+                    style="margin-left: -15px; margin-top: -15px; width: 30px; height: 30px; left: -656px; top: 96px; z-index: 96;"
+                    tabindex="0"
+                  />
+                  <img
+                    alt=""
+                    class="leaflet-marker-icon leaflet-zoom-hide leaflet-interactive"
+                    src="/img/pin.svg"
+                    style="margin-left: -15px; margin-top: -15px; width: 30px; height: 30px; left: 306px; top: 6438px; z-index: 6438;"
+                    tabindex="0"
+                  />
+                </div>
+                <div
+                  class="leaflet-pane leaflet-tooltip-pane"
+                />
+                <div
+                  class="leaflet-pane leaflet-popup-pane"
+                />
+              </div>
+              <div
+                class="leaflet-control-container"
+              >
+                <div
+                  class="leaflet-top leaflet-left"
+                >
+                  <div
+                    class="leaflet-control-zoom leaflet-bar leaflet-control"
+                  >
+                    <a
+                      aria-label="Zoom in"
+                      class="leaflet-control-zoom-in"
+                      href="#"
+                      role="button"
+                      title="Zoom in"
+                    >
+                      +
+                    </a>
+                    <a
+                      aria-label="Zoom out"
+                      class="leaflet-control-zoom-out"
+                      href="#"
+                      role="button"
+                      title="Zoom out"
+                    >
+                      −
+                    </a>
+                  </div>
+                </div>
+                <div
+                  class="leaflet-top leaflet-right"
+                />
+                <div
+                  class="leaflet-bottom leaflet-left"
+                />
+                <div
+                  class="leaflet-bottom leaflet-right"
+                >
+                  <div
+                    class="leaflet-control-attribution leaflet-control"
+                  >
+                    <a
+                      href="https://leafletjs.com"
+                      title="A JS library for interactive maps"
+                    >
+                      Leaflet
+                    </a>
+                     | © 
+                    <a
+                      href="https://www.openstreetmap.org/copyright"
+                    >
+                      OpenStreetMap
+                    </a>
+                     contributors © 
+                    <a
+                      href="https://carto.com/attributions"
+                    >
+                      CARTO
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </section>
         </div>
       </div>

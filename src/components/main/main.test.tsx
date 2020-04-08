@@ -1,5 +1,6 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import {configure, mount} from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {BrowserRouter, Route} from 'react-router-dom';
@@ -9,6 +10,7 @@ import Main from './index';
 
 
 const mockStore = configureStore([]);
+configure({adapter: new Adapter()});
 
 const mockOffers: OfferRaw[] = [
   {
@@ -99,16 +101,15 @@ it(`Render <Main />`, () => {
     },
   });
 
-  const tree = renderer
-    .create(
-        <Provider store={store}>
-          <BrowserRouter>
-            <Route exact path={AppRoute.ROOT} render={({history}) => (
-              <Main history={history} />
-            )} />
-          </BrowserRouter>
-        </Provider>
-    ).toJSON();
+  const tree = mount(
+      <Provider store={store}>
+        <BrowserRouter>
+          <Route exact path={AppRoute.ROOT} render={({history}) => (
+            <Main history={history} />
+          )} />
+        </BrowserRouter>
+      </Provider>
+  );
 
-  expect(tree).toMatchSnapshot();
+  expect(tree.getDOMNode()).toMatchSnapshot();
 });
