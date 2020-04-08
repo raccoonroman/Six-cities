@@ -34,3 +34,8 @@ export const AppRoute = {
   FAVORITES: `/favorites`,
   OFFER: `/offer`,
 };
+
+export const MapType = {
+  HOVERED_ACTIVE_OFFER: `HOVERED_ACTIVE_OFFER`,
+  STATIC_ACTIVE_OFFER: `STATIC_ACTIVE_OFFER`,
+};

@@ -2,6 +2,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import cn from 'classnames';
 import {Offer} from '../../types';
+import {MapType} from '../../const';
 import {getOffersByCity} from '../../utils';
 import withSorting from '../../hocs/with-sorting';
 import {getCurrentCity, getMappedOffers} from '../../selectors';
@@ -78,7 +79,7 @@ const Main: React.FC<Props> = (props: Props) => {
             <div className="cities__right-section">
               {!!offersByCity.length && (
                 <Map
-                  className="cities__map map"
+                  mapType={MapType.HOVERED_ACTIVE_OFFER}
                   offers={offersByCity}
                   currentOfferId={hoveredCardId}
                 />

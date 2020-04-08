@@ -35,12 +35,12 @@ const withSorting = (Component) => {
     const {history, offers, currentCity, onCardHover} = props;
     const [sortType, setSortType] = React.useState(SortType.POPULAR);
 
-    const handleSortTypeChange = (sortType) => setSortType(sortType);
+    const handleSortTypeChange = (type) => setSortType(type);
 
-    const getSortedOffers = (offers, sortType) => {
+    const getSortedOffers = () => {
       const {sort} = sortTypes.find(({name}) => sortType === name);
       return sort(offers);
-    }
+    };
 
     return (
       <section className="cities__places places">
@@ -56,12 +56,12 @@ const withSorting = (Component) => {
           history={history}
           className={`cities__places-list places__list`}
           cardsType={CardType.CITY}
-          offers={getSortedOffers(offers, sortType)}
+          offers={getSortedOffers()}
           onCardHover={onCardHover}
         />
       </section>
     );
-  }
+  };
 
   return WithSorting;
 };

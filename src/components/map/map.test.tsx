@@ -2,6 +2,7 @@ import * as React from "react";
 import {configure, mount} from "enzyme";
 import * as Adapter from "enzyme-adapter-react-16";
 import {Offer} from '../../types';
+import {MapType} from '../../const';
 import Map from "./index";
 
 
@@ -97,7 +98,7 @@ it(`Should <Map /> render correctly`, () => {
   global.document.body.appendChild(div);
   const tree = mount(
       <Map
-        className="cities__map map"
+        mapType={MapType.STATIC_ACTIVE_OFFER}
         offers={offers}
         currentOfferId={100501}
       />,
