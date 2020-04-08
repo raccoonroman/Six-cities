@@ -30,25 +30,12 @@ interface Props {
 
 const LeafletMap: React.FC<Props> = (props: Props) => {
   const {mapType, offers, currentOfferId} = props;
+  console.log(offers);
   const isStaticActiveOffer = mapType === MapType.STATIC_ACTIVE_OFFER;
   const isHoveredActiveOffer = mapType === MapType.HOVERED_ACTIVE_OFFER;
 
   const {location: cityLocation, name: cityName} = offers[0].city;
   const {latitude, longitude, zoom} = cityLocation;
-  const initialMapCenter: [number, number] = [latitude, longitude];
-  const [mapCenter, setMapCenter] = React.useState(initialMapCenter);
-
-  React.useEffect(() => {
-    setMapCenter([latitude, longitude]);
-  }, [cityName, latitude, longitude]);
-
-  React.useEffect(() => {
-    if (currentOfferId) {
-      const currentOffer = offers.find(({id}) => id === currentOfferId);
-      const {latitude: x, longitude: y} = currentOffer.location;
-      setMapCenter([x, y]);
-    }
-  }, [currentOfferId, offers]);
 
   const mapSectionClass = cn({
     'cities__map': isHoveredActiveOffer,
@@ -74,7 +61,7 @@ const LeafletMap: React.FC<Props> = (props: Props) => {
 
   return (
     <section className={mapSectionClass}>
-      <Map center={mapCenter} zoom={zoom} scrollWheelZoom={!isStaticActiveOffer}>
+      <Map center={[latitude, longitude]} zoom={zoom} scrollWheelZoom={!isStaticActiveOffer}>
         <TileLayer
           url={TitleLayer.PATH}
           attribution={TitleLayer.ATTRIBUTION}
