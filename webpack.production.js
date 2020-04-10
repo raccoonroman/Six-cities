@@ -5,6 +5,4 @@ const webpackProdConfig = merge(webpackBaseConfig, {
   mode: 'production',
 });
 
-module.exports = new Promise((resolve, reject) => {
-  resolve(webpackProdConfig);
-});
+module.exports = merge.smart(webpackBaseConfig, webpackProdConfig);

@@ -14,6 +14,4 @@ const webpackDevConfig = merge(webpackBaseConfig, {
   },
 });
 
-module.exports = new Promise((resolve, reject) => {
-  resolve(webpackDevConfig);
-});
+module.exports = merge.smart(webpackBaseConfig, webpackDevConfig);
