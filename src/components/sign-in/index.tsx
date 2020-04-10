@@ -1,34 +1,32 @@
 import * as React from 'react';
-import {connect} from 'react-redux';
-import {RouteComponentProps} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { RouteComponentProps } from 'react-router-dom';
 import * as operations from '@/operations';
 import Header from '@/components/header';
 
 
 type Props = RouteComponentProps & {
   login: (authData: object, goToPreviousPage: Function) => void;
-}
+};
 
 const SignIn: React.FC<Props> = (props: Props) => {
-  const {history, login} = props;
+  const { history, login } = props;
   const [formState, setFormState] = React.useState({
     email: '',
     password: '',
   });
 
-  const {email, password} = formState;
+  const { email, password } = formState;
 
   const goToPreviousPage = () => history.goBack();
 
-  const handleInputChange = ({target}) => {
-    setFormState(Object.assign({}, formState, {
-      [target.name]: target.value,
-    }));
+  const handleInputChange = ({ target }) => {
+    setFormState({ ...formState, [target.name]: target.value });
   };
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
-    login({login: email, password}, goToPreviousPage);
+    login({ login: email, password }, goToPreviousPage);
   };
 
   return (

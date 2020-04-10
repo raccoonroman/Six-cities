@@ -1,5 +1,5 @@
 import * as actions from '@/actions';
-import {ActionType, AuthorizationStatus} from '@/const';
+import { ActionType, AuthorizationStatus } from '@/const';
 
 
 const mock = [

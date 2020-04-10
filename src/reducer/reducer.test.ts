@@ -1,4 +1,4 @@
-import {DEFAULT_CITIES, ActionType, AuthorizationStatus} from '@/const';
+import { DEFAULT_CITIES, ActionType, AuthorizationStatus } from '@/const';
 import {
   offers,
   cities,
@@ -199,7 +199,7 @@ const mockComments = [
     userId: 301,
     isUserPro: true,
     userName: 'John',
-  }
+  },
 ];
 
 

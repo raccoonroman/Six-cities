@@ -1,16 +1,16 @@
 import * as React from 'react';
-import {RouteComponentProps} from 'react-router-dom';
-import {connect} from 'react-redux';
+import { RouteComponentProps } from 'react-router-dom';
+import { connect } from 'react-redux';
 import cn from 'classnames';
-import {Offer} from '../../types';
-import {CardType, AppRoute, MapType} from '@/const';
-import {getRatingStarsStyle, isAuthorized} from '@/utils';
+import { CardType, AppRoute, MapType } from '@/const';
+import { getRatingStarsStyle, isAuthorized } from '@/utils';
 import * as operations from '@/operations';
-import {getMappedOffers, getMappedNearbyOffers, getAuthorizationStatus} from '@/selectors';
+import { getMappedOffers, getMappedNearbyOffers, getAuthorizationStatus } from '@/selectors';
 import Header from '@/components/header';
 import Reviews from '@/components/reviews';
 import Map from '@/components/map';
 import OffersList from '@/components/offers-list';
+import { Offer } from '../../types';
 
 
 const MAX_IMAGES = 6;
@@ -22,7 +22,7 @@ type Props = RouteComponentProps<{ id: string }> & {
   loadComments: (offerId: number) => void;
   loadNearbyOffers: (offerId: number) => void;
   setFavoriteStatus: (offerId: number, status: number) => void;
-}
+};
 
 const OfferDetails: React.FC<Props> = (props: Props) => {
   const {
@@ -37,16 +37,16 @@ const OfferDetails: React.FC<Props> = (props: Props) => {
   } = props;
 
   React.useEffect(() => {
-    const {id} = match.params;
+    const { id } = match.params;
     loadComments(+id);
     loadNearbyOffers(+id);
   }, [match.params, loadComments, loadNearbyOffers]);
 
-  const currentOffer = offers.find(({id}) => id === +match.params.id);
+  const currentOffer = offers.find(({ id }) => id === +match.params.id);
 
   const handleBookmarkButtonClick = () => {
     const authorized = isAuthorized(authorizationStatus);
-    const {id, isFavorite} = currentOffer;
+    const { id, isFavorite } = currentOffer;
 
     if (!authorized) {
       history.push(AppRoute.LOGIN);
@@ -115,19 +115,20 @@ const OfferDetails: React.FC<Props> = (props: Props) => {
               {isPremium && (
                 <div className="property__mark">
                   <span>Premium</span>
-                </div>)}
+                </div>
+              )}
               <div className="property__name-wrapper">
                 <h1 className="property__name">{title}</h1>
                 <button onClick={handleBookmarkButtonClick} className={bookmarkButtonClass} type="button">
                   <svg className="property__bookmark-icon" width="31" height="33">
-                    <use xlinkHref="#icon-bookmark"></use>
+                    <use xlinkHref="#icon-bookmark" />
                   </svg>
                   <span className="visually-hidden">To bookmarks</span>
                 </button>
               </div>
               <div className="property__rating rating">
                 <div className="property__stars rating__stars">
-                  <span style={getRatingStarsStyle(rating)}></span>
+                  <span style={getRatingStarsStyle(rating)} />
                   <span className="visually-hidden">Rating</span>
                 </div>
                 <span className="property__rating-value rating__value">{rating}</span>
@@ -137,14 +138,23 @@ const OfferDetails: React.FC<Props> = (props: Props) => {
                   {type}
                 </li>
                 <li className="property__feature property__feature--bedrooms">
-                  {bedrooms} Bedrooms
+                  {bedrooms}
+                  {' '}
+                  Bedrooms
                 </li>
                 <li className="property__feature property__feature--adults">
-                  Max {maxAdults} adults
+                  Max
+                  {' '}
+                  {maxAdults}
+                  {' '}
+                  adults
                 </li>
               </ul>
               <div className="property__price">
-                <b className="property__price-value">&euro;{price}</b>
+                <b className="property__price-value">
+                  &euro;
+                  {price}
+                </b>
                 <span className="property__price-text">&nbsp;night</span>
               </div>
               <div className="property__inside">
@@ -191,7 +201,7 @@ const OfferDetails: React.FC<Props> = (props: Props) => {
             </h2>
             <OffersList
               history={history}
-              className={"near-places__list places__list"}
+              className="near-places__list places__list"
               cardsType={CardType.NEAR}
               offers={nearbyOffers}
             />

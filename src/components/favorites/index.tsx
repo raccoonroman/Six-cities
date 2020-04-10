@@ -1,12 +1,12 @@
 import * as React from 'react';
 import cn from 'classnames';
-import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
-import {Offer} from '@/types';
-import {CardType, AppRoute} from '@/const';
-import {getCitiesByOffers, getOffersByCity} from '@/utils';
-import {getFavoriteOffers} from '@/selectors';
-import {setCity} from '@/actions';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Offer } from '@/types';
+import { CardType, AppRoute } from '@/const';
+import { getCitiesByOffers, getOffersByCity } from '@/utils';
+import { getFavoriteOffers } from '@/selectors';
+import { setCity } from '@/actions';
 import Header from '@/components/header';
 import OffersList from '@/components/offers-list';
 
@@ -17,7 +17,7 @@ interface Props {
 }
 
 const Favorites: React.FC<Props> = (props: Props) => {
-  const {favoriteOffers, onCityChange} = props;
+  const { favoriteOffers, onCityChange } = props;
   const noFavorites = !favoriteOffers.length;
   const cities = getCitiesByOffers(favoriteOffers);
 
@@ -25,28 +25,26 @@ const Favorites: React.FC<Props> = (props: Props) => {
     onCityChange(city);
   };
 
-  const renderCities = () => {
-    return cities.map((city) => {
-      const offersByCity = getOffersByCity(city, favoriteOffers);
+  const renderCities = () => cities.map((city) => {
+    const offersByCity = getOffersByCity(city, favoriteOffers);
 
-      return (
-        <li key={`${city}-favorites`} className="favorites__locations-items">
-          <div className="favorites__locations locations locations--current">
-            <div className="locations__item">
-              <Link onClick={handleCityNameClick(city)} to={AppRoute.ROOT} className="locations__item-link">
-                <span>{city}</span>
-              </Link>
-            </div>
+    return (
+      <li key={`${city}-favorites`} className="favorites__locations-items">
+        <div className="favorites__locations locations locations--current">
+          <div className="locations__item">
+            <Link onClick={handleCityNameClick(city)} to={AppRoute.ROOT} className="locations__item-link">
+              <span>{city}</span>
+            </Link>
           </div>
-          <OffersList
-            className={"favorites__places"}
-            cardsType={CardType.FAVORITE}
-            offers={offersByCity}
-          />
-        </li>
-      );
-    });
-  };
+        </div>
+        <OffersList
+          className="favorites__places"
+          cardsType={CardType.FAVORITE}
+          offers={offersByCity}
+        />
+      </li>
+    );
+  });
 
   const renderFavorites = () => {
     if (noFavorites) {
@@ -70,7 +68,7 @@ const Favorites: React.FC<Props> = (props: Props) => {
   };
 
   const pageFavoritesClass = cn({
-    'page': true,
+    page: true,
     'page--favorites-empty': noFavorites,
   });
   const mainFavoritesClass = cn({

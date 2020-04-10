@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import * as operations from '@/operations';
 
 
@@ -23,24 +23,22 @@ interface Props {
 }
 
 const ReviewsForm: React.FC<Props> = (props: Props) => {
-  const {offerId, postComment} = props;
-  const formInitialState = {rating: '0', review: ''};
+  const { offerId, postComment } = props;
+  const formInitialState = { rating: '0', review: '' };
   const [formState, setFormState] = React.useState(formInitialState);
   const [isFormDisabled, setIsFormDisabled] = React.useState(false);
-  const {rating, review} = formState;
+  const { rating, review } = formState;
 
   const enableForm = () => setIsFormDisabled(false);
   const clearForm = () => setFormState(formInitialState);
 
-  const handleInputChange = ({target}) => {
-    setFormState(Object.assign({}, formState, {
-      [target.name]: target.value,
-    }));
+  const handleInputChange = ({ target }) => {
+    setFormState({ ...formState, [target.name]: target.value });
   };
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
-    const comment = {rating, comment: review};
+    const comment = { rating, comment: review };
     setIsFormDisabled(true);
     postComment(comment, offerId, enableForm, clearForm);
   };
@@ -52,23 +50,23 @@ const ReviewsForm: React.FC<Props> = (props: Props) => {
 
     for (let i = STARS_QUANTITY; i > 0; i -= 1) {
       result.push(
-          <React.Fragment key={'star' + i}>
-            <input
-              onChange={handleInputChange}
-              checked={+rating === i}
-              className="form__rating-input visually-hidden"
-              name="rating"
-              value={i}
-              id={`${i}-stars`}
-              type="radio"
-              disabled={isFormDisabled}
-            />
-            <label htmlFor={`${i}-stars`} className="reviews__rating-label form__rating-label" title={StarValue[i]}>
-              <svg className="form__star-image" width="37" height="33">
-                <use xlinkHref="#icon-star"></use>
-              </svg>
-            </label>
-          </React.Fragment>
+        <React.Fragment key={`star${i}`}>
+          <input
+            onChange={handleInputChange}
+            checked={+rating === i}
+            className="form__rating-input visually-hidden"
+            name="rating"
+            value={i}
+            id={`${i}-stars`}
+            type="radio"
+            disabled={isFormDisabled}
+          />
+          <label htmlFor={`${i}-stars`} className="reviews__rating-label form__rating-label" title={StarValue[i]}>
+            <svg className="form__star-image" width="37" height="33">
+              <use xlinkHref="#icon-star" />
+            </svg>
+          </label>
+        </React.Fragment>,
       );
     }
 
@@ -93,7 +91,14 @@ const ReviewsForm: React.FC<Props> = (props: Props) => {
       />
       <div className="reviews__button-wrapper">
         <p className="reviews__help">
-          To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with <b className="reviews__text-amount">minimum 50 and maximum 300 characters</b>.
+          To submit review please make sure to set
+          {' '}
+          <span className="reviews__star">rating</span>
+          {' '}
+          and describe your stay with
+          {' '}
+          <b className="reviews__text-amount">minimum 50 and maximum 300 characters</b>
+          .
         </p>
         <button className="reviews__submit form__submit button" type="submit" disabled={!isSubmitAllowed}>Submit</button>
       </div>

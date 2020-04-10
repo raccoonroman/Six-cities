@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {Offer} from '@/types';
-import {SortType, CardType} from '@/const';
+import { Offer } from '@/types';
+import { SortType, CardType } from '@/const';
 import Sorting from '@/components/sorting';
 
 
@@ -32,13 +32,15 @@ interface Props {
 
 const withSorting = (Component) => {
   const WithSorting: React.FC<Props> = (props: Props) => {
-    const {history, offers, currentCity, onCardHover} = props;
+    const {
+      history, offers, currentCity, onCardHover,
+    } = props;
     const [sortType, setSortType] = React.useState(SortType.POPULAR);
 
     const handleSortTypeChange = (type) => setSortType(type);
 
     const getSortedOffers = () => {
-      const {sort} = sortTypes.find(({name}) => sortType === name);
+      const { sort } = sortTypes.find(({ name }) => sortType === name);
       return sort(offers);
     };
 
@@ -46,7 +48,10 @@ const withSorting = (Component) => {
       <section className="cities__places places">
         <h2 className="visually-hidden">Places</h2>
         <b className="places__found">
-          {offers.length} places to stay in {currentCity}
+          {offers.length}
+          {' '}
+          places to stay in
+          {currentCity}
         </b>
         <Sorting
           sortBy={sortType}
@@ -54,7 +59,7 @@ const withSorting = (Component) => {
         />
         <Component
           history={history}
-          className={"cities__places-list places__list"}
+          className="cities__places-list places__list"
           cardsType={CardType.CITY}
           offers={getSortedOffers()}
           onCardHover={onCardHover}

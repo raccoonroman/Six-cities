@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cn from 'classnames';
-import {SortType} from '@/const';
+import { SortType } from '@/const';
 
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
 }
 
 const Sorting: React.FunctionComponent<Props> = (props: Props) => {
-  const {sortBy, onSortTypeChange} = props;
+  const { sortBy, onSortTypeChange } = props;
   const [sortListOpened, setSortListOpened] = React.useState(false);
 
   const handleSortTypeClick = () => {
@@ -31,7 +31,7 @@ const Sorting: React.FunctionComponent<Props> = (props: Props) => {
 
     return sortTypes.map((sortType: string) => {
       const sortItemClass = cn({
-        'places__option': true,
+        places__option: true,
         'places__option--active': sortType === sortBy,
       });
       return (
@@ -53,7 +53,7 @@ const Sorting: React.FunctionComponent<Props> = (props: Props) => {
       <span onClick={handleSortTypeClick} className="places__sorting-type" tabIndex={0}>
         {sortBy}
         <svg className="places__sorting-arrow" width="7" height="4">
-          <use xlinkHref="#icon-arrow-select"></use>
+          <use xlinkHref="#icon-arrow-select" />
         </svg>
       </span>
       <ul className={sortListClass}>{renderSortItems()}</ul>

@@ -1,6 +1,6 @@
-import {createSelector} from 'reselect';
-import {getTime} from '@/utils';
-import {mapOfferToClient, mapCommentToClient} from '@/adapter';
+import { createSelector } from 'reselect';
+import { getTime } from '@/utils';
+import { mapOfferToClient, mapCommentToClient } from '@/adapter';
 
 
 export const getOffers = (state) => state.offers;
@@ -12,29 +12,29 @@ export const getCommentsByOffer = (state) => state.commentsByOffer;
 export const getNearbyOffers = (state) => state.nearbyOffers;
 
 export const getMappedOffers = createSelector(
-    getOffers,
-    (offers) => offers.map(mapOfferToClient)
+  getOffers,
+  (offers) => offers.map(mapOfferToClient),
 );
 
 export const getFavoriteOffers = createSelector(
-    getMappedOffers,
-    (offers) => offers.filter(({isFavorite}) => isFavorite)
+  getMappedOffers,
+  (offers) => offers.filter(({ isFavorite }) => isFavorite),
 );
 
 export const getMappedNearbyOffers = createSelector(
-    getNearbyOffers,
-    (offers) => offers.map(mapOfferToClient)
+  getNearbyOffers,
+  (offers) => offers.map(mapOfferToClient),
 );
 
 export const getMappedComments = createSelector(
-    getCommentsByOffer,
-    (comments) => comments.map(mapCommentToClient)
+  getCommentsByOffer,
+  (comments) => comments.map(mapCommentToClient),
 );
 
 export const getTenSortedComments = createSelector(
-    getMappedComments,
-    (mappedComments) => mappedComments
-      .slice()
-      .sort((a, b) => getTime(b.date) - getTime(a.date))
-      .slice(0, 10)
+  getMappedComments,
+  (mappedComments) => mappedComments
+    .slice()
+    .sort((a, b) => getTime(b.date) - getTime(a.date))
+    .slice(0, 10),
 );

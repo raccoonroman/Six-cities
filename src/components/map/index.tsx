@@ -1,9 +1,11 @@
 import * as React from 'react';
 import cn from 'classnames';
 import * as leaflet from 'leaflet';
-import {Map, Marker, Popup, TileLayer} from 'react-leaflet';
-import {Offer} from '@/types';
-import {MapType} from '@/const';
+import {
+  Map, Marker, Popup, TileLayer,
+} from 'react-leaflet';
+import { Offer } from '@/types';
+import { MapType } from '@/const';
 
 
 const TitleLayer = {
@@ -29,34 +31,32 @@ interface Props {
 
 
 const LeafletMap: React.FC<Props> = (props: Props) => {
-  const {mapType, offers, currentOfferId} = props;
+  const { mapType, offers, currentOfferId } = props;
   const isStaticActiveOffer = mapType === MapType.STATIC_ACTIVE_OFFER;
   const isHoveredActiveOffer = mapType === MapType.HOVERED_ACTIVE_OFFER;
 
-  const {location: cityLocation} = offers[0].city;
-  const {latitude, longitude, zoom} = cityLocation;
+  const { location: cityLocation } = offers[0].city;
+  const { latitude, longitude, zoom } = cityLocation;
 
   const mapSectionClass = cn({
-    'cities__map': isHoveredActiveOffer,
-    'property__map': isStaticActiveOffer,
-    'map': true,
+    cities__map: isHoveredActiveOffer,
+    property__map: isStaticActiveOffer,
+    map: true,
   });
 
-  const renderMarkers = () => {
-    return offers.map(({id, title, location}) => {
-      const {latitude: offerLatitude, longitude: offerLongitude} = location;
-      const pinType = id === currentOfferId ? orangePin : bluePin;
-      return (
-        <Marker
-          key={isStaticActiveOffer ? Math.random() : id}
-          position={[offerLatitude, offerLongitude]}
-          icon={pinType}
-        >
-          <Popup>{title}</Popup>
-        </Marker>
-      );
-    });
-  };
+  const renderMarkers = () => offers.map(({ id, title, location }) => {
+    const { latitude: offerLatitude, longitude: offerLongitude } = location;
+    const pinType = id === currentOfferId ? orangePin : bluePin;
+    return (
+      <Marker
+        key={isStaticActiveOffer ? Math.random() : id}
+        position={[offerLatitude, offerLongitude]}
+        icon={pinType}
+      >
+        <Popup>{title}</Popup>
+      </Marker>
+    );
+  });
 
   return (
     <section className={mapSectionClass}>

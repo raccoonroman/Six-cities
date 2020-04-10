@@ -1,6 +1,6 @@
-import {combineReducers} from 'redux';
-import {DEFAULT_CITIES, ActionType, AuthorizationStatus} from '@/const';
-import {getCitiesByOffers, updateOffers} from '@/utils';
+import { combineReducers } from 'redux';
+import { DEFAULT_CITIES, ActionType, AuthorizationStatus } from '@/const';
+import { getCitiesByOffers, updateOffers } from '@/utils';
 
 
 const InitialState = {
@@ -41,7 +41,7 @@ const cities = (state = InitialState.CITIES, action) => {
       };
     }
     case ActionType.SET_CITY: {
-      return Object.assign({}, state, {currentCity: action.payload});
+      return { ...state, currentCity: action.payload };
     }
   }
 
@@ -51,9 +51,7 @@ const cities = (state = InitialState.CITIES, action) => {
 const authorization = (state = InitialState.AUTHORIZATION, action) => {
   switch (action.type) {
     case ActionType.REQUIRED_AUTHORIZATION: {
-      return Object.assign({}, state, {
-        authorizationStatus: action.payload,
-      });
+      return { ...state, authorizationStatus: action.payload };
     }
   }
 
@@ -63,9 +61,7 @@ const authorization = (state = InitialState.AUTHORIZATION, action) => {
 const userData = (state = InitialState.USER_DATA, action) => {
   switch (action.type) {
     case ActionType.SET_EMAIL: {
-      return Object.assign({}, state, {
-        email: action.payload,
-      });
+      return { ...state, email: action.payload };
     }
   }
 

@@ -1,11 +1,11 @@
 import * as React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import cn from 'classnames';
-import {Offer} from '@/types';
-import {MapType} from '@/const';
-import {getOffersByCity} from '@/utils';
+import { Offer } from '@/types';
+import { MapType } from '@/const';
+import { getOffersByCity } from '@/utils';
 import withSorting from '@/hocs/with-sorting';
-import {getCurrentCity, getMappedOffers} from '@/selectors';
+import { getCurrentCity, getMappedOffers } from '@/selectors';
 import Header from '@/components/header';
 import CitiesList from '@/components/cities-list';
 import OffersList from '@/components/offers-list';
@@ -22,7 +22,7 @@ const OffersListWithSorting = withSorting(OffersList);
 
 
 const Main: React.FC<Props> = (props: Props) => {
-  const {history, currentCity, offers} = props;
+  const { history, currentCity, offers } = props;
   const offersByCity = getOffersByCity(currentCity, offers);
 
   const [hoveredCardId, setHoveredCardId] = React.useState(null);
@@ -35,7 +35,9 @@ const Main: React.FC<Props> = (props: Props) => {
           <div className="cities__status-wrapper tabs__content">
             <b className="cities__status">No places to stay available</b>
             <p className="cities__status-description">
-              We could not find any property available at the moment in {currentCity}
+              We could not find any property available at the moment in
+              {' '}
+              {currentCity}
             </p>
           </div>
         </section>

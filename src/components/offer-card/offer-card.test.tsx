@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import {BrowserRouter, Route} from 'react-router-dom';
-import {AuthorizationStatus, CardType, AppRoute} from '@/const';
-import {Offer} from '@/types';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { AuthorizationStatus, CardType, AppRoute } from '@/const';
+import { Offer } from '@/types';
 import OfferCard from '@/components/offer-card';
 
 
@@ -50,18 +50,22 @@ it('Should offer card render correctly', () => {
 
   const tree = renderer
     .create(
-        <Provider store={store}>
-          <BrowserRouter>
-            <Route exact path={AppRoute.ROOT} render={({history}) => (
+      <Provider store={store}>
+        <BrowserRouter>
+          <Route
+            exact
+            path={AppRoute.ROOT}
+            render={({ history }) => (
               <OfferCard
                 history={history}
                 cardType={CardType.NEAR}
                 offer={offer}
                 onCardHover={handleCardHover}
               />
-            )} />
-          </BrowserRouter>
-        </Provider>
+            )}
+          />
+        </BrowserRouter>
+      </Provider>,
     ).toJSON();
 
   expect(tree).toMatchSnapshot();

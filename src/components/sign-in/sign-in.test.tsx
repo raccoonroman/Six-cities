@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import {BrowserRouter, Route} from 'react-router-dom';
-import {AuthorizationStatus, AppRoute} from '@/const';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { AuthorizationStatus, AppRoute } from '@/const';
 import SignIn from '@/components/sign-in';
 
 
@@ -20,15 +20,19 @@ it('Render <SignIn />', () => {
   });
 
   const tree = renderer
-  .create(
+    .create(
       <Provider store={store}>
         <BrowserRouter>
-          <Route exact path={AppRoute.LOGIN} render={({history}) => (
-            <SignIn history={history} />
-          )} />
+          <Route
+            exact
+            path={AppRoute.LOGIN}
+            render={({ history }) => (
+              <SignIn history={history} />
+            )}
+          />
         </BrowserRouter>
-      </Provider>
-  ).toJSON();
+      </Provider>,
+    ).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

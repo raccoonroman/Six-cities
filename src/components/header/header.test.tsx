@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import {Provider} from 'react-redux';
+import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import {BrowserRouter} from 'react-router-dom';
-import {AuthorizationStatus} from '@/const';
+import { BrowserRouter } from 'react-router-dom';
+import { AuthorizationStatus } from '@/const';
 import Header from '@/components/header';
 
 
@@ -21,13 +21,13 @@ describe('Render <Header />', () => {
     });
 
     const tree = renderer
-    .create(
+      .create(
         <Provider store={store}>
           <BrowserRouter>
             <Header />
           </BrowserRouter>
-        </Provider>
-    ).toJSON();
+        </Provider>,
+      ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
@@ -43,13 +43,13 @@ describe('Render <Header />', () => {
     });
 
     const tree = renderer
-    .create(
+      .create(
         <Provider store={store}>
           <BrowserRouter>
             <Header />
           </BrowserRouter>
-        </Provider>
-    ).toJSON();
+        </Provider>,
+      ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

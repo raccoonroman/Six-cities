@@ -1,12 +1,12 @@
 import * as React from 'react';
-import {configure, mount} from 'enzyme';
+import { configure, mount } from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
-import {Offer} from '@/types';
-import {MapType} from '@/const';
+import { Offer } from '@/types';
+import { MapType } from '@/const';
 import Map from '@/components/map';
 
 
-configure({adapter: new Adapter()});
+configure({ adapter: new Adapter() });
 
 const offers: Offer[] = [
   {
@@ -97,12 +97,12 @@ it('Should <Map /> render correctly', () => {
   const div = global.document.createElement('div');
   global.document.body.appendChild(div);
   const tree = mount(
-      <Map
-        mapType={MapType.STATIC_ACTIVE_OFFER}
-        offers={offers}
-        currentOfferId={100501}
-      />,
-      {attachTo: div}
+    <Map
+      mapType={MapType.STATIC_ACTIVE_OFFER}
+      offers={offers}
+      currentOfferId={100501}
+    />,
+    { attachTo: div },
   );
 
   expect(tree.getDOMNode()).toMatchSnapshot();

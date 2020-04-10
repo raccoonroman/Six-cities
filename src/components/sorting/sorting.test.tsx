@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import {SortType} from '@/const';
+import { SortType } from '@/const';
 import Sorting from '@/components/sorting';
 
 
@@ -11,10 +11,10 @@ const handleSortTypeChange = () => {
 it('Should <Sorting /> render correctly', () => {
   const tree = renderer
     .create(
-        <Sorting
-          sortBy={SortType.POPULAR}
-          onSortTypeChange={handleSortTypeChange}
-        />
+      <Sorting
+        sortBy={SortType.POPULAR}
+        onSortTypeChange={handleSortTypeChange}
+      />,
     ).toJSON();
 
   expect(tree).toMatchSnapshot();

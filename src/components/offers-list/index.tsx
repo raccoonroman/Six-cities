@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Offer} from '@/types';
+import { Offer } from '@/types';
 import OfferCard from '@/components/offer-card';
 
 
@@ -12,12 +12,14 @@ interface Props {
 }
 
 const OffersList: React.FC<Props> = (props: Props) => {
-  const {history, className, cardsType, offers, onCardHover} = props;
+  const {
+    history, className, cardsType, offers, onCardHover,
+  } = props;
 
   return (
     <div className={className}>
       {offers.map((offer) => {
-        const {id} = offer;
+        const { id } = offer;
         return (
           <OfferCard
             key={id}

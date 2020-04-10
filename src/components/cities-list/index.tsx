@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import cn from 'classnames';
-import {getCitiesList} from '@/selectors';
-import {setCity} from '@/actions';
+import { getCitiesList } from '@/selectors';
+import { setCity } from '@/actions';
 
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
 }
 
 const CitiesList: React.FC<Props> = (props: Props) => {
-  const {cities, currentCity, onCityChange} = props;
+  const { cities, currentCity, onCityChange } = props;
 
   const getTabClass = (city) => cn({
     'locations__item-link tabs__item': true,
