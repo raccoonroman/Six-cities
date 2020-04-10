@@ -2,8 +2,7 @@ const path = require('path');
 const merge = require('webpack-merge');
 const webpackBaseConfig = require('./webpack.base');
 
-
-const webpackDevConfig = merge(webpackBaseConfig, {
+const webpackDevConfig = {
   mode: 'development',
   devtool: 'eval',
   devServer: {
@@ -12,6 +11,6 @@ const webpackDevConfig = merge(webpackBaseConfig, {
     port: process.env.PORT,
     historyApiFallback: true,
   },
-});
+};
 
 module.exports = merge.smart(webpackBaseConfig, webpackDevConfig);
