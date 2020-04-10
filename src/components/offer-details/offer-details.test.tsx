@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { AuthorizationStatus, AppRoute } from '@/const';
-import { createAPI } from '@/api';
+import createAPI from '@/api';
 import { OfferRaw } from '@/types';
 import OfferDetails from '@/components/offer-details';
 
@@ -111,8 +111,8 @@ it('Render <OfferDetails />', () => {
           <Route
             exact
             path={`${AppRoute.OFFER}/:id`}
-            render={(props) => (
-              <OfferDetails {...props} />
+            render={({ history, match }) => (
+              <OfferDetails history={history} match={match} />
             )}
           />
         </BrowserRouter>

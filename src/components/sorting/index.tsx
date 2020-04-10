@@ -38,8 +38,8 @@ const Sorting: React.FunctionComponent<Props> = (props: Props) => {
         <li
           key={sortType}
           onClick={handleSortItemClick(sortType)}
+          onKeyDown={handleSortItemClick(sortType)}
           className={sortItemClass}
-          tabIndex={0}
         >
           {sortType}
         </li>
@@ -50,7 +50,13 @@ const Sorting: React.FunctionComponent<Props> = (props: Props) => {
   return (
     <form className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by </span>
-      <span onClick={handleSortTypeClick} className="places__sorting-type" tabIndex={0}>
+      <span
+        onClick={handleSortTypeClick}
+        onKeyDown={handleSortTypeClick}
+        className="places__sorting-type"
+        role="button"
+        tabIndex={0}
+      >
         {sortBy}
         <svg className="places__sorting-arrow" width="7" height="4">
           <use xlinkHref="#icon-arrow-select" />

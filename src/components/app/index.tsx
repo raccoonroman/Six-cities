@@ -33,8 +33,8 @@ const App: React.FC<Props> = (props: Props) => {
         <Route
           exact
           path={`${AppRoute.OFFER}/:id`}
-          render={(routeProps) => (
-            <OfferDetails {...routeProps} />
+          render={({ history, match }) => (
+            <OfferDetails history={history} match={match} />
           )}
         />
         <Route

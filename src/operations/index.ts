@@ -2,7 +2,7 @@ import * as actions from '@/actions';
 import { AuthorizationStatus } from '@/const';
 
 
-export const loadOffers = () => (dispatch, getState, api) => api
+export const loadOffers = () => (dispatch, _, api) => api
   .get('/hotels')
   .then((data) => {
     dispatch(actions.loadOffers(data));
@@ -11,7 +11,7 @@ export const loadOffers = () => (dispatch, getState, api) => api
     throw err;
   });
 
-export const loadNearbyOffers = (offerId) => (dispatch, getState, api) => api
+export const loadNearbyOffers = (offerId) => (dispatch, _, api) => api
   .get(`/hotels/${offerId}/nearby`)
   .then((data) => {
     dispatch(actions.loadNearbyOffers(data));
@@ -20,7 +20,7 @@ export const loadNearbyOffers = (offerId) => (dispatch, getState, api) => api
     throw err;
   });
 
-export const checkAuth = () => (dispatch, getState, api) => api
+export const checkAuth = () => (dispatch, _, api) => api
   .get('/login')
   .then((data) => {
     dispatch(actions.requireAuthorization(AuthorizationStatus.AUTH));
@@ -30,7 +30,7 @@ export const checkAuth = () => (dispatch, getState, api) => api
     throw err;
   });
 
-export const login = (authData, goToPreviousPage) => (dispatch, getState, api) => api
+export const login = (authData, goToPreviousPage) => (dispatch, _, api) => api
   .post('/login', {
     email: authData.login,
     password: authData.password,
@@ -44,7 +44,7 @@ export const login = (authData, goToPreviousPage) => (dispatch, getState, api) =
     throw err;
   });
 
-export const loadComments = (offerId) => (dispatch, getState, api) => api
+export const loadComments = (offerId) => (dispatch, _, api) => api
   .get(`/comments/${offerId}`)
   .then((data) => {
     dispatch(actions.loadComments(data));
@@ -53,10 +53,10 @@ export const loadComments = (offerId) => (dispatch, getState, api) => api
     throw err;
   });
 
-export const postComment = (commentData, offerId, enableForm, clearForm) => (dispatch, getState, api) => api
+export const postComment = (comment, offerId, enableForm, clearForm) => (dispatch, _, api) => api
   .post(`/comments/${offerId}`, {
-    comment: commentData.comment,
-    rating: commentData.rating,
+    comment: comment.comment,
+    rating: comment.rating,
   })
   .then((data) => {
     enableForm();
@@ -68,7 +68,7 @@ export const postComment = (commentData, offerId, enableForm, clearForm) => (dis
     throw err;
   });
 
-export const setFavoriteStatus = (offerId, status) => (dispatch, getState, api) => api
+export const setFavoriteStatus = (offerId, status) => (dispatch, _, api) => api
   .post(`/favorite/${offerId}/${status}`)
   .then((data) => {
     dispatch(actions.updateOffer(data));

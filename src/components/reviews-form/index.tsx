@@ -19,7 +19,12 @@ const StarValue = {
 
 interface Props {
   offerId: number;
-  postComment: (commentData: object, offerId: number, enableForm: Function, clearForm: Function) => void;
+  postComment: (
+    commentData: object,
+    offerId: number,
+    enableForm: Function,
+    clearForm: Function,
+  ) => void;
 }
 
 const ReviewsForm: React.FC<Props> = (props: Props) => {
@@ -43,7 +48,9 @@ const ReviewsForm: React.FC<Props> = (props: Props) => {
     postComment(comment, offerId, enableForm, clearForm);
   };
 
-  const isSubmitAllowed = (+rating > 0) && (review.length >= TextLength.MIN) && (review.length <= TextLength.MAX);
+  const isSubmitAllowed = (+rating > 0)
+    && (review.length >= TextLength.MIN)
+    && (review.length <= TextLength.MAX);
 
   const renderStars = () => {
     const result = [];

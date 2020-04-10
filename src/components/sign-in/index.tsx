@@ -39,11 +39,12 @@ const SignIn: React.FC<Props> = (props: Props) => {
             <h1 className="login__title">Sign in</h1>
             <form onSubmit={handleFormSubmit} className="login__form form" action="#" method="post">
               <div className="login__input-wrapper form__input-wrapper">
-                <label className="visually-hidden">E-mail</label>
+                <label htmlFor="login-email" className="visually-hidden">E-mail</label>
                 <input
                   value={email}
                   onChange={handleInputChange}
                   className="login__input form__input"
+                  id="login-email"
                   type="email"
                   name="email"
                   placeholder="Email"
@@ -51,11 +52,12 @@ const SignIn: React.FC<Props> = (props: Props) => {
                 />
               </div>
               <div className="login__input-wrapper form__input-wrapper">
-                <label className="visually-hidden">Password</label>
+                <label htmlFor="login-password" className="visually-hidden">Password</label>
                 <input
                   value={password}
                   onChange={handleInputChange}
                   className="login__input form__input"
+                  id="login-password"
                   type="password"
                   name="password"
                   placeholder="Password"

@@ -26,9 +26,10 @@ const offers = (state = [], action) => {
       const updatedOffers = updateOffers(state, newOffer);
       return updatedOffers;
     }
+    default: {
+      return state;
+    }
   }
-
-  return state;
 };
 
 const cities = (state = InitialState.CITIES, action) => {
@@ -43,9 +44,10 @@ const cities = (state = InitialState.CITIES, action) => {
     case ActionType.SET_CITY: {
       return { ...state, currentCity: action.payload };
     }
+    default: {
+      return state;
+    }
   }
-
-  return state;
 };
 
 const authorization = (state = InitialState.AUTHORIZATION, action) => {
@@ -53,9 +55,10 @@ const authorization = (state = InitialState.AUTHORIZATION, action) => {
     case ActionType.REQUIRED_AUTHORIZATION: {
       return { ...state, authorizationStatus: action.payload };
     }
+    default: {
+      return state;
+    }
   }
-
-  return state;
 };
 
 const userData = (state = InitialState.USER_DATA, action) => {
@@ -63,9 +66,10 @@ const userData = (state = InitialState.USER_DATA, action) => {
     case ActionType.SET_EMAIL: {
       return { ...state, email: action.payload };
     }
+    default: {
+      return state;
+    }
   }
-
-  return state;
 };
 
 const commentsByOffer = (state = [], action) => {
@@ -73,9 +77,10 @@ const commentsByOffer = (state = [], action) => {
     case ActionType.LOAD_COMMENTS: {
       return action.payload;
     }
+    default: {
+      return state;
+    }
   }
-
-  return state;
 };
 
 const nearbyOffers = (state = [], action) => {
@@ -88,9 +93,10 @@ const nearbyOffers = (state = [], action) => {
       const updatedOffers = updateOffers(state, newOffer);
       return updatedOffers;
     }
+    default: {
+      return state;
+    }
   }
-
-  return state;
 };
 
 

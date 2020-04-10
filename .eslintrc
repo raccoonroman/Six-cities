@@ -2,5 +2,13 @@
   "extends": ["airbnb-typescript"],
   "parserOptions": {
     "project": "./tsconfig.json"
+  },
+  "rules": {
+    "jsx-a11y/label-has-associated-control": ["error", {
+      "required": {
+        "some": ["nesting", "id"]
+      }
+    }],
+    "jsx-a11y/no-noninteractive-element-interactions": "off"
   }
 }

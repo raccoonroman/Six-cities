@@ -206,7 +206,7 @@ const mockComments = [
 describe('Reducers working correctly', () => {
   describe('Reducer "offers" works correctly', () => {
     it('Reducer without additional parameters should return initial state', () => {
-      expect(offers(void 0, {})).toEqual([]);
+      expect(offers(undefined, {})).toEqual([]);
     });
 
     it('Reducer should update offers by load offers', () => {
@@ -229,7 +229,7 @@ describe('Reducers working correctly', () => {
 
   describe('Reducer "cities" works correctly', () => {
     it('Reducer without additional parameters should return initial state', () => {
-      expect(cities(void 0, {})).toEqual({
+      expect(cities(undefined, {})).toEqual({
         currentCity: DEFAULT_CITIES[0],
         cities: DEFAULT_CITIES,
       });
@@ -264,7 +264,7 @@ describe('Reducers working correctly', () => {
 
   describe('Reducer "authorization" works correctly', () => {
     it('Reducer without additional parameters should return initial state', () => {
-      expect(authorization(void 0, {})).toEqual({
+      expect(authorization(undefined, {})).toEqual({
         authorizationStatus: AuthorizationStatus.NO_AUTH,
       });
     });
@@ -310,7 +310,7 @@ describe('Reducers working correctly', () => {
 
   describe('Reducer "userData" works correctly', () => {
     it('Reducer without additional parameters should return initial state', () => {
-      expect(userData(void 0, {})).toEqual({
+      expect(userData(undefined, {})).toEqual({
         email: '',
       });
     });
@@ -329,7 +329,7 @@ describe('Reducers working correctly', () => {
 
   describe('Reducer "commentsByOffer" works correctly', () => {
     it('Reducer without additional parameters should return initial state', () => {
-      expect(commentsByOffer(void 0, {})).toEqual([]);
+      expect(commentsByOffer(undefined, {})).toEqual([]);
     });
 
     it('Reducer should update commentsByOffer by load comments', () => {
@@ -342,7 +342,7 @@ describe('Reducers working correctly', () => {
 
   describe('Reducer "nearbyOffers" works correctly', () => {
     it('Reducer without additional parameters should return initial state', () => {
-      expect(nearbyOffers(void 0, {})).toEqual([]);
+      expect(nearbyOffers(undefined, {})).toEqual([]);
     });
 
     it('Reducer should update offers by load nearby offers', () => {

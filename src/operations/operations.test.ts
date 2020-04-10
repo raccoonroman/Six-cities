@@ -1,5 +1,5 @@
 import MockAdapter from 'axios-mock-adapter';
-import { createAPI } from '@/api';
+import createAPI from '@/api';
 import { loadOffers } from '@/operations';
 import { ActionType } from '@/const';
 
