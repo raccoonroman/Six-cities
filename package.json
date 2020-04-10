@@ -4,7 +4,7 @@
   "description": "service for travelers",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
-    "start": "cross-env PORT=1281 webpack-dev-server",
+    "start": "cross-env NODE_ENV=development PORT=3000 webpack-dev-server",
     "eslint": "npm run eslint.js && npm run eslint.ts",
     "eslint.js": "eslint --ext .jsx --ext .js src/",
     "eslint.ts": "eslint --config .eslintrc-ts.yml --ext .tsx src/",
@@ -29,7 +29,6 @@
     "enzyme": "3.11.0",
     "enzyme-adapter-react-16": "1.15.2",
     "eslint": "5.13.0",
-    "eslint-config-htmlacademy": "0.5.2",
     "eslint-plugin-react": "7.18.3",
     "eslint-plugin-react-hooks": "3.0.0",
     "jest": "25.1.0",
