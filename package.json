@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "service for travelers",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack",
-    "start": "cross-env NODE_ENV=development PORT=3000 webpack-dev-server",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.production.js",
+    "start": "cross-env NODE_ENV=development PORT=3000 webpack-dev-server --config webpack.development.js",
     "eslint": "npm run eslint.js && npm run eslint.ts",
     "eslint.js": "eslint --ext .jsx --ext .js src/",
     "eslint.ts": "eslint --config .eslintrc-ts.yml --ext .tsx src/",
@@ -42,7 +42,8 @@
     "utility-types": "3.10.0",
     "webpack": "4.41.5",
     "webpack-cli": "3.3.10",
-    "webpack-dev-server": "3.10.3"
+    "webpack-dev-server": "3.10.3",
+    "webpack-merge": "4.2.2"
   },
   "engines": {
     "node": "10"
