@@ -2,9 +2,9 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
-import {AuthorizationStatus} from '../../const';
-import {OfferRaw} from '../../types';
-import App from './index';
+import {AuthorizationStatus} from '@/const';
+import {OfferRaw} from '@/types';
+import App from '@/components/app';
 
 
 const mockStore = configureStore([]);
@@ -12,11 +12,11 @@ const mockStore = configureStore([]);
 const mockOffers: OfferRaw[] = [
   {
     'id': 100490,
-    'title': `The best title ever`,
-    'preview_image': `https://i.picsum.photos/id/22/400/200.jpg`,
+    'title': 'The best title ever',
+    'preview_image': 'https://i.picsum.photos/id/22/400/200.jpg',
     'price': 333,
     'rating': 3.3,
-    'type': `apartment`,
+    'type': 'apartment',
     'bedrooms': 12,
     'max_adults': 12,
     'is_favorite': false,
@@ -27,30 +27,30 @@ const mockOffers: OfferRaw[] = [
       'zoom': 14,
     },
     'city': {
-      'name': `Vinnytsya`,
+      'name': 'Vinnytsya',
       'location': {
         'latitude': 52.370216,
         'longitude': 4.895168,
         'zoom': 12,
       },
     },
-    'description': `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`,
-    'goods': [`Baby seat`, `Towels`, `Dishwasher`, `Breakfast`],
+    'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    'goods': ['Baby seat', 'Towels', 'Dishwasher', 'Breakfast'],
     'host': {
-      'avatar_url': `https://i.picsum.photos/id/58/400/200.jpg`,
+      'avatar_url': 'https://i.picsum.photos/id/58/400/200.jpg',
       'id': 911,
       'is_pro': false,
-      'name': `Rachel`,
+      'name': 'Rachel',
     },
-    'images': [`https://i.picsum.photos/id/82/400/200.jpg`, `https://i.picsum.photos/id/83/400/200.jpg`, `https://i.picsum.photos/id/84/400/200.jpg`, `https://i.picsum.photos/id/85/400/200.jpg`, `https://i.picsum.photos/id/86/400/200.jpg`, `https://i.picsum.photos/id/87/400/200.jpg`, `https://i.picsum.photos/id/88/400/200.jpg`, `https://i.picsum.photos/id/89/400/200.jpg`],
+    'images': ['https://i.picsum.photos/id/82/400/200.jpg', 'https://i.picsum.photos/id/83/400/200.jpg', 'https://i.picsum.photos/id/84/400/200.jpg', 'https://i.picsum.photos/id/85/400/200.jpg', 'https://i.picsum.photos/id/86/400/200.jpg', 'https://i.picsum.photos/id/87/400/200.jpg', 'https://i.picsum.photos/id/88/400/200.jpg', 'https://i.picsum.photos/id/89/400/200.jpg'],
   },
   {
     'id': 100491,
-    'title': `Some title`,
-    'preview_image': `https://i.picsum.photos/id/23/400/200.jpg`,
+    'title': 'Some title',
+    'preview_image': 'https://i.picsum.photos/id/23/400/200.jpg',
     'price': 900,
     'rating': 4.5,
-    'type': `room`,
+    'type': 'room',
     'bedrooms': 2,
     'max_adults': 4,
     'is_favorite': true,
@@ -61,29 +61,29 @@ const mockOffers: OfferRaw[] = [
       'zoom': 16,
     },
     'city': {
-      'name': `Vinnytsya`,
+      'name': 'Vinnytsya',
       'location': {
         'latitude': 52,
         'longitude': 4.9,
         'zoom': 12,
       },
     },
-    'description': `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. `,
-    'goods': [`Towels`, `Breakfast`],
+    'description': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
+    'goods': ['Towels', 'Breakfast'],
     'host': {
-      'avatar_url': `https://i.picsum.photos/id/59/400/200.jpg`,
+      'avatar_url': 'https://i.picsum.photos/id/59/400/200.jpg',
       'id': 912,
       'is_pro': true,
-      'name': `Chandler`,
+      'name': 'Chandler',
     },
-    'images': [`https://i.picsum.photos/id/182/400/200.jpg`, `https://i.picsum.photos/id/183/400/200.jpg`, `https://i.picsum.photos/id/184/400/200.jpg`, `https://i.picsum.photos/id/185/400/200.jpg`, `https://i.picsum.photos/id/186/400/200.jpg`, `https://i.picsum.photos/id/187/400/200.jpg`, `https://i.picsum.photos/id/188/400/200.jpg`, `https://i.picsum.photos/id/189/400/200.jpg`],
+    'images': ['https://i.picsum.photos/id/182/400/200.jpg', 'https://i.picsum.photos/id/183/400/200.jpg', 'https://i.picsum.photos/id/184/400/200.jpg', 'https://i.picsum.photos/id/185/400/200.jpg', 'https://i.picsum.photos/id/186/400/200.jpg', 'https://i.picsum.photos/id/187/400/200.jpg', 'https://i.picsum.photos/id/188/400/200.jpg', 'https://i.picsum.photos/id/189/400/200.jpg'],
   }
 ];
 
-const cities: string[] = [`Vinnytsia`, `Kyiv`];
+const cities: string[] = ['Vinnytsia', 'Kyiv'];
 
 
-it(`Render App`, () => {
+it('Render App', () => {
   const store = mockStore({
     offers: mockOffers,
     cities: {
@@ -94,7 +94,7 @@ it(`Render App`, () => {
       authorizationStatus: AuthorizationStatus.NO_AUTH,
     },
     userData: {
-      email: ``,
+      email: '',
     },
   });
 

@@ -3,20 +3,20 @@ import * as renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {BrowserRouter, Route} from 'react-router-dom';
-import {AuthorizationStatus, CardType, AppRoute} from '../../const';
-import {Offer} from '../../types';
-import OfferCard from './index';
+import {AuthorizationStatus, CardType, AppRoute} from '@/const';
+import {Offer} from '@/types';
+import OfferCard from '@/components/offer-card';
 
 
 const mockStore = configureStore([]);
 
 const offer: Offer = {
   id: 100502,
-  title: `Excepteur sint occaecat cupidatat non proident`,
-  previewImage: `https://i.picsum.photos/id/24/260/200.jpg`,
+  title: 'Excepteur sint occaecat cupidatat non proident',
+  previewImage: 'https://i.picsum.photos/id/24/260/200.jpg',
   price: 13,
   rating: 4.9,
-  type: `house`,
+  type: 'house',
   bedrooms: 3,
   maxAdults: 3,
   isFavorite: true,
@@ -27,7 +27,7 @@ const offer: Offer = {
     zoom: 12,
   },
   city: {
-    name: `Vinnytsia`,
+    name: 'Vinnytsia',
     location: {
       latitude: 52.370216,
       longitude: 4.895168,
@@ -41,7 +41,7 @@ const handleCardHover = () => {
 };
 
 
-it(`Should offer card render correctly`, () => {
+it('Should offer card render correctly', () => {
   const store = mockStore({
     authorization: {
       authorizationStatus: AuthorizationStatus.NO_AUTH,

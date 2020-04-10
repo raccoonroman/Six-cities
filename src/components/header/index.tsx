@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {AppRoute} from '../../const';
-import {isAuthorized} from '../../utils';
-import {getUserEmail, getAuthorizationStatus} from '../../selectors';
+import {AppRoute} from '@/const';
+import {isAuthorized} from '@/utils';
+import {getUserEmail, getAuthorizationStatus} from '@/selectors';
 
 
 interface Props {

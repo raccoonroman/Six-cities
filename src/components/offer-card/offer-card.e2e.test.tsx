@@ -4,9 +4,9 @@ import * as Adapter from 'enzyme-adapter-react-16';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {BrowserRouter} from 'react-router-dom';
-import {AuthorizationStatus, CardType} from '../../const';
-import {Offer} from '../../types';
-import OfferCard from './index';
+import {AuthorizationStatus, CardType} from '@/const';
+import {Offer} from '@/types';
+import OfferCard from '@/components/offer-card';
 
 
 const mockStore = configureStore([]);
@@ -14,11 +14,11 @@ configure({adapter: new Adapter()});
 
 const offer: Offer = {
   id: 100500,
-  title: `Excepteur sint occaecat cupidatat non proident`,
-  previewImage: `https://i.picsum.photos/id/24/260/200.jpg`,
+  title: 'Excepteur sint occaecat cupidatat non proident',
+  previewImage: 'https://i.picsum.photos/id/24/260/200.jpg',
   price: 13,
   rating: 4.9,
-  type: `house`,
+  type: 'house',
   bedrooms: 3,
   maxAdults: 3,
   isFavorite: true,
@@ -29,7 +29,7 @@ const offer: Offer = {
     zoom: 12,
   },
   city: {
-    name: `Vinnytsia`,
+    name: 'Vinnytsia',
     location: {
       latitude: 52.370216,
       longitude: 4.895168,
@@ -39,7 +39,7 @@ const offer: Offer = {
 };
 
 
-it(`Hover on offer card`, () => {
+it('Hover on offer card', () => {
   const handleCardHover = jest.fn();
   const store = mockStore({
     authorization: {
@@ -60,10 +60,10 @@ it(`Hover on offer card`, () => {
       </Provider>
   );
 
-  const cardOne = card.find(`.place-card`).at(0);
+  const cardOne = card.find('.place-card').at(0);
 
-  cardOne.simulate(`mouseEnter`);
-  cardOne.simulate(`mouseLeave`);
+  cardOne.simulate('mouseEnter');
+  cardOne.simulate('mouseLeave');
 
   expect(handleCardHover).toHaveBeenCalledTimes(2);
 

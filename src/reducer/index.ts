@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux';
-import {DEFAULT_CITIES, ActionType, AuthorizationStatus} from '../const';
-import {getCitiesByOffers, updateOffers} from '../utils';
+import {DEFAULT_CITIES, ActionType, AuthorizationStatus} from '@/const';
+import {getCitiesByOffers, updateOffers} from '@/utils';
 
 
 const InitialState = {
@@ -12,7 +12,7 @@ const InitialState = {
     authorizationStatus: AuthorizationStatus.NO_AUTH,
   },
   USER_DATA: {
-    email: ``,
+    email: '',
   },
 };
 

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {Comment} from '../../types';
-import {getRatingStarsStyle, isAuthorized} from '../../utils';
-import {getAuthorizationStatus, getTenSortedComments} from '../../selectors';
-import ReviewsForm from '../reviews-form';
+import {Comment} from '@/types';
+import {getRatingStarsStyle, isAuthorized} from '@/utils';
+import {getAuthorizationStatus, getTenSortedComments} from '@/selectors';
+import ReviewsForm from '@/components/reviews-form';
 
 
 interface Props {
@@ -28,9 +28,9 @@ const Reviews: React.FC<Props> = (props: Props) => {
       } = comment;
 
       const dateISOString = date.slice(0, 10);
-      const dateReadableString = new Date(date).toLocaleString(`default`, {
-        month: `long`,
-        year: `numeric`,
+      const dateReadableString = new Date(date).toLocaleString('default', {
+        month: 'long',
+        year: 'numeric',
       });
 
       return (

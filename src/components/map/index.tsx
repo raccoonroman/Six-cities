@@ -2,22 +2,22 @@ import * as React from 'react';
 import cn from 'classnames';
 import * as leaflet from 'leaflet';
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet';
-import {Offer} from '../../types';
-import {MapType} from '../../const';
+import {Offer} from '@/types';
+import {MapType} from '@/const';
 
 
 const TitleLayer = {
-  PATH: `https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`,
-  ATTRIBUTION: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`,
+  PATH: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
+  ATTRIBUTION: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
 };
 
 const bluePin = new leaflet.Icon({
-  iconUrl: `/img/pin.svg`,
+  iconUrl: '/img/pin.svg',
   iconSize: [30, 30],
 });
 
 const orangePin = new leaflet.Icon({
-  iconUrl: `/img/pin-active.svg`,
+  iconUrl: '/img/pin-active.svg',
   iconSize: [30, 30],
 });
 

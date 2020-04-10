@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
-import * as operations from '../../operations';
+import * as operations from '@/operations';
 
 
 const STARS_QUANTITY = 5;
@@ -10,11 +10,11 @@ const TextLength = {
 };
 
 const StarValue = {
-  5: `perfect`,
-  4: `good`,
-  3: `not bad`,
-  2: `badly`,
-  1: `terribly`,
+  5: 'perfect',
+  4: 'good',
+  3: 'not bad',
+  2: 'badly',
+  1: 'terribly',
 };
 
 interface Props {
@@ -24,7 +24,7 @@ interface Props {
 
 const ReviewsForm: React.FC<Props> = (props: Props) => {
   const {offerId, postComment} = props;
-  const formInitialState = {rating: `0`, review: ``};
+  const formInitialState = {rating: '0', review: ''};
   const [formState, setFormState] = React.useState(formInitialState);
   const [isFormDisabled, setIsFormDisabled] = React.useState(false);
   const {rating, review} = formState;
@@ -52,7 +52,7 @@ const ReviewsForm: React.FC<Props> = (props: Props) => {
 
     for (let i = STARS_QUANTITY; i > 0; i -= 1) {
       result.push(
-          <React.Fragment key={`star` + i}>
+          <React.Fragment key={'star' + i}>
             <input
               onChange={handleInputChange}
               checked={+rating === i}

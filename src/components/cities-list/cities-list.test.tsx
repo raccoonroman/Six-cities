@@ -2,16 +2,16 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
-import CitiesList from './index';
+import CitiesList from '@/components/cities-list';
 
 
 const mockStore = configureStore([]);
 
-const cities: string[] = [`Kyiv`, `Kharkiv`, `Odessa`, `Vinnytsia`, `Lviv`];
-const currentCity = `Vinnytsia`;
+const cities: string[] = ['Kyiv', 'Kharkiv', 'Odessa', 'Vinnytsia', 'Lviv'];
+const currentCity = 'Vinnytsia';
 
 
-it(`Render <CitiesList />`, () => {
+it('Render <CitiesList />', () => {
   const store = mockStore({
     cities: {
       cities,

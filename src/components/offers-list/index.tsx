@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {Offer} from '../../types';
-import OfferCard from '../offer-card';
+import {Offer} from '@/types';
+import OfferCard from '@/components/offer-card';
 
 
 interface Props {

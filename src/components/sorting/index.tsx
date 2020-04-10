@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cn from 'classnames';
-import {SortType} from '../../const';
+import {SortType} from '@/const';
 
 
 interface Props {

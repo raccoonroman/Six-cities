@@ -3,9 +3,9 @@ import * as renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {BrowserRouter, Route} from 'react-router-dom';
-import {CardType, AuthorizationStatus, AppRoute} from '../../const';
-import {Offer} from '../../types';
-import OffersList from './index';
+import {CardType, AuthorizationStatus, AppRoute} from '@/const';
+import {Offer} from '@/types';
+import OffersList from '@/components/offers-list';
 
 
 const mockStore = configureStore([]);
@@ -13,11 +13,11 @@ const mockStore = configureStore([]);
 const offers: Offer[] = [
   {
     id: 100500,
-    title: `Lorem ipsum`,
-    previewImage: `https://i.picsum.photos/id/22/260/200.jpg`,
+    title: 'Lorem ipsum',
+    previewImage: 'https://i.picsum.photos/id/22/260/200.jpg',
     price: 100,
     rating: 4.3,
-    type: `apartment`,
+    type: 'apartment',
     bedrooms: 10,
     maxAdults: 10,
     isFavorite: false,
@@ -28,7 +28,7 @@ const offers: Offer[] = [
       zoom: 12,
     },
     city: {
-      name: `Vinnytsya`,
+      name: 'Vinnytsya',
       location: {
         latitude: 52.370216,
         longitude: 4.895168,
@@ -38,11 +38,11 @@ const offers: Offer[] = [
   },
   {
     id: 100501,
-    title: `Ut enim ad minim veniam`,
-    previewImage: `https://i.picsum.photos/id/23/260/200.jpg`,
+    title: 'Ut enim ad minim veniam',
+    previewImage: 'https://i.picsum.photos/id/23/260/200.jpg',
     price: 9,
     rating: 4.0,
-    type: `room`,
+    type: 'room',
     bedrooms: 4,
     maxAdults: 5,
     isFavorite: false,
@@ -53,7 +53,7 @@ const offers: Offer[] = [
       zoom: 12,
     },
     city: {
-      name: `Vinnytsya`,
+      name: 'Vinnytsya',
       location: {
         latitude: 52.370216,
         longitude: 4.895168,
@@ -63,11 +63,11 @@ const offers: Offer[] = [
   },
   {
     id: 100502,
-    title: `Excepteur sint occaecat cupidatat non proident`,
-    previewImage: `https://i.picsum.photos/id/24/260/200.jpg`,
+    title: 'Excepteur sint occaecat cupidatat non proident',
+    previewImage: 'https://i.picsum.photos/id/24/260/200.jpg',
     price: 13,
     rating: 4.9,
-    type: `house`,
+    type: 'house',
     bedrooms: 3,
     maxAdults: 3,
     isFavorite: true,
@@ -78,7 +78,7 @@ const offers: Offer[] = [
       zoom: 12,
     },
     city: {
-      name: `Vinnytsya`,
+      name: 'Vinnytsya',
       location: {
         latitude: 52.370216,
         longitude: 4.895168,
@@ -89,7 +89,7 @@ const offers: Offer[] = [
 ];
 
 
-it(`Should <OffersList /> render correctly`, () => {
+it('Should <OffersList /> render correctly', () => {
   const store = mockStore({
     authorization: {
       authorizationStatus: AuthorizationStatus.NO_AUTH,
@@ -103,7 +103,7 @@ it(`Should <OffersList /> render correctly`, () => {
             <Route exact path={AppRoute.ROOT} render={({history}) => (
               <OffersList
                 history={history}
-                className={`near-places__list places__list`}
+                className={"near-places__list places__list"}
                 cardsType={CardType.NEAR}
                 offers={offers}
               />

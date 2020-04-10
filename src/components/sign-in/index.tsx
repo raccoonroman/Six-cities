@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import {RouteComponentProps} from 'react-router-dom';
-import * as operations from '../../operations';
-import Header from '../header';
+import * as operations from '@/operations';
+import Header from '@/components/header';
 
 
 type Props = RouteComponentProps & {
@@ -12,8 +12,8 @@ type Props = RouteComponentProps & {
 const SignIn: React.FC<Props> = (props: Props) => {
   const {history, login} = props;
   const [formState, setFormState] = React.useState({
-    email: ``,
-    password: ``,
+    email: '',
+    password: '',
   });
 
   const {email, password} = formState;

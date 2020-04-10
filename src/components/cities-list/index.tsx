@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import cn from 'classnames';
-import {getCitiesList} from '../../selectors';
-import {setCity} from '../../actions';
+import {getCitiesList} from '@/selectors';
+import {setCity} from '@/actions';
 
 
 interface Props {

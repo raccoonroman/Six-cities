@@ -3,14 +3,14 @@ import {RouteComponentProps} from 'react-router-dom';
 import {connect} from 'react-redux';
 import cn from 'classnames';
 import {Offer} from '../../types';
-import {CardType, AppRoute, MapType} from '../../const';
-import {getRatingStarsStyle, isAuthorized} from '../../utils';
-import * as operations from '../../operations';
-import {getMappedOffers, getMappedNearbyOffers, getAuthorizationStatus} from '../../selectors';
-import Header from '../header';
-import Reviews from '../reviews';
-import Map from '../map';
-import OffersList from '../offers-list';
+import {CardType, AppRoute, MapType} from '@/const';
+import {getRatingStarsStyle, isAuthorized} from '@/utils';
+import * as operations from '@/operations';
+import {getMappedOffers, getMappedNearbyOffers, getAuthorizationStatus} from '@/selectors';
+import Header from '@/components/header';
+import Reviews from '@/components/reviews';
+import Map from '@/components/map';
+import OffersList from '@/components/offers-list';
 
 
 const MAX_IMAGES = 6;
@@ -58,9 +58,9 @@ const OfferDetails: React.FC<Props> = (props: Props) => {
 
   const getNearbyOffersTitleText = (nearbyOffersLength) => {
     if (nearbyOffersLength) {
-      return `Other places in the neighbourhood`;
+      return 'Other places in the neighbourhood';
     }
-    return `There is no other places in the neighbourhood`;
+    return 'There is no other places in the neighbourhood';
   };
 
   if (!currentOffer) {
@@ -191,7 +191,7 @@ const OfferDetails: React.FC<Props> = (props: Props) => {
             </h2>
             <OffersList
               history={history}
-              className={`near-places__list places__list`}
+              className={"near-places__list places__list"}
               cardsType={CardType.NEAR}
               offers={nearbyOffers}
             />

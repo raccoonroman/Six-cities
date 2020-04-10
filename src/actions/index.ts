@@ -1,4 +1,4 @@
-import {ActionType} from '../const';
+import {ActionType} from '@/const';
 
 
 export const loadOffers = (offers) => ({

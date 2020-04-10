@@ -1,15 +1,15 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import cn from 'classnames';
-import {Offer} from '../../types';
-import {MapType} from '../../const';
-import {getOffersByCity} from '../../utils';
-import withSorting from '../../hocs/with-sorting';
-import {getCurrentCity, getMappedOffers} from '../../selectors';
-import Header from '../header';
-import CitiesList from '../cities-list';
-import OffersList from '../offers-list';
-import Map from '../map';
+import {Offer} from '@/types';
+import {MapType} from '@/const';
+import {getOffersByCity} from '@/utils';
+import withSorting from '@/hocs/with-sorting';
+import {getCurrentCity, getMappedOffers} from '@/selectors';
+import Header from '@/components/header';
+import CitiesList from '@/components/cities-list';
+import OffersList from '@/components/offers-list';
+import Map from '@/components/map';
 
 
 interface Props {

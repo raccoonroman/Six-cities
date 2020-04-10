@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {Offer} from '../../types';
-import {SortType, CardType} from '../../const';
-import Sorting from '../../components/sorting';
+import {Offer} from '@/types';
+import {SortType, CardType} from '@/const';
+import Sorting from '@/components/sorting';
 
 
 const sortTypes = [
@@ -54,7 +54,7 @@ const withSorting = (Component) => {
         />
         <Component
           history={history}
-          className={`cities__places-list places__list`}
+          className={"cities__places-list places__list"}
           cardsType={CardType.CITY}
           offers={getSortedOffers()}
           onCardHover={onCardHover}

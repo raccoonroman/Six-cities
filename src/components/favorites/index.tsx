@@ -2,13 +2,13 @@ import * as React from 'react';
 import cn from 'classnames';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {Offer} from '../../types';
-import {CardType, AppRoute} from '../../const';
-import {getCitiesByOffers, getOffersByCity} from '../../utils';
-import {getFavoriteOffers} from '../../selectors';
-import {setCity} from '../../actions';
-import Header from '../header';
-import OffersList from '../offers-list';
+import {Offer} from '@/types';
+import {CardType, AppRoute} from '@/const';
+import {getCitiesByOffers, getOffersByCity} from '@/utils';
+import {getFavoriteOffers} from '@/selectors';
+import {setCity} from '@/actions';
+import Header from '@/components/header';
+import OffersList from '@/components/offers-list';
 
 
 interface Props {
@@ -39,7 +39,7 @@ const Favorites: React.FC<Props> = (props: Props) => {
             </div>
           </div>
           <OffersList
-            className={`favorites__places`}
+            className={"favorites__places"}
             cardsType={CardType.FAVORITE}
             offers={offersByCity}
           />

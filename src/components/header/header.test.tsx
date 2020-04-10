@@ -3,20 +3,20 @@ import * as renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 import {BrowserRouter} from 'react-router-dom';
-import {AuthorizationStatus} from '../../const';
-import Header from './index';
+import {AuthorizationStatus} from '@/const';
+import Header from '@/components/header';
 
 
 const mockStore = configureStore([]);
 
-describe(`Render <Header />`, () => {
-  it(`When user is not authorized`, () => {
+describe('Render <Header />', () => {
+  it('When user is not authorized', () => {
     const store = mockStore({
       authorization: {
         authorizationStatus: AuthorizationStatus.NO_AUTH,
       },
       userData: {
-        email: ``,
+        email: '',
       },
     });
 
@@ -32,13 +32,13 @@ describe(`Render <Header />`, () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it(`When user is authorized`, () => {
+  it('When user is authorized', () => {
     const store = mockStore({
       authorization: {
         authorizationStatus: AuthorizationStatus.AUTH,
       },
       userData: {
-        email: `name@gmail.com`,
+        email: 'name@gmail.com',
       },
     });
 

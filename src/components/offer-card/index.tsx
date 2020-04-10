@@ -2,11 +2,11 @@ import * as React from 'react';
 import cn from 'classnames';
 import {connect} from 'react-redux';
 import {Link, RouteComponentProps} from 'react-router-dom';
-import {Offer} from '../../types';
-import {CardType, AppRoute} from '../../const';
-import {getRatingStarsStyle, isAuthorized} from '../../utils';
-import {getAuthorizationStatus} from '../../selectors';
-import * as operations from '../../operations';
+import {Offer} from '@/types';
+import {CardType, AppRoute} from '@/const';
+import {getRatingStarsStyle, isAuthorized} from '@/utils';
+import {getAuthorizationStatus} from '@/selectors';
+import * as operations from '@/operations';
 
 
 type Props = RouteComponentProps & {

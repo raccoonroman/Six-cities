@@ -1,10 +1,10 @@
-import * as actions from '../actions';
-import {AuthorizationStatus} from '../const';
+import * as actions from '@/actions';
+import {AuthorizationStatus} from '@/const';
 
 
 export const loadOffers = () => (dispatch, getState, api) => {
   return api
-    .get(`/hotels`)
+    .get('/hotels')
     .then((data) => {
       dispatch(actions.loadOffers(data));
     })
@@ -26,7 +26,7 @@ export const loadNearbyOffers = (offerId) => (dispatch, getState, api) => {
 
 export const checkAuth = () => (dispatch, getState, api) => {
   return api
-    .get(`/login`)
+    .get('/login')
     .then((data) => {
       dispatch(actions.requireAuthorization(AuthorizationStatus.AUTH));
       dispatch(actions.setEmail(data.email));
@@ -38,7 +38,7 @@ export const checkAuth = () => (dispatch, getState, api) => {
 
 export const login = (authData, goToPreviousPage) => (dispatch, getState, api) => {
   return api
-    .post(`/login`, {
+    .post('/login', {
       email: authData.login,
       password: authData.password,
     })

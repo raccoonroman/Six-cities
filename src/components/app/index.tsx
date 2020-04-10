@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {AppRoute} from '../../const';
-import {isAuthorized} from '../../utils';
-import {getAuthorizationStatus} from '../../selectors';
-import Main from '../main';
-import SignIn from '../sign-in';
-import OfferDetails from '../offer-details';
-import Favorites from '../favorites';
+import {AppRoute} from '@/const';
+import {isAuthorized} from '@/utils';
+import {getAuthorizationStatus} from '@/selectors';
+import Main from '@/components/main';
+import SignIn from '@/components/sign-in';
+import OfferDetails from '@/components/offer-details';
+import Favorites from '@/components/favorites';
 
 
 interface Props {

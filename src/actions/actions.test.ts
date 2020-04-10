@@ -1,24 +1,24 @@
-import * as actions from './index';
-import {ActionType, AuthorizationStatus} from '../const';
+import * as actions from '@/actions';
+import {ActionType, AuthorizationStatus} from '@/const';
 
 
 const mock = [
   {
     id: 1,
-    key1: `value1`,
+    key1: 'value1',
   },
   {
     id: 2,
-    key2: `value2`,
+    key2: 'value2',
   },
   {
     id: 3,
-    key3: `value3`,
+    key3: 'value3',
   },
 ];
 
-describe(`Action creators work correctly`, () => {
-  it(`Action creator for loading offers returns correct action`, () => {
+describe('Action creators work correctly', () => {
+  it('Action creator for loading offers returns correct action', () => {
     expect(actions.loadOffers([])).toEqual({
       type: ActionType.LOAD_OFFERS,
       payload: [],
@@ -30,19 +30,19 @@ describe(`Action creators work correctly`, () => {
     });
   });
 
-  it(`Action creator for setting city returns correct action`, () => {
-    expect(actions.setCity(`cityName`)).toEqual({
+  it('Action creator for setting city returns correct action', () => {
+    expect(actions.setCity('cityName')).toEqual({
       type: ActionType.SET_CITY,
-      payload: `cityName`,
+      payload: 'cityName',
     });
 
-    expect(actions.setCity(`anotherCity`)).toEqual({
+    expect(actions.setCity('anotherCity')).toEqual({
       type: ActionType.SET_CITY,
-      payload: `anotherCity`,
+      payload: 'anotherCity',
     });
   });
 
-  it(`Action creator for require authorization returns correct action`, () => {
+  it('Action creator for require authorization returns correct action', () => {
     expect(actions.requireAuthorization(AuthorizationStatus.NO_AUTH)).toEqual({
       type: ActionType.REQUIRED_AUTHORIZATION,
       payload: AuthorizationStatus.NO_AUTH,
@@ -54,19 +54,19 @@ describe(`Action creators work correctly`, () => {
     });
   });
 
-  it(`Action creator for setting email returns correct action`, () => {
-    expect(actions.setEmail(`email`)).toEqual({
+  it('Action creator for setting email returns correct action', () => {
+    expect(actions.setEmail('email')).toEqual({
       type: ActionType.SET_EMAIL,
-      payload: `email`,
+      payload: 'email',
     });
 
-    expect(actions.setEmail(`name@gmail.com`)).toEqual({
+    expect(actions.setEmail('name@gmail.com')).toEqual({
       type: ActionType.SET_EMAIL,
-      payload: `name@gmail.com`,
+      payload: 'name@gmail.com',
     });
   });
 
-  it(`Action creator for loading comments returns correct action`, () => {
+  it('Action creator for loading comments returns correct action', () => {
     expect(actions.loadComments([])).toEqual({
       type: ActionType.LOAD_COMMENTS,
       payload: [],
@@ -78,7 +78,7 @@ describe(`Action creators work correctly`, () => {
     });
   });
 
-  it(`Action creator for loading nearby offers returns correct action`, () => {
+  it('Action creator for loading nearby offers returns correct action', () => {
     expect(actions.loadNearbyOffers([])).toEqual({
       type: ActionType.LOAD_NEARBY_OFFERS,
       payload: [],
@@ -90,7 +90,7 @@ describe(`Action creators work correctly`, () => {
     });
   });
 
-  it(`Action creator for updating offers returns correct action`, () => {
+  it('Action creator for updating offers returns correct action', () => {
     expect(actions.updateOffer({})).toEqual({
       type: ActionType.UPDATE_OFFER,
       payload: {},
@@ -98,12 +98,12 @@ describe(`Action creators work correctly`, () => {
 
     expect(actions.updateOffer({
       id: 1,
-      key1: `some value`,
+      key1: 'some value',
     })).toEqual({
       type: ActionType.UPDATE_OFFER,
       payload: {
         id: 1,
-        key1: `some value`,
+        key1: 'some value',
       },
     });
   });

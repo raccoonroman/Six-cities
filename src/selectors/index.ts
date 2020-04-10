@@ -1,6 +1,6 @@
 import {createSelector} from 'reselect';
-import {getTime} from '../utils';
-import {mapOfferToClient, mapCommentToClient} from '../adapter';
+import {getTime} from '@/utils';
+import {mapOfferToClient, mapCommentToClient} from '@/adapter';
 
 
 export const getOffers = (state) => state.offers;
