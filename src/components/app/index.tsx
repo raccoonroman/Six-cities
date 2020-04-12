@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   BrowserRouter, Switch, Route, Redirect,
 } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { AppRoute } from '@/const';
 import { isAuthorized } from '@/utils';
 import { getAuthorizationStatus } from '@/selectors';
@@ -12,12 +12,8 @@ import OfferDetails from '@/components/offer-details';
 import Favorites from '@/components/favorites';
 
 
-interface Props {
-  authorizationStatus: string;
-}
-
-const App: React.FC<Props> = (props: Props) => {
-  const { authorizationStatus } = props;
+const App: React.FC = () => {
+  const authorizationStatus: string = useSelector(getAuthorizationStatus);
   const authorized = isAuthorized(authorizationStatus);
 
   return (
@@ -56,8 +52,4 @@ const App: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  authorizationStatus: getAuthorizationStatus(state),
-});
-
-export default connect(mapStateToProps)(App);
+export default App;

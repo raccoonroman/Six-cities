@@ -1,3 +1,5 @@
+type OfferCategory = 'apartment' | 'room' | 'house' | 'hotel';
+
 export interface Location {
   latitude: number,
   longitude: number,
@@ -10,7 +12,7 @@ export interface Offer {
   previewImage: string,
   price: number,
   rating: number,
-  type: 'apartment' | 'room' | 'house' | 'hotel',
+  type: OfferCategory,
   bedrooms: number,
   maxAdults: number,
   isFavorite: boolean,
@@ -35,7 +37,7 @@ export interface OfferRaw {
   preview_image: string,
   price: number,
   rating: number,
-  type: 'apartment' | 'room' | 'house' | 'hotel',
+  type: OfferCategory,
   bedrooms: number,
   max_adults: number,
   is_favorite: boolean,

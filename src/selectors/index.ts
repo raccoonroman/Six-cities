@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { Comment } from '@/types';
 import { getTime } from '@/utils';
 import { mapOfferToClient, mapCommentToClient } from '@/adapter';
 
@@ -35,6 +36,6 @@ export const getTenSortedComments = createSelector(
   getMappedComments,
   (mappedComments) => mappedComments
     .slice()
-    .sort((a, b) => getTime(b.date) - getTime(a.date))
+    .sort((a: Comment, b: Comment) => getTime(b.date) - getTime(a.date))
     .slice(0, 10),
 );

@@ -1,55 +1,45 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { connect } from 'react-redux';
-import { Link, RouteComponentProps } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { Offer } from '@/types';
 import { CardType, AppRoute } from '@/const';
 import { getRatingStarsStyle, isAuthorized } from '@/utils';
 import { getAuthorizationStatus } from '@/selectors';
-import * as operations from '@/operations';
+import { setFavoriteStatus } from '@/operations';
 
 
-type Props = RouteComponentProps & {
+interface Props {
+  history?: { push: Function };
   cardType: string;
   offer: Offer;
-  onCardHover: (offerId: number | null) => (event: React.MouseEvent) => void;
-  authorizationStatus: string;
-  setFavoriteStatus: (offerId: number, status: number) => void;
-};
+  onCardHover?: (offerId: number | null) => (event: React.MouseEvent) => void;
+}
 
 const OfferCard: React.FC<Props> = (props: Props) => {
+  const dispatch = useDispatch();
+
   const {
-    history,
-    cardType,
-    offer,
-    onCardHover,
-    authorizationStatus,
-    setFavoriteStatus,
+    history, cardType, offer, onCardHover,
   } = props;
 
   const {
-    id,
-    title,
-    previewImage,
-    price,
-    rating,
-    type,
-    isFavorite,
-    isPremium,
+    id, title, previewImage, price, rating, type, isFavorite, isPremium,
   } = offer;
 
+  const authorizationStatus: string = useSelector(getAuthorizationStatus);
   const authorized = isAuthorized(authorizationStatus);
-  const ratingRounded = Math.round(rating);
 
   const handleBookmarkButtonClick = () => {
-    if (!authorized) {
+    if (!authorized && history) {
       history.push(AppRoute.LOGIN);
     } else {
       const status = +(!isFavorite);
-      setFavoriteStatus(id, status);
+      dispatch(setFavoriteStatus(id, status));
     }
   };
 
+  const ratingRounded = Math.round(rating);
 
   const placeCardClass = cn({
     'cities__place-card': cardType === CardType.CITY,
@@ -119,14 +109,4 @@ const OfferCard: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  authorizationStatus: getAuthorizationStatus(state),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  setFavoriteStatus(offerId, status) {
-    dispatch(operations.setFavoriteStatus(offerId, status));
-  },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(OfferCard);
+export default OfferCard;

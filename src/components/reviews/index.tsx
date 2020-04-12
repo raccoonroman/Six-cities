@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Comment } from '@/types';
 import { getRatingStarsStyle, isAuthorized } from '@/utils';
 import { getAuthorizationStatus, getTenSortedComments } from '@/selectors';
@@ -8,12 +8,13 @@ import ReviewsForm from '@/components/reviews-form';
 
 interface Props {
   offerId: number;
-  authorizationStatus: string;
-  comments: Comment[];
 }
 
 const Reviews: React.FC<Props> = (props: Props) => {
-  const { offerId, authorizationStatus, comments } = props;
+  const { offerId } = props;
+  const authorizationStatus: string = useSelector(getAuthorizationStatus);
+  const comments: Comment[] = useSelector(getTenSortedComments);
+
   const authorized = isAuthorized(authorizationStatus);
 
   const renderReviewItems = () => comments.map((comment) => {
@@ -62,15 +63,12 @@ const Reviews: React.FC<Props> = (props: Props) => {
         Reviews &middot;
         <span className="reviews__amount">{comments.length}</span>
       </h2>
-      <ul className="reviews__list">{renderReviewItems()}</ul>
+      <ul className="reviews__list">
+        {renderReviewItems()}
+      </ul>
       {authorized && <ReviewsForm offerId={offerId} />}
     </section>
   );
 };
 
-const mapStateToProps = (state) => ({
-  authorizationStatus: getAuthorizationStatus(state),
-  comments: getTenSortedComments(state),
-});
-
-export default connect(mapStateToProps)(Reviews);
+export default Reviews;

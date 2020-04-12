@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import cn from 'classnames';
 import { Offer } from '@/types';
 import { MapType } from '@/const';
@@ -13,20 +13,21 @@ import Map from '@/components/map';
 
 
 interface Props {
-  history: object;
-  currentCity: string;
-  offers: Offer[];
+  history?: { push: Function };
 }
 
 const OffersListWithSorting = withSorting(OffersList);
 
-
 const Main: React.FC<Props> = (props: Props) => {
-  const { history, currentCity, offers } = props;
+  const { history } = props;
+  const currentCity: string = useSelector(getCurrentCity);
+  const offers: Offer[] = useSelector(getMappedOffers);
+
   const offersByCity = getOffersByCity(currentCity, offers);
 
-  const [hoveredCardId, setHoveredCardId] = React.useState(null);
-  const handleOfferCardHover = (id) => () => setHoveredCardId(id);
+  const [hoveredCardId, setHoveredCardId] = React.useState<null | number>(null);
+
+  const handleOfferCardHover = (id: number | null) => () => setHoveredCardId(id);
 
   const renderOffersList = () => {
     if (!offersByCity.length) {
@@ -94,9 +95,4 @@ const Main: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  currentCity: getCurrentCity(state),
-  offers: getMappedOffers(state),
-});
-
-export default connect(mapStateToProps)(Main);
+export default Main;

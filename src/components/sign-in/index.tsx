@@ -1,16 +1,18 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
-import { RouteComponentProps } from 'react-router-dom';
-import * as operations from '@/operations';
+import { useDispatch } from 'react-redux';
+import { login } from '@/operations';
 import Header from '@/components/header';
 
+interface Props {
+  history: { goBack: Function };
+}
 
-type Props = RouteComponentProps & {
-  login: (authData: object, goToPreviousPage: Function) => void;
-};
+type ChangeEvent = React.ChangeEvent<HTMLInputElement>;
 
 const SignIn: React.FC<Props> = (props: Props) => {
-  const { history, login } = props;
+  const dispatch = useDispatch();
+  const { history } = props;
+
   const [formState, setFormState] = React.useState({
     email: '',
     password: '',
@@ -20,13 +22,14 @@ const SignIn: React.FC<Props> = (props: Props) => {
 
   const goToPreviousPage = () => history.goBack();
 
-  const handleInputChange = ({ target }) => {
+  const handleInputChange = ({ target }: ChangeEvent) => {
     setFormState({ ...formState, [target.name]: target.value });
   };
 
-  const handleFormSubmit = (evt) => {
+  const handleFormSubmit = (evt: React.FormEvent) => {
     evt.preventDefault();
-    login({ login: email, password }, goToPreviousPage);
+    const authData = { login: email, password };
+    dispatch(login(authData, goToPreviousPage));
   };
 
   return (
@@ -73,10 +76,4 @@ const SignIn: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  login(authData, goToPreviousPage) {
-    dispatch(operations.login(authData, goToPreviousPage));
-  },
-});
-
-export default connect(null, mapDispatchToProps)(SignIn);
+export default SignIn;

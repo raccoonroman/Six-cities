@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { RouteComponentProps } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import cn from 'classnames';
 import { CardType, AppRoute, MapType } from '@/const';
 import { getRatingStarsStyle, isAuthorized } from '@/utils';
-import * as operations from '@/operations';
+import { loadComments, loadNearbyOffers, setFavoriteStatus } from '@/operations';
 import { getMappedOffers, getMappedNearbyOffers, getAuthorizationStatus } from '@/selectors';
 import Header from '@/components/header';
 import Reviews from '@/components/reviews';
@@ -15,48 +14,46 @@ import { Offer } from '../../types';
 
 const MAX_IMAGES = 6;
 
-type Props = RouteComponentProps<{ id: string }> & {
-  authorizationStatus: string;
-  offers: Offer[];
-  nearbyOffers: Offer[];
-  loadComments: (offerId: number) => void;
-  loadNearbyOffers: (offerId: number) => void;
-  setFavoriteStatus: (offerId: number, status: number) => void;
-};
+interface Props {
+  history: { push: Function };
+  match: {
+    params: {
+      id: string;
+    }
+  }
+}
 
 const OfferDetails: React.FC<Props> = (props: Props) => {
-  const {
-    history,
-    match,
-    authorizationStatus,
-    offers,
-    nearbyOffers,
-    loadComments,
-    loadNearbyOffers,
-    setFavoriteStatus,
-  } = props;
+  const dispatch = useDispatch();
+  const { history, match } = props;
+
+  const authorizationStatus: string = useSelector(getAuthorizationStatus);
+  const offers: Offer[] = useSelector(getMappedOffers);
+  const nearbyOffers: Offer[] = useSelector(getMappedNearbyOffers);
 
   React.useEffect(() => {
     const { id } = match.params;
-    loadComments(+id);
-    loadNearbyOffers(+id);
+    dispatch(loadComments(+id));
+    dispatch(loadNearbyOffers(+id));
   }, [match.params, loadComments, loadNearbyOffers]);
 
   const currentOffer = offers.find(({ id }) => id === +match.params.id);
 
   const handleBookmarkButtonClick = () => {
     const authorized = isAuthorized(authorizationStatus);
-    const { id, isFavorite } = currentOffer;
+    if (currentOffer) {
+      const { id, isFavorite } = currentOffer;
 
-    if (!authorized) {
-      history.push(AppRoute.LOGIN);
-    } else {
-      const status = +(!isFavorite);
-      setFavoriteStatus(id, status);
+      if (!authorized) {
+        history.push(AppRoute.LOGIN);
+      } else {
+        const status = +(!isFavorite);
+        dispatch(setFavoriteStatus(id, status));
+      }
     }
   };
 
-  const getNearbyOffersTitleText = (nearbyOffersLength) => {
+  const getNearbyOffersTitleText = (nearbyOffersLength: number) => {
     if (nearbyOffersLength) {
       return 'Other places in the neighbourhood';
     }
@@ -78,11 +75,11 @@ const OfferDetails: React.FC<Props> = (props: Props) => {
     isFavorite,
     isPremium,
     description,
-    goods,
+    goods = [],
     hostAvatarUrl,
     hostIsPro,
     hostName,
-    images,
+    images = [],
   } = currentOffer;
 
   const bookmarkButtonClass = cn({
@@ -212,22 +209,4 @@ const OfferDetails: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  authorizationStatus: getAuthorizationStatus(state),
-  offers: getMappedOffers(state),
-  nearbyOffers: getMappedNearbyOffers(state),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  loadComments(offerId) {
-    dispatch(operations.loadComments(offerId));
-  },
-  loadNearbyOffers(offerId) {
-    dispatch(operations.loadNearbyOffers(offerId));
-  },
-  setFavoriteStatus(offerId, status) {
-    dispatch(operations.setFavoriteStatus(offerId, status));
-  },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(OfferDetails);
+export default OfferDetails;

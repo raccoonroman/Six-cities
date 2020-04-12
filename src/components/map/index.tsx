@@ -26,7 +26,7 @@ const orangePin = new leaflet.Icon({
 interface Props {
   mapType: string;
   offers: Offer[];
-  currentOfferId: number;
+  currentOfferId: number | null;
 }
 
 

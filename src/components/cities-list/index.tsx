@@ -1,27 +1,28 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import cn from 'classnames';
 import { getCitiesList } from '@/selectors';
 import { setCity } from '@/actions';
 
 
 interface Props {
-  cities: string[];
   currentCity: string;
-  onCityChange: (cityName: string) => object;
 }
 
 const CitiesList: React.FC<Props> = (props: Props) => {
-  const { cities, currentCity, onCityChange } = props;
+  const dispatch = useDispatch();
+  const { currentCity } = props;
 
-  const getTabClass = (city) => cn({
+  const cities: string[] = useSelector(getCitiesList);
+
+  const getTabClass = (city: string) => cn({
     'locations__item-link tabs__item': true,
     'tabs__item--active': city === currentCity,
   });
 
-  const handleCityTabClick = (city) => (evt) => {
+  const handleCityTabClick = (city: string) => (evt: React.MouseEvent) => {
     evt.preventDefault();
-    onCityChange(city);
+    dispatch(setCity(city));
   };
 
   return (
@@ -37,14 +38,4 @@ const CitiesList: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  cities: getCitiesList(state),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onCityChange(cityName) {
-    dispatch(setCity(cityName));
-  },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(CitiesList);
+export default CitiesList;

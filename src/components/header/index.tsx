@@ -1,18 +1,14 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { AppRoute } from '@/const';
 import { isAuthorized } from '@/utils';
 import { getUserEmail, getAuthorizationStatus } from '@/selectors';
 
 
-interface Props {
-  authorizationStatus: string;
-  email: string;
-}
-
-const Header: React.FC<Props> = (props: Props) => {
-  const { authorizationStatus, email } = props;
+const Header: React.FC = () => {
+  const authorizationStatus: string = useSelector(getAuthorizationStatus);
+  const email: string = useSelector(getUserEmail);
 
   const renderLoginText = () => {
     if (!isAuthorized(authorizationStatus)) {
@@ -52,9 +48,4 @@ const Header: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  authorizationStatus: getAuthorizationStatus(state),
-  email: getUserEmail(state),
-});
-
-export default connect(mapStateToProps)(Header);
+export default Header;

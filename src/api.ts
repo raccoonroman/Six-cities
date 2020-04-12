@@ -4,7 +4,7 @@ const Error = {
   UNAUTHORIZED: 401,
 };
 
-const createAPI = (onUnauthorized) => {
+const createAPI = (onUnauthorized: Function) => {
   const api = axios.create({
     baseURL: 'https://htmlacademy-react-3.appspot.com/six-cities',
     timeout: 5000,

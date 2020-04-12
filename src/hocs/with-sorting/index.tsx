@@ -4,7 +4,12 @@ import { SortType, CardType } from '@/const';
 import Sorting from '@/components/sorting';
 
 
-const sortTypes = [
+interface IsortType {
+  name: string;
+  sort: (offers: Offer[]) => Offer[];
+}
+
+const sortTypes: IsortType[] = [
   {
     name: SortType.POPULAR,
     sort: (offers) => offers,
@@ -23,19 +28,27 @@ const sortTypes = [
   },
 ];
 
-interface Props {
-  history: object;
+interface CommonProps {
+  history?: { push: Function };
   offers: Offer[];
-  currentCity: string;
-  onCardHover: (offerId: number | null) => Function;
+  onCardHover?: (offerId: number | null) => (event: React.MouseEvent) => void;
 }
 
-const withSorting = (Component) => {
+interface Props extends CommonProps {
+  currentCity: string;
+}
+
+interface ComponentProps extends CommonProps {
+  className: string;
+  cardsType: string;
+}
+
+const withSorting = (Component: React.FC<ComponentProps>) => {
   const WithSorting: React.FC<Props> = (props: Props) => {
     const {
       history, offers, currentCity, onCardHover,
     } = props;
-    const [sortType, setSortType] = React.useState(SortType.POPULAR);
+    const [sortType, setSortType] = React.useState<string>(SortType.POPULAR);
 
     const handleSortTypeChange = (type) => setSortType(type);
 
@@ -51,6 +64,7 @@ const withSorting = (Component) => {
           {offers.length}
           {' '}
           places to stay in
+          {' '}
           {currentCity}
         </b>
         <Sorting

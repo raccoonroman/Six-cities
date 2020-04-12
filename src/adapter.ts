@@ -1,4 +1,6 @@
-export const mapOfferToClient = (data) => ({
+import { OfferRaw, CommentRaw } from '@/types';
+
+export const mapOfferToClient = (data: OfferRaw) => ({
   id: data.id,
   title: data.title,
   previewImage: data.preview_image,
@@ -31,7 +33,7 @@ export const mapOfferToClient = (data) => ({
   images: data.images,
 });
 
-export const mapCommentToClient = (data) => ({
+export const mapCommentToClient = (data: CommentRaw) => ({
   commentId: data.id,
   text: data.comment,
   date: data.date,

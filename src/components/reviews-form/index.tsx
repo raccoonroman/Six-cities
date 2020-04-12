@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
-import * as operations from '@/operations';
+import { useDispatch } from 'react-redux';
+import { postComment } from '@/operations';
 
 
 const STARS_QUANTITY = 5;
@@ -9,7 +9,11 @@ const TextLength = {
   MAX: 300,
 };
 
-const StarValue = {
+type StarValue = {
+  [key: number]: string;
+};
+
+const StarValue: StarValue = {
   5: 'perfect',
   4: 'good',
   3: 'not bad',
@@ -17,18 +21,16 @@ const StarValue = {
   1: 'terribly',
 };
 
+type ChangeEvent = React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>;
+
 interface Props {
   offerId: number;
-  postComment: (
-    commentData: object,
-    offerId: number,
-    enableForm: Function,
-    clearForm: Function,
-  ) => void;
 }
 
 const ReviewsForm: React.FC<Props> = (props: Props) => {
-  const { offerId, postComment } = props;
+  const dispatch = useDispatch();
+  const { offerId } = props;
+
   const formInitialState = { rating: '0', review: '' };
   const [formState, setFormState] = React.useState(formInitialState);
   const [isFormDisabled, setIsFormDisabled] = React.useState(false);
@@ -37,15 +39,15 @@ const ReviewsForm: React.FC<Props> = (props: Props) => {
   const enableForm = () => setIsFormDisabled(false);
   const clearForm = () => setFormState(formInitialState);
 
-  const handleInputChange = ({ target }) => {
+  const handleInputChange = ({ target }: ChangeEvent) => {
     setFormState({ ...formState, [target.name]: target.value });
   };
 
-  const handleFormSubmit = (evt) => {
+  const handleFormSubmit = (evt: React.FormEvent) => {
     evt.preventDefault();
     const comment = { rating, comment: review };
     setIsFormDisabled(true);
-    postComment(comment, offerId, enableForm, clearForm);
+    dispatch(postComment(comment, offerId, enableForm, clearForm));
   };
 
   const isSubmitAllowed = (+rating > 0)
@@ -113,10 +115,4 @@ const ReviewsForm: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  postComment(commentData, offerId, enableForm, clearForm) {
-    dispatch(operations.postComment(commentData, offerId, enableForm, clearForm));
-  },
-});
-
-export default connect(null, mapDispatchToProps)(ReviewsForm);
+export default ReviewsForm;

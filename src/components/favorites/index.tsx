@@ -1,6 +1,6 @@
 import * as React from 'react';
 import cn from 'classnames';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Offer } from '@/types';
 import { CardType, AppRoute } from '@/const';
@@ -11,18 +11,15 @@ import Header from '@/components/header';
 import OffersList from '@/components/offers-list';
 
 
-interface Props {
-  favoriteOffers: Offer[];
-  onCityChange: (cityName: string) => object;
-}
+const Favorites: React.FC = () => {
+  const dispatch = useDispatch();
+  const favoriteOffers: Offer[] = useSelector(getFavoriteOffers);
 
-const Favorites: React.FC<Props> = (props: Props) => {
-  const { favoriteOffers, onCityChange } = props;
-  const noFavorites = !favoriteOffers.length;
-  const cities = getCitiesByOffers(favoriteOffers);
+  const noFavorites: boolean = !favoriteOffers.length;
+  const cities: string[] = getCitiesByOffers(favoriteOffers);
 
-  const handleCityNameClick = (city) => () => {
-    onCityChange(city);
+  const handleCityNameClick = (city: string) => () => {
+    dispatch(setCity(city));
   };
 
   const renderCities = () => cities.map((city) => {
@@ -94,14 +91,4 @@ const Favorites: React.FC<Props> = (props: Props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  favoriteOffers: getFavoriteOffers(state),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onCityChange(cityName) {
-    dispatch(setCity(cityName));
-  },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Favorites);
+export default Favorites;

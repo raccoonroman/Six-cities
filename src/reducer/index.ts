@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import * as ActionTypes from '@/reducer/types';
 import { DEFAULT_CITIES, ActionType, AuthorizationStatus } from '@/const';
 import { getCitiesByOffers, updateOffers } from '@/utils';
 
@@ -16,7 +17,7 @@ const InitialState = {
   },
 };
 
-const offers = (state = [], action) => {
+const offers = (state = [], action: ActionTypes.offersAction) => {
   switch (action.type) {
     case ActionType.LOAD_OFFERS: {
       return action.payload;
@@ -61,7 +62,7 @@ const authorization = (state = InitialState.AUTHORIZATION, action) => {
   }
 };
 
-const userData = (state = InitialState.USER_DATA, action) => {
+const userData = (state = InitialState.USER_DATA, action: ActionTypes.userDataAction) => {
   switch (action.type) {
     case ActionType.SET_EMAIL: {
       return { ...state, email: action.payload };

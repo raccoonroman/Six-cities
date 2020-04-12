@@ -1,22 +1,23 @@
 import { AuthorizationStatus } from '@/const';
+import { Offer, OfferRaw } from '@/types';
 
 
-export const getRatingStarsStyle = (rating) => ({ width: `${(rating / 5) * 100}%` });
+export const getRatingStarsStyle = (rating: number) => ({ width: `${(rating / 5) * 100}%` });
 
-export const getCitiesByOffers = (offers) => {
+export const getCitiesByOffers = (offers: Offer[]) => {
   const cities = offers.map(({ city }) => city.name);
   return [...new Set(cities)];
 };
 
-export const getOffersByCity = (currentCity, offers) => offers
+export const getOffersByCity = (currentCity: string, offers: Offer[]) => offers
   .filter(({ city }) => currentCity === city.name);
 
-export const isAuthorized = (authorizationStatus) => {
+export const isAuthorized = (authorizationStatus: string) => {
   const authorized = AuthorizationStatus.AUTH;
   return authorizationStatus === authorized;
 };
 
-export const updateOffers = (offers, newOffer) => {
+export const updateOffers = (offers: OfferRaw[], newOffer: OfferRaw) => {
   const { id: newOfferId } = newOffer;
   const i = offers.findIndex(({ id }) => id === newOfferId);
   if (i === -1) {
@@ -25,4 +26,4 @@ export const updateOffers = (offers, newOffer) => {
   return [...offers.slice(0, i), newOffer, ...offers.slice(i + 1)];
 };
 
-export const getTime = (timestamp) => new Date(timestamp).getTime();
+export const getTime = (timestamp: string) => new Date(timestamp).getTime();

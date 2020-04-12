@@ -1,10 +1,11 @@
+import { OfferRaw, CommentRaw } from '@/types';
 import * as actions from '@/actions';
 import { AuthorizationStatus } from '@/const';
 
 
 export const loadOffers = () => (dispatch, _, api) => api
   .get('/hotels')
-  .then((data) => {
+  .then((data: OfferRaw[]) => {
     dispatch(actions.loadOffers(data));
   })
   .catch((err) => {
@@ -13,7 +14,7 @@ export const loadOffers = () => (dispatch, _, api) => api
 
 export const loadNearbyOffers = (offerId) => (dispatch, _, api) => api
   .get(`/hotels/${offerId}/nearby`)
-  .then((data) => {
+  .then((data: OfferRaw[]) => {
     dispatch(actions.loadNearbyOffers(data));
   })
   .catch((err) => {
@@ -46,7 +47,7 @@ export const login = (authData, goToPreviousPage) => (dispatch, _, api) => api
 
 export const loadComments = (offerId) => (dispatch, _, api) => api
   .get(`/comments/${offerId}`)
-  .then((data) => {
+  .then((data: CommentRaw[]) => {
     dispatch(actions.loadComments(data));
   })
   .catch((err) => {

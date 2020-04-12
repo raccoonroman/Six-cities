@@ -16,7 +16,7 @@ const Sorting: React.FunctionComponent<Props> = (props: Props) => {
     setSortListOpened(!sortListOpened);
   };
 
-  const handleSortItemClick = (sortType) => () => {
+  const handleSortItemClick = (sortType: string) => () => {
     setSortListOpened(false);
     onSortTypeChange(sortType);
   };
