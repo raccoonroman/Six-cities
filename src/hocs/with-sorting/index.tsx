@@ -1,15 +1,15 @@
-import * as React from 'react';
+import React from 'react';
 import { Offer } from '@/types';
 import { SortType, CardType } from '@/const';
 import Sorting from '@/components/sorting';
 
 
-interface IsortType {
+interface SortMode {
   name: string;
   sort: (offers: Offer[]) => Offer[];
 }
 
-const sortTypes: IsortType[] = [
+const sortModes: SortMode[] = [
   {
     name: SortType.POPULAR,
     sort: (offers) => offers,
@@ -48,13 +48,13 @@ const withSorting = (Component: React.FC<ComponentProps>) => {
     const {
       history, offers, currentCity, onCardHover,
     } = props;
-    const [sortType, setSortType] = React.useState<string>(SortType.POPULAR);
+    const [sortMode, setSortMode] = React.useState<string>(SortType.POPULAR);
 
-    const handleSortTypeChange = (type) => setSortType(type);
+    const handleSortTypeChange = (type: string) => setSortMode(type);
 
     const getSortedOffers = () => {
-      const { sort } = sortTypes.find(({ name }) => sortType === name);
-      return sort(offers);
+      const foundSortMode = sortModes.find(({ name }) => sortMode === name);
+      return foundSortMode!.sort(offers);
     };
 
     return (
@@ -68,7 +68,7 @@ const withSorting = (Component: React.FC<ComponentProps>) => {
           {currentCity}
         </b>
         <Sorting
-          sortBy={sortType}
+          sortBy={sortMode}
           onSortTypeChange={handleSortTypeChange}
         />
         <Component

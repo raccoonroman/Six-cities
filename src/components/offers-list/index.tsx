@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Offer } from '@/types';
 import OfferCard from '@/components/offer-card';
 

@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import cn from 'classnames';
-import * as leaflet from 'leaflet';
+import leaflet from 'leaflet';
 import {
   Map, Marker, Popup, TileLayer,
 } from 'react-leaflet';

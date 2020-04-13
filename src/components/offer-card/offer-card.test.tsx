@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import React from 'react';
+import renderer from 'react-test-renderer';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { BrowserRouter, Route } from 'react-router-dom';
@@ -36,10 +36,6 @@ const offer: Offer = {
   },
 };
 
-const handleCardHover = () => {
-  // do nothing.
-};
-
 
 it('Should offer card render correctly', () => {
   const store = mockStore({
@@ -54,13 +50,12 @@ it('Should offer card render correctly', () => {
         <BrowserRouter>
           <Route
             exact
-            path={AppRoute.ROOT}
+            path={AppRoute.OFFER}
             render={({ history }) => (
               <OfferCard
                 history={history}
                 cardType={CardType.NEAR}
                 offer={offer}
-                onCardHover={handleCardHover}
               />
             )}
           />

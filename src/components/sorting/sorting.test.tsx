@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import React from 'react';
+import renderer from 'react-test-renderer';
 import { SortType } from '@/const';
 import Sorting from '@/components/sorting';
 

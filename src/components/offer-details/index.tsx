@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
 import cn from 'classnames';
+import { useSelector, useDispatch } from 'react-redux';
 import { CardType, AppRoute, MapType } from '@/const';
 import { getRatingStarsStyle, isAuthorized } from '@/utils';
 import { loadComments, loadNearbyOffers, setFavoriteStatus } from '@/operations';

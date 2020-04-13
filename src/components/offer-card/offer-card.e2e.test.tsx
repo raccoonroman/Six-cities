@@ -1,10 +1,10 @@
-import * as React from 'react';
+import React from 'react';
 import { configure, mount } from 'enzyme';
-import * as Adapter from 'enzyme-adapter-react-16';
+import Adapter from 'enzyme-adapter-react-16';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import { BrowserRouter } from 'react-router-dom';
-import { AuthorizationStatus, CardType } from '@/const';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { AuthorizationStatus, CardType, AppRoute } from '@/const';
 import { Offer } from '@/types';
 import OfferCard from '@/components/offer-card';
 
@@ -50,11 +50,16 @@ it('Hover on offer card', () => {
   const card = mount(
     <Provider store={store}>
       <BrowserRouter>
-        <OfferCard
-          history={{}}
-          cardType={CardType.NEAR}
-          offer={offer}
-          onCardHover={handleCardHover}
+        <Route
+          exact
+          path={AppRoute.OFFER}
+          render={({ history }) => (
+            <OfferCard
+              history={history}
+              cardType={CardType.NEAR}
+              offer={offer}
+            />
+          )}
         />
       </BrowserRouter>
     </Provider>,
