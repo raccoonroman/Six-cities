@@ -1,4 +1,4 @@
-import { OfferRaw, CommentRaw } from '@/types';
+import { OfferRaw, CommentRaw } from '@/api/types';
 
 export const mapOfferToClient = (data: OfferRaw) => ({
   id: data.id,

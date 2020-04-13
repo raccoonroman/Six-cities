@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { AuthorizationStatus } from '@/const';
-import { CommentRaw } from '@/types';
+import { CommentRaw } from '@/api/types';
 import Reviews from '@/components/reviews';
 
 

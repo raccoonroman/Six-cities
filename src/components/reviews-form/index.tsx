@@ -31,7 +31,7 @@ const ReviewsForm: React.FC<Props> = (props: Props) => {
   const dispatch = useDispatch();
   const { offerId } = props;
 
-  const formInitialState = { rating: '0', review: '' };
+  const formInitialState = { rating: 0, review: '' };
   const [formState, setFormState] = React.useState(formInitialState);
   const [isFormDisabled, setIsFormDisabled] = React.useState(false);
   const { rating, review } = formState;

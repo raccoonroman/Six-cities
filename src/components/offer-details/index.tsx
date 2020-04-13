@@ -1,12 +1,9 @@
 import React from 'react';
-// import { AxiosResponse} from 'axios';
 import cn from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
-import Api from '@/api/index';
-import { loadComments } from '@/actions';
 import { CardType, AppRoute, MapType } from '@/const';
 import { getRatingStarsStyle, isAuthorized } from '@/utils';
-import { loadNearbyOffers, setFavoriteStatus } from '@/operations';
+import { loadComments, loadNearbyOffers, setFavoriteStatus } from '@/operations';
 import { getMappedOffers, getMappedNearbyOffers, getAuthorizationStatus } from '@/selectors';
 import Header from '@/components/header';
 import Reviews from '@/components/reviews';
@@ -36,17 +33,9 @@ const OfferDetails: React.FC<Props> = (props: Props) => {
 
   React.useEffect(() => {
     const { id } = match.params;
-
-    const fetchData = async () => {
-      const api = new Api();
-      const comments = await api.loadComments(+id);
-      dispatch(loadComments(comments));
-    };
-
-    fetchData();
-
-    dispatch(loadNearbyOffers(+id)); // це поки що ще не переробив
-  }, [match.params]);
+    dispatch(loadComments(+id));
+    dispatch(loadNearbyOffers(+id));
+  }, [match.params, loadComments, loadNearbyOffers]);
 
   const currentOffer = offers.find(({ id }) => id === +match.params.id);
 

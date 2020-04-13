@@ -1,5 +1,6 @@
 import { AuthorizationStatus } from '@/const';
-import { Offer, OfferRaw } from '@/types';
+import { Offer } from '@/types';
+import { OfferRaw } from '@/api/types';
 
 
 export const getRatingStarsStyle = (rating: number) => ({ width: `${(rating / 5) * 100}%` });

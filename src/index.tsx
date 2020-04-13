@@ -9,7 +9,7 @@ import App from '@/components/app';
 import reducer from '@/reducer';
 import { requireAuthorization } from '@/actions';
 import { loadOffers, checkAuth } from '@/operations';
-import createAPI from '@/api';
+import Api from '@/api';
 
 
 const onUnauthorized = () => {
@@ -17,7 +17,7 @@ const onUnauthorized = () => {
   store.dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH));
 };
 
-const api = createAPI(onUnauthorized);
+const api = new Api(onUnauthorized);
 
 const store = createStore(
   reducer,

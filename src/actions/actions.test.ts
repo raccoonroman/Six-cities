@@ -1,5 +1,5 @@
 import * as actions from '@/actions';
-import { OfferRaw, CommentRaw } from '@/types';
+import { OfferRaw, CommentRaw } from '@/api/types';
 import { ActionType, AuthorizationStatus } from '@/const';
 
 const mockOffers: OfferRaw[] = [

@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { AuthorizationStatus, AppRoute } from '@/const';
-import { OfferRaw } from '@/types';
+import { OfferRaw } from '@/api/types';
 import Main from '@/components/main';
 
 

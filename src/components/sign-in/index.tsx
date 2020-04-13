@@ -28,7 +28,7 @@ const SignIn: React.FC<Props> = (props: Props) => {
 
   const handleFormSubmit = (evt: React.FormEvent) => {
     evt.preventDefault();
-    const authData = { login: email, password };
+    const authData = { email, password };
     dispatch(login(authData, goToPreviousPage));
   };
 

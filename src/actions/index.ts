@@ -1,4 +1,4 @@
-import { OfferRaw, CommentRaw } from '@/types';
+import { OfferRaw, CommentRaw } from '@/api/types';
 import { ActionType } from '@/const';
 
 

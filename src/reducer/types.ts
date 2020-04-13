@@ -1,4 +1,4 @@
-import { OfferRaw } from '@/types';
+import { OfferRaw } from '@/api/types';
 import { ActionType } from '@/const';
 
 interface LoadOffersAction {

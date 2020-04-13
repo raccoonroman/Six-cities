@@ -1,25 +1,24 @@
-import { AxiosRequestConfig } from 'axios';
 import HttpClient from '@/api/http-client';
-import { CommentRaw } from '@/types';
+import {
+  AuthInfoRaw, User, OfferRaw, CommentRaw, CommentPost,
+} from '@/api/types';
 
 export default class Api extends HttpClient {
-  public constructor() {
-    super('https://htmlacademy-react-3.appspot.com/six-cities');
-    this.initializeRequestInterceptor();
+  public constructor(onUnauthorized: Function) {
+    super('https://htmlacademy-react-3.appspot.com/six-cities', onUnauthorized);
   }
 
-  private initializeRequestInterceptor = () => {
-    this.instance.interceptors.request.use(
-      this.handleRequest,
-      this.handleError,
-    );
-  };
+  public checkAuth = () => this.instance.get<AuthInfoRaw>('/login');
 
-  private handleRequest = (config: AxiosRequestConfig) => {
-    console.log(config);
-    return config;
-  };
+  public login = (loginData: User) => this.instance.post<AuthInfoRaw>('/login', loginData);
 
-  public loadComments = (offerId: number) => this.instance
-    .get<CommentRaw[]>(`/comments/${offerId}`);
+  public loadOffers = () => this.instance.get<OfferRaw[]>('/hotels');
+
+  public loadNearbyOffers = (offerId: number) => this.instance.get<OfferRaw[]>(`/hotels/${offerId}/nearby`);
+
+  public loadComments = (offerId: number) => this.instance.get<CommentRaw[]>(`/comments/${offerId}`);
+
+  public postComment = (commentData: CommentPost, offerId: number) => this.instance.post<CommentRaw[]>(`/comments/${offerId}`, commentData);
+
+  public setFavoriteStatus = (offerId: number, status: number) => this.instance.post<OfferRaw>(`/favorite/${offerId}/${status}`);
 }

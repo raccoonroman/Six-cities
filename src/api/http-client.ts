@@ -7,7 +7,7 @@ declare module 'axios' {
 export default abstract class HttpClient {
   protected readonly instance: AxiosInstance;
 
-  public constructor(baseURL: string) {
+  public constructor(baseURL: string, private onUnauthorized: Function) {
     this.instance = axios.create({
       baseURL,
       timeout: 5000,
@@ -26,5 +26,14 @@ export default abstract class HttpClient {
 
   private handleResponse = ({ data }: AxiosResponse) => data;
 
-  protected handleError = (error: any) => Promise.reject(error);
+  protected handleError = (err: any) => {
+    const { status } = err.response;
+
+    if (status === 401) {
+      this.onUnauthorized();
+      throw err;
+    }
+
+    throw err;
+  };
 }

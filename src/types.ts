@@ -1,4 +1,4 @@
-type OfferCategory = 'apartment' | 'room' | 'house' | 'hotel';
+export type OfferCategory = 'apartment' | 'room' | 'house' | 'hotel';
 
 export interface Location {
   latitude: number,
@@ -31,33 +31,6 @@ export interface Offer {
   images?: string[],
 }
 
-export interface OfferRaw {
-  id: number,
-  title: string,
-  preview_image: string,
-  price: number,
-  rating: number,
-  type: OfferCategory,
-  bedrooms: number,
-  max_adults: number,
-  is_favorite: boolean,
-  is_premium: boolean,
-  location: Location,
-  city: {
-    name: string,
-    location: Location,
-  },
-  description: string,
-  goods: string[],
-  host: {
-    avatar_url: string,
-    id: number,
-    is_pro: boolean,
-    name: string,
-  },
-  images: string[],
-}
-
 export interface Comment {
   commentId: number,
   text: string,
@@ -65,17 +38,4 @@ export interface Comment {
   rating: number,
   userAvatarUrl: string,
   userName: string,
-}
-
-export interface CommentRaw {
-  id: number,
-  comment: string,
-  date: string,
-  rating: number,
-  user: {
-    avatar_url: string,
-    id: number,
-    is_pro: boolean,
-    name: string,
-  },
 }

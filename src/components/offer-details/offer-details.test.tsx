@@ -5,8 +5,8 @@ import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { AuthorizationStatus, AppRoute } from '@/const';
-import createAPI from '@/api';
-import { OfferRaw } from '@/types';
+import Api from '@/api';
+import { OfferRaw } from '@/api/types';
 import OfferDetails from '@/components/offer-details';
 
 
@@ -14,7 +14,7 @@ const onUnauthorized = () => {
   // do nothing
 };
 
-const api = createAPI(onUnauthorized);
+const api = new Api(onUnauthorized);
 const middlewares = [thunk.withExtraArgument(api)];
 const mockStore = configureStore(middlewares);
 
