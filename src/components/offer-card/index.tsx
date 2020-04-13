@@ -28,7 +28,7 @@ const OfferCard: React.FC<Props> = (props: Props) => {
   } = offer;
 
   const authorizationStatus: string = useSelector(getAuthorizationStatus);
-  const authorized = isAuthorized(authorizationStatus);
+  const authorized: boolean = isAuthorized(authorizationStatus);
 
   const handleBookmarkButtonClick = () => {
     if (!authorized && history) {

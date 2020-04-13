@@ -40,7 +40,7 @@ const OfferDetails: React.FC<Props> = (props: Props) => {
   const currentOffer = offers.find(({ id }) => id === +match.params.id);
 
   const handleBookmarkButtonClick = () => {
-    const authorized = isAuthorized(authorizationStatus);
+    const authorized: boolean = isAuthorized(authorizationStatus);
     if (currentOffer) {
       const { id, isFavorite } = currentOffer;
 

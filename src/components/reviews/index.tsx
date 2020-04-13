@@ -15,7 +15,7 @@ const Reviews: React.FC<Props> = (props: Props) => {
   const authorizationStatus: string = useSelector(getAuthorizationStatus);
   const comments: Comment[] = useSelector(getTenSortedComments);
 
-  const authorized = isAuthorized(authorizationStatus);
+  const authorized: boolean = isAuthorized(authorizationStatus);
 
   const renderReviewItems = () => comments.map((comment) => {
     const {

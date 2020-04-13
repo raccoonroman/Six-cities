@@ -14,7 +14,7 @@ import Favorites from '@/components/favorites';
 
 const App: React.FC = () => {
   const authorizationStatus: string = useSelector(getAuthorizationStatus);
-  const authorized = isAuthorized(authorizationStatus);
+  const authorized: boolean = isAuthorized(authorizationStatus);
 
   return (
     <BrowserRouter>
