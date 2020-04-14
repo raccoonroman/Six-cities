@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { requireAuthorization } from '@/store/actions';
-import reducers from '@/store/reducers';
+import reducer from '@/store/reducers';
 import { loadOffers, checkAuth } from '@/operations';
 import { AuthorizationStatus } from '@/const';
 import Api from '@/api';
@@ -15,7 +15,7 @@ const onUnauthorized = () => {
 const api = new Api(onUnauthorized);
 
 const store = createStore(
-  reducers,
+  reducer,
   composeWithDevTools(
     applyMiddleware(thunk.withExtraArgument(api)),
   ),
