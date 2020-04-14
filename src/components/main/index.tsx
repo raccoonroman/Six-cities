@@ -5,7 +5,7 @@ import { Offer } from '@/types';
 import { MapType } from '@/const';
 import { getOffersByCity } from '@/utils';
 import withSorting from '@/hocs/with-sorting';
-import { getCurrentCity, getMappedOffers } from '@/selectors';
+import { getCurrentCity, getMappedOffers } from '@/store/selectors';
 import Header from '@/components/header';
 import CitiesList from '@/components/cities-list';
 import OffersList from '@/components/offers-list';

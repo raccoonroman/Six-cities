@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Comment } from '@/types';
 import { getRatingStarsStyle, isAuthorized } from '@/utils';
-import { getAuthorizationStatus, getTenSortedComments } from '@/selectors';
+import { getAuthorizationStatus, getTenSortedComments } from '@/store/selectors';
 import ReviewsForm from '@/components/reviews-form';
 
 

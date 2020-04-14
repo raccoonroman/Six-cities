@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { CardType, AppRoute, MapType } from '@/const';
 import { getRatingStarsStyle, isAuthorized } from '@/utils';
 import { loadComments, loadNearbyOffers, setFavoriteStatus } from '@/operations';
-import { getMappedOffers, getMappedNearbyOffers, getAuthorizationStatus } from '@/selectors';
+import { getMappedOffers, getMappedNearbyOffers, getAuthorizationStatus } from '@/store/selectors';
 import Header from '@/components/header';
 import Reviews from '@/components/reviews';
 import Map from '@/components/map';

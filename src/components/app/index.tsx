@@ -5,7 +5,7 @@ import {
 import { useSelector } from 'react-redux';
 import { AppRoute } from '@/const';
 import { isAuthorized } from '@/utils';
-import { getAuthorizationStatus } from '@/selectors';
+import { getAuthorizationStatus } from '@/store/selectors';
 import Main from '@/components/main';
 import SignIn from '@/components/sign-in';
 import OfferDetails from '@/components/offer-details';

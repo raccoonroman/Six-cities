@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 import { Offer } from '@/types';
 import { CardType, AppRoute } from '@/const';
 import { getCitiesByOffers, getOffersByCity } from '@/utils';
-import { getFavoriteOffers } from '@/selectors';
-import { setCity } from '@/actions';
+import { getFavoriteOffers } from '@/store/selectors';
+import { setCity } from '@/store/actions';
 import Header from '@/components/header';
 import OffersList from '@/components/offers-list';
 

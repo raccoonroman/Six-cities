@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Offer } from '@/types';
 import { CardType, AppRoute } from '@/const';
 import { getRatingStarsStyle, isAuthorized } from '@/utils';
-import { getAuthorizationStatus } from '@/selectors';
+import { getAuthorizationStatus } from '@/store/selectors';
 import { setFavoriteStatus } from '@/operations';
 
 

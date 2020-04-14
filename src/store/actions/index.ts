@@ -1,5 +1,5 @@
+import ActionType from '@/store/actions/types';
 import { OfferRaw, CommentRaw } from '@/api/types';
-import { ActionType } from '@/const';
 
 
 export const loadOffers = (offers: OfferRaw[]) => ({

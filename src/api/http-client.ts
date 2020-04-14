@@ -31,7 +31,6 @@ export default abstract class HttpClient {
 
     if (status === 401) {
       this.onUnauthorized();
-      throw err;
     }
 
     throw err;
