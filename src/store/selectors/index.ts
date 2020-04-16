@@ -4,7 +4,7 @@ import { getTime } from '@/utils';
 import { mapOfferToClient, mapCommentToClient } from '@/adapter';
 
 
-export const getOffers = (state) => state.offers;
+export const getOffers = (state) => state.offers.offers;
 export const getCitiesList = (state) => state.cities.cities;
 export const getCurrentCity = (state) => state.cities.currentCity;
 export const getAuthorizationStatus = (state) => state.authorization.authorizationStatus;

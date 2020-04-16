@@ -2,11 +2,6 @@ import ActionType from '@/store/actions/types';
 import { OfferRaw, CommentRaw } from '@/api/types';
 
 
-export const loadOffers = (offers: OfferRaw[]) => ({
-  type: ActionType.LOAD_OFFERS,
-  payload: offers,
-});
-
 export const setCity = (cityName: string) => ({
   type: ActionType.SET_CITY,
   payload: cityName,

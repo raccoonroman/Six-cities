@@ -6,7 +6,7 @@ import { Offer } from '@/types';
 import { CardType, AppRoute } from '@/const';
 import { getRatingStarsStyle, isAuthorized } from '@/utils';
 import { getAuthorizationStatus } from '@/store/selectors';
-import { setFavoriteStatus } from '@/operations';
+import { setFavoriteStatus } from '@/store/actions/offers';
 
 
 interface Props {

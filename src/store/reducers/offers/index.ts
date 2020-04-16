@@ -1,22 +1,63 @@
-import ActionType from '@/store/actions/types';
-import { Action } from '@/store/reducers/offers/types';
+/* eslint-disable no-param-reassign */
+import produce from 'immer';
+// import ActionType from '@/store/actions/types';
+import { LoadOffers, UpdateOffer } from '@/store/actions/offers/types';
+import { OffersState, OffersActions } from '@/store/reducers/offers/types';
 import { updateOffers } from '@/utils';
 
 
-const offers = (state = [], action: Action) => {
-  switch (action.type) {
-    case ActionType.LOAD_OFFERS: {
-      return action.payload;
-    }
-    case ActionType.UPDATE_OFFER: {
-      const newOffer = action.payload;
-      const updatedOffers = updateOffers(state, newOffer);
-      return updatedOffers;
-    }
-    default: {
-      return state;
-    }
-  }
+const InitialState: OffersState = {
+  loadOffersStatus: {
+    pending: false,
+    resolve: false,
+    reject: false,
+  },
+  updateOfferStatus: {
+    pending: false,
+    resolve: false,
+    reject: false,
+  },
+  offers: [],
 };
 
-export default offers;
+export default (state = InitialState, action: OffersActions) => produce(state, (draft) => {
+  switch (action.type) {
+    case LoadOffers.PENDING: {
+      draft.loadOffersStatus.pending = true;
+      draft.loadOffersStatus.resolve = false;
+      draft.loadOffersStatus.reject = false;
+      break;
+    }
+    case LoadOffers.RESOLVE: {
+      draft.loadOffersStatus.pending = false;
+      draft.loadOffersStatus.resolve = true;
+      draft.offers = action.payload;
+      break;
+    }
+    case LoadOffers.REJECT: {
+      draft.loadOffersStatus.pending = false;
+      draft.loadOffersStatus.reject = true;
+      break;
+    }
+    case UpdateOffer.PENDING: {
+      draft.updateOfferStatus.pending = true;
+      draft.updateOfferStatus.resolve = false;
+      draft.updateOfferStatus.reject = false;
+      break;
+    }
+    case UpdateOffer.RESOLVE: {
+      const newOffer = action.payload;
+      draft.updateOfferStatus.pending = false;
+      draft.updateOfferStatus.resolve = true;
+      draft.offers = updateOffers(draft.offers, newOffer);
+      break;
+    }
+    case UpdateOffer.REJECT: {
+      draft.updateOfferStatus.pending = false;
+      draft.updateOfferStatus.reject = true;
+      break;
+    }
+
+    // skip default
+  }
+});

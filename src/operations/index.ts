@@ -3,15 +3,6 @@ import * as actions from '@/store/actions';
 import { AuthorizationStatus } from '@/const';
 
 
-export const loadOffers = () => async (dispatch, _, api) => {
-  try {
-    const offers = await api.loadOffers();
-    dispatch(actions.loadOffers(offers));
-  } catch (err) {
-    console.log(err);
-  }
-};
-
 export const loadNearbyOffers = (offerId: number) => async (dispatch, _, api) => {
   try {
     const nearbyOffers = await api.loadNearbyOffers(offerId);
@@ -59,15 +50,6 @@ export const postComment = (commentData: CommentPost, offerId: number, enableFor
     dispatch(actions.loadComments(comments));
   } catch (err) {
     enableForm();
-    console.log(err);
-  }
-};
-
-export const setFavoriteStatus = (offerId: number, status: number) => async (dispatch, _, api) => {
-  try {
-    const offer = await api.setFavoriteStatus(offerId, status);
-    dispatch(actions.updateOffer(offer));
-  } catch (err) {
     console.log(err);
   }
 };

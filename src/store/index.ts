@@ -3,7 +3,6 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { requireAuthorization } from '@/store/actions';
 import reducer from '@/store/reducers';
-import { loadOffers, checkAuth } from '@/operations';
 import { AuthorizationStatus } from '@/const';
 import Api from '@/api';
 
@@ -20,8 +19,5 @@ const store = createStore(
     applyMiddleware(thunk.withExtraArgument(api)),
   ),
 );
-
-store.dispatch(loadOffers());
-store.dispatch(checkAuth());
 
 export default store;

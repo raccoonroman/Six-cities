@@ -1,14 +1,24 @@
-import ActionType from '@/store/actions/types';
+import * as Action from '@/store/actions/offers/types';
 import { OfferRaw } from '@/api/types';
 
-interface LoadOffers {
-  type: typeof ActionType.LOAD_OFFERS;
-  payload: OfferRaw[];
+export interface OffersState {
+  loadOffersStatus: {
+    pending: boolean,
+    resolve: boolean,
+    reject: boolean,
+  },
+  updateOfferStatus: {
+    pending: boolean,
+    resolve: boolean,
+    reject: boolean,
+  },
+  offers: OfferRaw[],
 }
 
-interface UpdateOffer {
-  type: typeof ActionType.UPDATE_OFFER;
-  payload: OfferRaw;
-}
-
-export type Action = LoadOffers | UpdateOffer;
+export type OffersActions =
+  | Action.LoadOffersPending
+  | Action.LoadOffersResolve
+  | Action.LoadOffersReject
+  | Action.UpdateOfferPending
+  | Action.UpdateOfferResolve
+  | Action.UpdateOfferReject;
