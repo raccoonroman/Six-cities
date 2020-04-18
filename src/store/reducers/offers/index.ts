@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 import produce from 'immer';
-import { LoadOffers, UpdateOffer } from '@/store/actions/offers/types';
+import LoadOffers from '@/store/actions/load-offers/types';
+import UpdateOffer from '@/store/actions/update-offer/types';
 import { OffersState, OffersActions } from '@/store/reducers/offers/types';
 import { updateOffers } from '@/utils';
 

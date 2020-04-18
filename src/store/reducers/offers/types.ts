@@ -1,13 +1,11 @@
 import { OfferRaw } from '@/api/types';
 import { Status } from '@/store/reducers/common';
 import {
-  loadOffersPending,
-  loadOffersResolve,
-  loadOffersReject,
-  updateOfferPending,
-  updateOfferResolve,
-  updateOfferReject,
-} from '@/store/actions/offers';
+  loadOffersPending, loadOffersResolve, loadOffersReject,
+} from '@/store/actions/load-offers';
+import {
+  updateOfferPending, updateOfferResolve, updateOfferReject,
+} from '@/store/actions/update-offer';
 
 export interface OffersState {
   loadOffersStatus: Status,
