@@ -1,24 +1,24 @@
-import * as Action from '@/store/actions/offers/types';
 import { OfferRaw } from '@/api/types';
+import { Status } from '@/store/reducers/common';
+import {
+  loadOffersPending,
+  loadOffersResolve,
+  loadOffersReject,
+  updateOfferPending,
+  updateOfferResolve,
+  updateOfferReject,
+} from '@/store/actions/offers';
 
 export interface OffersState {
-  loadOffersStatus: {
-    pending: boolean,
-    resolve: boolean,
-    reject: boolean,
-  },
-  updateOfferStatus: {
-    pending: boolean,
-    resolve: boolean,
-    reject: boolean,
-  },
+  loadOffersStatus: Status,
+  updateOfferStatus: Status,
   offers: OfferRaw[],
 }
 
 export type OffersActions =
-  | Action.LoadOffersPending
-  | Action.LoadOffersResolve
-  | Action.LoadOffersReject
-  | Action.UpdateOfferPending
-  | Action.UpdateOfferResolve
-  | Action.UpdateOfferReject;
+  | ReturnType<typeof loadOffersPending>
+  | ReturnType<typeof loadOffersResolve>
+  | ReturnType<typeof loadOffersReject>
+  | ReturnType<typeof updateOfferPending>
+  | ReturnType<typeof updateOfferResolve>
+  | ReturnType<typeof updateOfferReject>;

@@ -1,41 +1,15 @@
-import {
-  LoadOffers,
-  UpdateOffer,
-  LoadOffersPending,
-  LoadOffersResolve,
-  LoadOffersReject,
-  UpdateOfferPending,
-  UpdateOfferResolve,
-  UpdateOfferReject,
-} from '@/store/actions/offers/types';
-import { AsyncAction } from '@/store/actions/common';
+import { LoadOffers, UpdateOffer } from '@/store/actions/offers/types';
+import { AsyncAction, createAction } from '@/store/actions/common';
 import { OfferRaw } from '@/api/types';
 
-export const loadOffersPending = (): LoadOffersPending => ({
-  type: LoadOffers.PENDING,
-});
+export const loadOffersPending = () => createAction(LoadOffers.PENDING);
+export const loadOffersResolve = (offers: OfferRaw[]) => createAction(LoadOffers.RESOLVE, offers);
+export const loadOffersReject = () => createAction(LoadOffers.REJECT);
 
-export const loadOffersResolve = (offers: OfferRaw[]): LoadOffersResolve => ({
-  type: LoadOffers.RESOLVE,
-  payload: offers,
-});
+export const updateOfferPending = () => createAction(UpdateOffer.PENDING);
+export const updateOfferResolve = (offer: OfferRaw) => createAction(UpdateOffer.RESOLVE, offer);
+export const updateOfferReject = () => createAction(UpdateOffer.REJECT);
 
-export const loadOffersReject = (): LoadOffersReject => ({
-  type: LoadOffers.REJECT,
-});
-
-export const updateOfferPending = (): UpdateOfferPending => ({
-  type: UpdateOffer.PENDING,
-});
-
-export const updateOfferResolve = (offer: OfferRaw): UpdateOfferResolve => ({
-  type: UpdateOffer.RESOLVE,
-  payload: offer,
-});
-
-export const updateOfferReject = (): UpdateOfferReject => ({
-  type: UpdateOffer.REJECT,
-});
 
 export const loadOffers = (): AsyncAction => async (dispatch, _, api) => {
   try {

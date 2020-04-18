@@ -1,6 +1,5 @@
 /* eslint-disable no-param-reassign */
 import produce from 'immer';
-// import ActionType from '@/store/actions/types';
 import { LoadOffers, UpdateOffer } from '@/store/actions/offers/types';
 import { OffersState, OffersActions } from '@/store/reducers/offers/types';
 import { updateOffers } from '@/utils';
