@@ -1,19 +1,37 @@
-import ActionType from '@/store/actions/types';
-import { InitialState, Action } from '@/store/reducers/user-data/types';
+/* eslint-disable no-param-reassign */
+import produce from 'immer';
+import SetEmail from '@/store/actions/set-email/types';
+import { UserDataState, UserDataActions } from '@/store/reducers/user-data/types';
 
-const initialState: InitialState = {
+const initialState: UserDataState = {
+  status: {
+    pending: false,
+    resolve: false,
+    reject: false,
+  },
   email: '',
 };
 
-const userData = (state = initialState, action: Action) => {
+export default (state = initialState, action: UserDataActions) => produce(state, (draft) => {
   switch (action.type) {
-    case ActionType.SET_EMAIL: {
-      return { ...state, email: action.payload };
+    case SetEmail.PENDING: {
+      draft.status.pending = true;
+      draft.status.resolve = false;
+      draft.status.reject = false;
+      break;
     }
-    default: {
-      return state;
+    case SetEmail.RESOLVE: {
+      draft.status.pending = false;
+      draft.status.resolve = true;
+      draft.email = action.payload;
+      break;
     }
-  }
-};
+    case SetEmail.REJECT: {
+      draft.status.pending = false;
+      draft.status.reject = true;
+      break;
+    }
 
-export default userData;
+    // skip default
+  }
+});

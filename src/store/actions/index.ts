@@ -12,11 +12,6 @@ export const requireAuthorization = (status: string) => ({
   payload: status,
 });
 
-export const setEmail = (email: string) => ({
-  type: ActionType.SET_EMAIL,
-  payload: email,
-});
-
 export const loadComments = (comments: CommentRaw[]) => ({
   type: ActionType.LOAD_COMMENTS,
   payload: comments,

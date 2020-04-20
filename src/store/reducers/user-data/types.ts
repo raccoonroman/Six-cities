@@ -1,12 +1,14 @@
-import ActionType from '@/store/actions/types';
+import { Status } from '@/store/reducers/common';
+import {
+  setEmailPending, setEmailResolve, setEmailReject,
+} from '@/store/actions/set-email';
 
-export interface InitialState {
+export interface UserDataState {
+  status: Status;
   email: string;
 }
 
-interface SetEmail {
-  type: typeof ActionType.SET_EMAIL;
-  payload: string;
-}
-
-export type Action = SetEmail;
+export type UserDataActions =
+  | ReturnType<typeof setEmailPending>
+  | ReturnType<typeof setEmailResolve>
+  | ReturnType<typeof setEmailReject>;
