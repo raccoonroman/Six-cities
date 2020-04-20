@@ -3,8 +3,9 @@ import cn from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
 import { CardType, AppRoute, MapType } from '@/const';
 import { getRatingStarsStyle, isAuthorized } from '@/utils';
-import { loadComments, loadNearbyOffers } from '@/operations';
-import { setFavoriteStatus } from '@/store/actions/update-offer';
+import { loadComments } from '@/store/actions/load-comments';
+import { loadNearbyOffers } from '@/store/actions/load-nearby-offers';
+import { updateFavoriteStatus } from '@/store/actions/update-favorite-status';
 import { getMappedOffers, getMappedNearbyOffers, getAuthorizationStatus } from '@/store/selectors';
 import Header from '@/components/header';
 import Reviews from '@/components/reviews';
@@ -49,7 +50,7 @@ const OfferDetails: React.FC<Props> = (props: Props) => {
         history.push(AppRoute.LOGIN);
       } else {
         const status = +(!isFavorite);
-        dispatch(setFavoriteStatus(id, status));
+        dispatch(updateFavoriteStatus(id, status));
       }
     }
   };

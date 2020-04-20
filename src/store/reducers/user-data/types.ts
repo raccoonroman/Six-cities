@@ -1,14 +1,21 @@
 import { Status } from '@/store/reducers/common';
 import {
-  setEmailPending, setEmailResolve, setEmailReject,
-} from '@/store/actions/set-email';
+  checkAuthPending, checkAuthResolve, checkAuthReject,
+} from '@/store/actions/check-auth';
+import {
+  loginPending, loginResolve, loginReject,
+} from '@/store/actions/login';
 
 export interface UserDataState {
-  status: Status;
+  checkAuthStatus: Status;
+  loginStatus: Status;
   email: string;
 }
 
 export type UserDataActions =
-  | ReturnType<typeof setEmailPending>
-  | ReturnType<typeof setEmailResolve>
-  | ReturnType<typeof setEmailReject>;
+  | ReturnType<typeof checkAuthPending>
+  | ReturnType<typeof checkAuthResolve>
+  | ReturnType<typeof checkAuthReject>
+  | ReturnType<typeof loginPending>
+  | ReturnType<typeof loginResolve>
+  | ReturnType<typeof loginReject>;

@@ -1,16 +1,17 @@
 import { createSelector } from 'reselect';
-import { Comment } from '@/types';
+import { Offer, Comment } from '@/types';
+import { State } from '@/store/reducers/types';
 import { getTime } from '@/utils';
 import { mapOfferToClient, mapCommentToClient } from '@/store/selectors/adapter';
 
 
-export const getOffers = (state) => state.offers.offers;
-export const getCitiesList = (state) => state.cities.cities;
-export const getCurrentCity = (state) => state.cities.currentCity;
-export const getAuthorizationStatus = (state) => state.authorization.authorizationStatus;
-export const getUserEmail = (state) => state.userData.email;
-export const getCommentsByOffer = (state) => state.commentsByOffer;
-export const getNearbyOffers = (state) => state.nearbyOffers;
+export const getOffers = (state: State) => state.offers.offers;
+export const getCitiesList = (state: State) => state.cities.cities;
+export const getCurrentCity = (state: State) => state.cities.currentCity;
+export const getAuthorizationStatus = (state: State) => state.authorization.authorization;
+export const getUserEmail = (state: State) => state.userData.email;
+export const getCommentsByOffer = (state: State) => state.comments.comments;
+export const getNearbyOffers = (state: State) => state.nearbyOffers.nearbyOffers;
 
 export const getMappedOffers = createSelector(
   getOffers,
@@ -19,7 +20,7 @@ export const getMappedOffers = createSelector(
 
 export const getFavoriteOffers = createSelector(
   getMappedOffers,
-  (offers) => offers.filter(({ isFavorite }) => isFavorite),
+  (offers: Offer[]) => offers.filter(({ isFavorite }) => isFavorite),
 );
 
 export const getMappedNearbyOffers = createSelector(
@@ -34,8 +35,8 @@ export const getMappedComments = createSelector(
 
 export const getTenSortedComments = createSelector(
   getMappedComments,
-  (mappedComments) => mappedComments
+  (mappedComments: Comment[]) => mappedComments
     .slice()
-    .sort((a: Comment, b: Comment) => getTime(b.date) - getTime(a.date))
+    .sort((a, b) => getTime(b.date) - getTime(a.date))
     .slice(0, 10),
 );

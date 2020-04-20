@@ -1,30 +1,48 @@
+/* eslint-disable no-param-reassign */
+import produce from 'immer';
+import LoadOffers from '@/store/actions/load-offers/types';
+import SET_CITY from '@/store/actions/set-city/types';
 import { DEFAULT_CITIES } from '@/const';
-import ActionType from '@/store/actions/types';
-import { InitialState, Action } from '@/store/reducers/cities/types';
-import { getCitiesByOffers } from '@/utils';
+import { CitiesState, CitiesActions } from '@/store/reducers/cities/types';
+import { getCitiesByRawOffers } from '@/utils';
 
-const initialState: InitialState = {
+const initialState: CitiesState = {
+  loadOffersStatus: {
+    pending: false,
+    resolve: false,
+    reject: false,
+  },
   currentCity: DEFAULT_CITIES[0],
   cities: DEFAULT_CITIES,
 };
 
-
-const cities = (state = initialState, action: Action) => {
+export default (state = initialState, action: CitiesActions) => produce(state, (draft) => {
   switch (action.type) {
-    case ActionType.LOAD_OFFERS: {
-      const allCities = getCitiesByOffers(action.payload);
-      return {
-        currentCity: allCities[0],
-        cities: allCities,
-      };
+    case LoadOffers.PENDING: {
+      draft.loadOffersStatus.pending = true;
+      draft.loadOffersStatus.resolve = false;
+      draft.loadOffersStatus.reject = false;
+      break;
     }
-    case ActionType.SET_CITY: {
-      return { ...state, currentCity: action.payload };
+    case LoadOffers.RESOLVE: {
+      const offers = action.payload;
+      const allCities = getCitiesByRawOffers(offers);
+      const [firstCity] = allCities;
+      draft.loadOffersStatus.pending = false;
+      draft.loadOffersStatus.resolve = true;
+      draft.currentCity = firstCity;
+      draft.cities = allCities;
+      break;
     }
-    default: {
-      return state;
+    case LoadOffers.REJECT: {
+      draft.loadOffersStatus.pending = false;
+      draft.loadOffersStatus.reject = true;
+      break;
     }
-  }
-};
+    case SET_CITY: {
+      draft.currentCity = action.payload;
+    }
 
-export default cities;
+    // skip default
+  }
+});

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { login } from '@/operations';
+import { login } from '@/store/actions/login';
 import Header from '@/components/header';
 
 interface Props {

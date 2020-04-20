@@ -2,18 +2,18 @@ import React from 'react';
 import cn from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Offer } from '@/types';
+// import { Offer } from '@/types';
 import { CardType, AppRoute } from '@/const';
 import { getCitiesByOffers, getOffersByCity } from '@/utils';
 import { getFavoriteOffers } from '@/store/selectors';
-import { setCity } from '@/store/actions';
+import setCity from '@/store/actions/set-city';
 import Header from '@/components/header';
 import OffersList from '@/components/offers-list';
 
 
 const Favorites: React.FC = () => {
   const dispatch = useDispatch();
-  const favoriteOffers: Offer[] = useSelector(getFavoriteOffers);
+  const favoriteOffers = useSelector(getFavoriteOffers);
 
   const noFavorites: boolean = !favoriteOffers.length;
   const cities: string[] = getCitiesByOffers(favoriteOffers);

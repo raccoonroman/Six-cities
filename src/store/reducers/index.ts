@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import authorization from '@/store/reducers/authorization';
 import cities from '@/store/reducers/cities';
-import commentsByOffer from '@/store/reducers/comments-by-offer';
+import comments from '@/store/reducers/comments';
 import nearbyOffers from '@/store/reducers/nearby-offers';
 import offers from '@/store/reducers/offers';
 import userData from '@/store/reducers/user-data';
@@ -9,7 +9,7 @@ import userData from '@/store/reducers/user-data';
 export default combineReducers({
   authorization,
   cities,
-  commentsByOffer,
+  comments,
   nearbyOffers,
   offers,
   userData,

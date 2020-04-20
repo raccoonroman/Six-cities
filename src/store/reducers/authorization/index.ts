@@ -1,21 +1,63 @@
+/* eslint-disable no-param-reassign */
+import produce from 'immer';
+import Login from '@/store/actions/login/types';
+import CheckAuth from '@/store/actions/check-auth/types';
+import { AuthorizationState, AuthorizationActions } from '@/store/reducers/authorization/types';
 import { AuthorizationStatus } from '@/const';
-import ActionType from '@/store/actions/types';
-import { InitialState, Action } from '@/store/reducers/authorization/types';
 
-const initialState: InitialState = {
-  authorizationStatus: AuthorizationStatus.NO_AUTH,
+const initialState: AuthorizationState = {
+  checkAuthStatus: {
+    pending: false,
+    resolve: false,
+    reject: false,
+  },
+  loginStatus: {
+    pending: false,
+    resolve: false,
+    reject: false,
+  },
+  authorization: AuthorizationStatus.NO_AUTH,
 };
 
 
-const authorization = (state = initialState, action: Action) => {
+export default (state = initialState, action: AuthorizationActions) => produce(state, (draft) => {
   switch (action.type) {
-    case ActionType.REQUIRED_AUTHORIZATION: {
-      return { ...state, authorizationStatus: action.payload };
+    case CheckAuth.PENDING: {
+      draft.checkAuthStatus.pending = true;
+      draft.checkAuthStatus.resolve = false;
+      draft.checkAuthStatus.reject = false;
+      break;
     }
-    default: {
-      return state;
+    case CheckAuth.RESOLVE: {
+      draft.checkAuthStatus.pending = false;
+      draft.checkAuthStatus.resolve = true;
+      draft.authorization = AuthorizationStatus.AUTH;
+      break;
     }
-  }
-};
+    case CheckAuth.REJECT: {
+      draft.checkAuthStatus.pending = false;
+      draft.checkAuthStatus.reject = true;
+      draft.authorization = AuthorizationStatus.NO_AUTH;
+      break;
+    }
+    case Login.PENDING: {
+      draft.loginStatus.pending = true;
+      draft.loginStatus.resolve = false;
+      draft.loginStatus.reject = false;
+      break;
+    }
+    case Login.RESOLVE: {
+      draft.loginStatus.pending = false;
+      draft.loginStatus.resolve = true;
+      draft.authorization = AuthorizationStatus.AUTH;
+      break;
+    }
+    case Login.REJECT: {
+      draft.loginStatus.pending = false;
+      draft.loginStatus.reject = true;
+      break;
+    }
 
-export default authorization;
+    // skip default
+  }
+});

@@ -1,19 +1,19 @@
-import ActionType from '@/store/actions/types';
-import { OfferRaw } from '@/api/types';
+import { Status } from '@/store/reducers/common';
+import {
+  loadOffersPending,
+  loadOffersResolve,
+  loadOffersReject,
+} from '@/store/actions/load-offers';
+import setCity from '@/store/actions/set-city';
 
-export interface InitialState {
+export interface CitiesState {
+  loadOffersStatus: Status,
   currentCity: string;
   cities: string[];
 }
 
-interface LoadOffers {
-  type: typeof ActionType.LOAD_OFFERS;
-  payload: OfferRaw[];
-}
-
-interface SetCity {
-  type: typeof ActionType.SET_CITY;
-  payload: string;
-}
-
-export type Action = LoadOffers | SetCity;
+export type CitiesActions =
+  | ReturnType<typeof loadOffersPending>
+  | ReturnType<typeof loadOffersResolve>
+  | ReturnType<typeof loadOffersReject>
+  | ReturnType<typeof setCity>;

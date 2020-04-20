@@ -6,7 +6,7 @@ import { Offer } from '@/types';
 import { CardType, AppRoute } from '@/const';
 import { getRatingStarsStyle, isAuthorized } from '@/utils';
 import { getAuthorizationStatus } from '@/store/selectors';
-import { setFavoriteStatus } from '@/store/actions/update-offer';
+import { updateFavoriteStatus } from '@/store/actions/update-favorite-status';
 
 
 interface Props {
@@ -35,7 +35,7 @@ const OfferCard: React.FC<Props> = (props: Props) => {
       history.push(AppRoute.LOGIN);
     } else {
       const status = +(!isFavorite);
-      dispatch(setFavoriteStatus(id, status));
+      dispatch(updateFavoriteStatus(id, status));
     }
   };
 

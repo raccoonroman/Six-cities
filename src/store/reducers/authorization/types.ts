@@ -1,12 +1,21 @@
-import ActionType from '@/store/actions/types';
+import { Status } from '@/store/reducers/common';
+import {
+  checkAuthPending, checkAuthResolve, checkAuthReject,
+} from '@/store/actions/check-auth';
+import {
+  loginPending, loginResolve, loginReject,
+} from '@/store/actions/login';
 
-export interface InitialState {
-  authorizationStatus: string;
+export interface AuthorizationState {
+  checkAuthStatus: Status;
+  loginStatus: Status;
+  authorization: string;
 }
 
-interface RequiredAuthorization {
-  type: typeof ActionType.REQUIRED_AUTHORIZATION;
-  payload: string;
-}
-
-export type Action = RequiredAuthorization;
+export type AuthorizationActions =
+  | ReturnType<typeof checkAuthPending>
+  | ReturnType<typeof checkAuthResolve>
+  | ReturnType<typeof checkAuthReject>
+  | ReturnType<typeof loginPending>
+  | ReturnType<typeof loginResolve>
+  | ReturnType<typeof loginReject>;

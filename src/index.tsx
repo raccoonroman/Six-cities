@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import App from '@/components/app';
 import store from '@/store';
 import { loadOffers } from '@/store/actions/load-offers';
-import { checkAuth } from '@/operations';
+import { checkAuth } from '@/store/actions/check-auth';
 
 store.dispatch(loadOffers());
 store.dispatch(checkAuth());

@@ -1,0 +1,7 @@
+enum UpdateFavoriteStatus {
+  PENDING = 'UPDATE_FAVORITE_STATUS/PENDING',
+  RESOLVE = 'UPDATE_FAVORITE_STATUS/RESOLVE',
+  REJECT = 'UPDATE_FAVORITE_STATUS/REJECT',
+}
+
+export default UpdateFavoriteStatus;

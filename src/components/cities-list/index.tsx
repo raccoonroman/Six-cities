@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import cn from 'classnames';
 import { getCitiesList } from '@/store/selectors';
-import { setCity } from '@/store/actions';
+import setCity from '@/store/actions/set-city';
 
 
 interface Props {

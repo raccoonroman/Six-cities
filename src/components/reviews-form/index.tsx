@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { postComment } from '@/operations';
+import { postComment } from '@/store/actions/post-comment';
 
 
 const STARS_QUANTITY = 5;

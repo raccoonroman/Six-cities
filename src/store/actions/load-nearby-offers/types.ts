@@ -1,0 +1,7 @@
+enum LoadNearbyOffers {
+  PENDING = 'LOAD_NEARBY_OFFERS/PENDING',
+  RESOLVE = 'LOAD_NEARBY_OFFERS/RESOLVE',
+  REJECT = 'LOAD_NEARBY_OFFERS/REJECT',
+}
+
+export default LoadNearbyOffers;

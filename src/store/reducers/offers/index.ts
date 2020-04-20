@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import produce from 'immer';
 import LoadOffers from '@/store/actions/load-offers/types';
-import UpdateOffer from '@/store/actions/update-offer/types';
+import UpdateFavoriteStatus from '@/store/actions/update-favorite-status/types';
 import { OffersState, OffersActions } from '@/store/reducers/offers/types';
 import { updateOffers } from '@/utils';
 
@@ -12,7 +12,7 @@ const InitialState: OffersState = {
     resolve: false,
     reject: false,
   },
-  updateOfferStatus: {
+  updateFavoriteStatus: {
     pending: false,
     resolve: false,
     reject: false,
@@ -39,22 +39,22 @@ export default (state = InitialState, action: OffersActions) => produce(state, (
       draft.loadOffersStatus.reject = true;
       break;
     }
-    case UpdateOffer.PENDING: {
-      draft.updateOfferStatus.pending = true;
-      draft.updateOfferStatus.resolve = false;
-      draft.updateOfferStatus.reject = false;
+    case UpdateFavoriteStatus.PENDING: {
+      draft.updateFavoriteStatus.pending = true;
+      draft.updateFavoriteStatus.resolve = false;
+      draft.updateFavoriteStatus.reject = false;
       break;
     }
-    case UpdateOffer.RESOLVE: {
+    case UpdateFavoriteStatus.RESOLVE: {
       const newOffer = action.payload;
-      draft.updateOfferStatus.pending = false;
-      draft.updateOfferStatus.resolve = true;
+      draft.updateFavoriteStatus.pending = false;
+      draft.updateFavoriteStatus.resolve = true;
       draft.offers = updateOffers(draft.offers, newOffer);
       break;
     }
-    case UpdateOffer.REJECT: {
-      draft.updateOfferStatus.pending = false;
-      draft.updateOfferStatus.reject = true;
+    case UpdateFavoriteStatus.REJECT: {
+      draft.updateFavoriteStatus.pending = false;
+      draft.updateFavoriteStatus.reject = true;
       break;
     }
 

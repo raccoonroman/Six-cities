@@ -5,7 +5,12 @@ import { OfferRaw } from '@/api/types';
 
 export const getRatingStarsStyle = (rating: number) => ({ width: `${(rating / 5) * 100}%` });
 
-export const getCitiesByOffers = (offers: OfferRaw[]) => {
+export const getCitiesByRawOffers = (rawOffers: OfferRaw[]) => {
+  const cities = rawOffers.map(({ city }) => city.name);
+  return [...new Set(cities)];
+};
+
+export const getCitiesByOffers = (offers: Offer[]) => {
   const cities = offers.map(({ city }) => city.name);
   return [...new Set(cities)];
 };
