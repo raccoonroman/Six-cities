@@ -3,6 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { checkAuthReject } from '@/store/actions/check-auth';
 import reducer from '@/store/reducers';
+import { State, Actions } from '@/store/reducers/types';
 import Api from '@/api';
 
 const onUnauthorized = () => {
@@ -12,7 +13,7 @@ const onUnauthorized = () => {
 
 const api = new Api(onUnauthorized);
 
-const store = createStore(
+const store = createStore<State, Actions, {}, {}>(
   reducer,
   composeWithDevTools(
     applyMiddleware(thunk.withExtraArgument(api)),

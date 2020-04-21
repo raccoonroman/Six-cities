@@ -3,9 +3,11 @@ import CheckAuth from '@/store/actions/check-auth/types';
 import { AsyncAction, createAction } from '@/store/actions/common';
 
 export const checkAuthPending = () => createAction(CheckAuth.PENDING);
-// eslint-disable-next-line max-len
-export const checkAuthResolve = (authInfo: AuthInfoRaw) => createAction(CheckAuth.RESOLVE, authInfo);
 export const checkAuthReject = () => createAction(CheckAuth.REJECT);
+export const checkAuthResolve = (authInfo: AuthInfoRaw) => {
+  const action = createAction(CheckAuth.RESOLVE, authInfo);
+  return action;
+};
 
 export const checkAuth = (): AsyncAction => async (dispatch, _, api) => {
   try {
