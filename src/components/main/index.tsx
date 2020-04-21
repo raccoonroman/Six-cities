@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import cn from 'classnames';
 import { Offer } from '@/types';
 import { MapType } from '@/const';
-import { getOffersByCity } from '@/utils';
+import getOffersByCity from '@/utils/get-offers-by-city';
 import withSorting from '@/hocs/with-sorting';
 import { getCurrentCity, getMappedOffers } from '@/store/selectors';
 import Header from '@/components/header';

@@ -1,9 +1,9 @@
-/* eslint-disable no-param-reassign */
 import produce from 'immer';
 import LoadNearbyOffers from '@/store/actions/load-nearby-offers/types';
 import UpdateFavoriteStatus from '@/store/actions/update-favorite-status/types';
 import { NearbyOffersState, NearbyOffersActions } from '@/store/reducers/nearby-offers/types';
-import { updateOffers } from '@/utils';
+import updateOffers from '@/utils/update-offers';
+import neverReached from '@/utils/never-reached';
 
 const InitialState: NearbyOffersState = {
   loadNearbyOffersStatus: {
@@ -56,7 +56,8 @@ export default (state = InitialState, action: NearbyOffersActions) => produce(st
       draft.updateFavoriteStatus.reject = true;
       break;
     }
-
-    // skip default
+    default: {
+      neverReached(action);
+    }
   }
 });

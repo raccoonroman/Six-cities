@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import { Offer, Comment } from '@/types';
 import { State } from '@/store/reducers/types';
-import { getTime } from '@/utils';
+import getTime from '@/utils/get-time';
 import { mapOfferToClient, mapCommentToClient } from '@/store/selectors/adapter';
 
 

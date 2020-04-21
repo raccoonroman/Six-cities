@@ -4,7 +4,7 @@ import {
 } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { AppRoute } from '@/const';
-import { isAuthorized } from '@/utils';
+import isAuthorized from '@/utils/is-authorized';
 import { getAuthorizationStatus } from '@/store/selectors';
 import Main from '@/components/main';
 import SignIn from '@/components/sign-in';

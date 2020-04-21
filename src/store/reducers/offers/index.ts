@@ -1,10 +1,9 @@
-/* eslint-disable no-param-reassign */
 import produce from 'immer';
 import LoadOffers from '@/store/actions/load-offers/types';
 import UpdateFavoriteStatus from '@/store/actions/update-favorite-status/types';
 import { OffersState, OffersActions } from '@/store/reducers/offers/types';
-import { updateOffers } from '@/utils';
-
+import updateOffers from '@/utils/update-offers';
+import neverReached from '@/utils/never-reached';
 
 const InitialState: OffersState = {
   loadOffersStatus: {
@@ -57,7 +56,8 @@ export default (state = InitialState, action: OffersActions) => produce(state, (
       draft.updateFavoriteStatus.reject = true;
       break;
     }
-
-    // skip default
+    default: {
+      neverReached(action);
+    }
   }
 });

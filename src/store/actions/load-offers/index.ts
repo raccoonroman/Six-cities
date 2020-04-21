@@ -6,7 +6,6 @@ export const loadOffersPending = () => createAction(LoadOffers.PENDING);
 export const loadOffersResolve = (offers: OfferRaw[]) => createAction(LoadOffers.RESOLVE, offers);
 export const loadOffersReject = () => createAction(LoadOffers.REJECT);
 
-
 export const loadOffers = (): AsyncAction => async (dispatch, _, api) => {
   try {
     dispatch(loadOffersPending());
@@ -14,6 +13,5 @@ export const loadOffers = (): AsyncAction => async (dispatch, _, api) => {
     dispatch(loadOffersResolve(offers));
   } catch (err) {
     dispatch(loadOffersReject());
-    throw err;
   }
 };

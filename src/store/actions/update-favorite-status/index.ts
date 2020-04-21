@@ -4,19 +4,16 @@ import { OfferRaw } from '@/api/types';
 
 export const updateFavoriteStatusPending = () => createAction(UpdateFavoriteStatus.PENDING);
 export const updateFavoriteStatusReject = () => createAction(UpdateFavoriteStatus.REJECT);
-export const updateFavoriteStatusResolve = (offer: OfferRaw) => {
-  const action = createAction(UpdateFavoriteStatus.RESOLVE, offer);
-  return action;
-};
+export const updateFavoriteStatusResolve = (offer: OfferRaw) => (
+  createAction(UpdateFavoriteStatus.RESOLVE, offer));
 
-// eslint-disable-next-line max-len
-export const updateFavoriteStatus = (offerId: number, status: number) : AsyncAction => async (dispatch, _, api) => {
-  try {
-    dispatch(updateFavoriteStatusPending());
-    const offer = await api.setFavoriteStatus(offerId, status);
-    dispatch(updateFavoriteStatusResolve(offer));
-  } catch (err) {
-    dispatch(updateFavoriteStatusReject());
-    throw err;
-  }
-};
+export const updateFavoriteStatus = (offerId: number, status: number) : AsyncAction => (
+  async (dispatch, _, api) => {
+    try {
+      dispatch(updateFavoriteStatusPending());
+      const offer = await api.setFavoriteStatus(offerId, status);
+      dispatch(updateFavoriteStatusResolve(offer));
+    } catch (err) {
+      dispatch(updateFavoriteStatusReject());
+    }
+  });

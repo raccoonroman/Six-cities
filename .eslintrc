@@ -10,6 +10,6 @@
       }
     }],
     "jsx-a11y/no-noninteractive-element-interactions": "off",
-    "default-case": ["error", { "commentPattern": "^skip\\sdefault" }]
+    "no-param-reassign": ["error", { "ignorePropertyModificationsFor": ["draft"] }]
   }
 }

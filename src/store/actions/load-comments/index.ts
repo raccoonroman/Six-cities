@@ -4,10 +4,8 @@ import { CommentRaw } from '@/api/types';
 
 export const loadCommentsPending = () => createAction(LoadComments.PENDING);
 export const loadCommentsReject = () => createAction(LoadComments.REJECT);
-export const loadCommentsResolve = (comments: CommentRaw[]) => {
-  const action = createAction(LoadComments.RESOLVE, comments);
-  return action;
-};
+export const loadCommentsResolve = (comments: CommentRaw[]) => (
+  createAction(LoadComments.RESOLVE, comments));
 
 export const loadComments = (offerId: number): AsyncAction => async (dispatch, _, api) => {
   try {
@@ -16,6 +14,5 @@ export const loadComments = (offerId: number): AsyncAction => async (dispatch, _
     dispatch(loadCommentsResolve(comments));
   } catch (err) {
     dispatch(loadCommentsReject());
-    throw err;
   }
 };

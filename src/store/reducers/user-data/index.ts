@@ -1,8 +1,8 @@
-/* eslint-disable no-param-reassign */
 import produce from 'immer';
 import Login from '@/store/actions/login/types';
 import CheckAuth from '@/store/actions/check-auth/types';
 import { UserDataState, UserDataActions } from '@/store/reducers/user-data/types';
+import neverReached from '@/utils/never-reached';
 
 const initialState: UserDataState = {
   checkAuthStatus: {
@@ -54,7 +54,8 @@ export default (state = initialState, action: UserDataActions) => produce(state,
       draft.loginStatus.reject = true;
       break;
     }
-
-    // skip default
+    default: {
+      neverReached(action);
+    }
   }
 });

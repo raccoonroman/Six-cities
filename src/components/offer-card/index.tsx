@@ -4,7 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Offer } from '@/types';
 import { CardType, AppRoute } from '@/const';
-import { getRatingStarsStyle, isAuthorized } from '@/utils';
+import isAuthorized from '@/utils/is-authorized';
+import getRatingStarsStyle from '@/utils/get-rating-stars-style';
 import { getAuthorizationStatus } from '@/store/selectors';
 import { updateFavoriteStatus } from '@/store/actions/update-favorite-status';
 

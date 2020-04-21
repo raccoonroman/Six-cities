@@ -1,10 +1,10 @@
-/* eslint-disable no-param-reassign */
 import produce from 'immer';
 import LoadOffers from '@/store/actions/load-offers/types';
 import SET_CITY from '@/store/actions/set-city/types';
 import { DEFAULT_CITIES } from '@/const';
 import { CitiesState, CitiesActions } from '@/store/reducers/cities/types';
-import { getCitiesByRawOffers } from '@/utils';
+import getCitiesByRawOffers from '@/utils/get-cities-by-raw-offers';
+import neverReached from '@/utils/never-reached';
 
 const initialState: CitiesState = {
   loadOffersStatus: {
@@ -41,8 +41,10 @@ export default (state = initialState, action: CitiesActions) => produce(state, (
     }
     case SET_CITY: {
       draft.currentCity = action.payload;
+      break;
     }
-
-    // skip default
+    default: {
+      neverReached(action);
+    }
   }
 });

@@ -1,9 +1,8 @@
-/* eslint-disable no-param-reassign */
 import produce from 'immer';
 import LoadComments from '@/store/actions/load-comments/types';
 import PostComment from '@/store/actions/post-comment/types';
 import { CommentsState, CommentsActions } from '@/store/reducers/comments/types';
-
+import neverReached from '@/utils/never-reached';
 
 const InitialState: CommentsState = {
   loadCommentsStatus: {
@@ -55,7 +54,8 @@ export default (state = InitialState, action: CommentsActions) => produce(state,
       draft.postCommentStatus.reject = true;
       break;
     }
-
-    // skip default
+    default: {
+      neverReached(action);
+    }
   }
 });
