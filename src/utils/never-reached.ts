@@ -1,1 +1,1 @@
-export default (never: never) => {};
+export default (_: never) => {};
