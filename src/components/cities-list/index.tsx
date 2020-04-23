@@ -9,9 +9,8 @@ interface Props {
   currentCity: string;
 }
 
-const CitiesList: React.FC<Props> = (props: Props) => {
+const CitiesList: React.FC<Props> = ({ currentCity }) => {
   const dispatch = useDispatch();
-  const { currentCity } = props;
 
   const cities = useSelector(getCitiesList);
 

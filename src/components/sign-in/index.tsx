@@ -1,7 +1,10 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory, Redirect } from 'react-router-dom';
+import { getAuthorizationStatus } from '@/store/selectors';
 import { login } from '@/store/actions/login';
+import { AppRoute } from '@/const';
+import isAuthorized from '@/utils/is-authorized';
 import Header from '@/components/header';
 
 type ChangeEvent = React.ChangeEvent<HTMLInputElement>;
@@ -9,6 +12,9 @@ type ChangeEvent = React.ChangeEvent<HTMLInputElement>;
 const SignIn: React.FC = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const authorizationStatus = useSelector(getAuthorizationStatus);
+  const authorized = isAuthorized(authorizationStatus);
 
   const [formState, setFormState] = React.useState({
     email: '',
@@ -28,6 +34,10 @@ const SignIn: React.FC = () => {
     const authData = { email, password };
     dispatch(login(authData, goToPreviousPage));
   };
+
+  if (authorized) {
+    return <Redirect to={AppRoute.ROOT} />;
+  }
 
   return (
     <div className="page page--gray page--login">

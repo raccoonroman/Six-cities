@@ -1,13 +1,10 @@
 import React, { useEffect } from 'react';
-import {
-  BrowserRouter, Switch, Route, Redirect,
-} from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { loadOffers } from '@/store/actions/load-offers';
 import { checkAuth } from '@/store/actions/check-auth';
 import { AppRoute } from '@/const';
-import isAuthorized from '@/utils/is-authorized';
-import { getAuthorizationStatus } from '@/store/selectors';
+import PrivateRoute from '@/components/private-route';
 import Main from '@/components/main';
 import SignIn from '@/components/sign-in';
 import OfferDetails from '@/components/offer-details';
@@ -15,8 +12,6 @@ import Favorites from '@/components/favorites';
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
-  const authorizationStatus = useSelector(getAuthorizationStatus);
-  const authorized = isAuthorized(authorizationStatus);
 
   useEffect(() => {
     dispatch(loadOffers());
@@ -39,16 +34,12 @@ const App: React.FC = () => {
         <Route
           exact
           path={AppRoute.LOGIN}
-          render={() => (
-            !authorized ? <SignIn /> : <Redirect to={AppRoute.ROOT} />
-          )}
+          component={SignIn}
         />
-        <Route
+        <PrivateRoute
           exact
           path={AppRoute.FAVORITES}
-          render={() => (
-            authorized ? <Favorites /> : <Redirect to={AppRoute.LOGIN} />
-          )}
+          component={Favorites}
         />
       </Switch>
     </BrowserRouter>
