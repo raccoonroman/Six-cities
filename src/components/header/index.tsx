@@ -7,8 +7,8 @@ import { getUserEmail, getAuthorizationStatus } from '@/store/selectors';
 
 
 const Header: React.FC = () => {
-  const authorizationStatus: string = useSelector(getAuthorizationStatus);
-  const email: string = useSelector(getUserEmail);
+  const authorizationStatus = useSelector(getAuthorizationStatus);
+  const email = useSelector(getUserEmail);
 
   const renderLoginText = () => {
     if (!isAuthorized(authorizationStatus)) {

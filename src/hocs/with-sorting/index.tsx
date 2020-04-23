@@ -29,7 +29,6 @@ const sortModes: SortMode[] = [
 ];
 
 interface CommonProps {
-  history?: { push: Function };
   offers: Offer[];
   onCardHover?: (offerId: number | null) => (event: React.MouseEvent) => void;
 }
@@ -46,7 +45,7 @@ interface ComponentProps extends CommonProps {
 const withSorting = (Component: React.FC<ComponentProps>) => {
   const WithSorting: React.FC<Props> = (props: Props) => {
     const {
-      history, offers, currentCity, onCardHover,
+      offers, currentCity, onCardHover,
     } = props;
     const [sortMode, setSortMode] = React.useState<string>(SortType.POPULAR);
 
@@ -72,7 +71,6 @@ const withSorting = (Component: React.FC<ComponentProps>) => {
           onSortTypeChange={handleSortTypeChange}
         />
         <Component
-          history={history}
           className="cities__places-list places__list"
           cardsType={CardType.CITY}
           offers={getSortedOffers()}

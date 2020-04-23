@@ -1,7 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { Offer } from '@/types';
 import { CardType, AppRoute } from '@/const';
 import isAuthorized from '@/utils/is-authorized';
@@ -11,7 +11,6 @@ import { updateFavoriteStatus } from '@/store/actions/update-favorite-status';
 
 
 interface Props {
-  history?: { push: Function };
   cardType: string;
   offer: Offer;
   onCardHover?: (offerId: number | null) => (event: React.MouseEvent) => void;
@@ -19,20 +18,21 @@ interface Props {
 
 const OfferCard: React.FC<Props> = (props: Props) => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const {
-    history, cardType, offer, onCardHover,
+    cardType, offer, onCardHover,
   } = props;
 
   const {
     id, title, previewImage, price, rating, type, isFavorite, isPremium,
   } = offer;
 
-  const authorizationStatus: string = useSelector(getAuthorizationStatus);
-  const authorized: boolean = isAuthorized(authorizationStatus);
+  const authorizationStatus = useSelector(getAuthorizationStatus);
+  const authorized = isAuthorized(authorizationStatus);
 
   const handleBookmarkButtonClick = () => {
-    if (!authorized && history) {
+    if (!authorized) {
       history.push(AppRoute.LOGIN);
     } else {
       const status = +(!isFavorite);

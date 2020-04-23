@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import cn from 'classnames';
-import { Offer } from '@/types';
 import { MapType } from '@/const';
 import getOffersByCity from '@/utils/get-offers-by-city';
 import withSorting from '@/hocs/with-sorting';
@@ -12,16 +11,11 @@ import OffersList from '@/components/offers-list';
 import Map from '@/components/map';
 
 
-interface Props {
-  history?: { push: Function };
-}
-
 const OffersListWithSorting = withSorting(OffersList);
 
-const Main: React.FC<Props> = (props: Props) => {
-  const { history } = props;
-  const currentCity: string = useSelector(getCurrentCity);
-  const offers: Offer[] = useSelector(getMappedOffers);
+const Main: React.FC = () => {
+  const currentCity = useSelector(getCurrentCity);
+  const offers = useSelector(getMappedOffers);
 
   const offersByCity = getOffersByCity(currentCity, offers);
 
@@ -47,7 +41,6 @@ const Main: React.FC<Props> = (props: Props) => {
 
     return (
       <OffersListWithSorting
-        history={history}
         offers={offersByCity}
         currentCity={currentCity}
         onCardHover={handleOfferCardHover}

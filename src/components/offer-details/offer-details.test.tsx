@@ -111,9 +111,7 @@ it('Render <OfferDetails />', () => {
           <Route
             exact
             path={`${AppRoute.OFFER}/:id`}
-            render={({ history, match }) => (
-              <OfferDetails history={history} match={match} />
-            )}
+            component={OfferDetails}
           />
         </BrowserRouter>
       </Provider>,

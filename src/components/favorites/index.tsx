@@ -15,8 +15,8 @@ const Favorites: React.FC = () => {
   const dispatch = useDispatch();
   const favoriteOffers = useSelector(getFavoriteOffers);
 
-  const noFavorites: boolean = !favoriteOffers.length;
-  const cities: string[] = getCitiesByOffers(favoriteOffers);
+  const noFavorites = !favoriteOffers.length;
+  const cities = getCitiesByOffers(favoriteOffers);
 
   const handleCityNameClick = (city: string) => () => {
     dispatch(setCity(city));

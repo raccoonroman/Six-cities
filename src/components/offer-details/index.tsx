@@ -1,6 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
+import { useHistory, useParams } from 'react-router-dom';
 import { CardType, AppRoute, MapType } from '@/const';
 import isAuthorized from '@/utils/is-authorized';
 import getRatingStarsStyle from '@/utils/get-rating-stars-style';
@@ -12,47 +13,34 @@ import Header from '@/components/header';
 import Reviews from '@/components/reviews';
 import Map from '@/components/map';
 import OffersList from '@/components/offers-list';
-import { Offer } from '@/types';
 
 
 const MAX_IMAGES = 6;
 
-interface Props {
-  history: { push: Function };
-  match: {
-    params: {
-      id: string;
-    }
-  }
-}
-
-const OfferDetails: React.FC<Props> = (props: Props) => {
+const OfferDetails: React.FC = () => {
   const dispatch = useDispatch();
-  const { history, match } = props;
+  const history = useHistory();
+  const { id } = useParams();
 
-  const authorizationStatus: string = useSelector(getAuthorizationStatus);
-  const offers: Offer[] = useSelector(getMappedOffers);
-  const nearbyOffers: Offer[] = useSelector(getMappedNearbyOffers);
+  const authorizationStatus = useSelector(getAuthorizationStatus);
+  const offers = useSelector(getMappedOffers);
+  const nearbyOffers = useSelector(getMappedNearbyOffers);
 
   React.useEffect(() => {
-    const { id } = match.params;
-    dispatch(loadComments(+id));
-    dispatch(loadNearbyOffers(+id));
-  }, [match.params, loadComments, loadNearbyOffers]);
+    dispatch(loadComments(+id!));
+    dispatch(loadNearbyOffers(+id!));
+  }, [id]);
 
-  const currentOffer = offers.find(({ id }) => id === +match.params.id);
+  const currentOffer = offers.find((offer) => offer.id === +id!);
 
   const handleBookmarkButtonClick = () => {
-    const authorized: boolean = isAuthorized(authorizationStatus);
-    if (currentOffer) {
-      const { id, isFavorite } = currentOffer;
-
-      if (!authorized) {
-        history.push(AppRoute.LOGIN);
-      } else {
-        const status = +(!isFavorite);
-        dispatch(updateFavoriteStatus(id, status));
-      }
+    const authorized = isAuthorized(authorizationStatus);
+    const { isFavorite } = currentOffer!;
+    if (!authorized) {
+      history.push(AppRoute.LOGIN);
+    } else {
+      const status = +(!isFavorite);
+      dispatch(updateFavoriteStatus(+id!, status));
     }
   };
 
@@ -68,7 +56,6 @@ const OfferDetails: React.FC<Props> = (props: Props) => {
   }
 
   const {
-    id,
     title,
     price,
     rating,
@@ -78,11 +65,11 @@ const OfferDetails: React.FC<Props> = (props: Props) => {
     isFavorite,
     isPremium,
     description,
-    goods = [],
+    goods,
     hostAvatarUrl,
     hostIsPro,
     hostName,
-    images = [],
+    images,
   } = currentOffer;
 
   const bookmarkButtonClass = cn({
@@ -185,13 +172,13 @@ const OfferDetails: React.FC<Props> = (props: Props) => {
                   <p className="property__text">{description}</p>
                 </div>
               </div>
-              <Reviews offerId={id} />
+              <Reviews offerId={+id!} />
             </div>
           </div>
           <Map
             mapType={MapType.STATIC_ACTIVE_OFFER}
             offers={[...nearbyOffers, currentOffer]}
-            currentOfferId={id}
+            currentOfferId={+id!}
           />
         </section>
         <div className="container">
@@ -200,7 +187,6 @@ const OfferDetails: React.FC<Props> = (props: Props) => {
               {getNearbyOffersTitleText(nearbyOffers.length)}
             </h2>
             <OffersList
-              history={history}
               className="near-places__list places__list"
               cardsType={CardType.NEAR}
               offers={nearbyOffers}

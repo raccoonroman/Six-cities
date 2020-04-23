@@ -53,9 +53,8 @@ it('Hover on offer card', () => {
         <Route
           exact
           path={AppRoute.OFFER}
-          render={({ history }) => (
+          render={() => (
             <OfferCard
-              history={history}
               cardType={CardType.NEAR}
               offer={offer}
             />

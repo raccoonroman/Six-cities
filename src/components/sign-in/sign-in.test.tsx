@@ -26,9 +26,7 @@ it('Render <SignIn />', () => {
           <Route
             exact
             path={AppRoute.LOGIN}
-            render={({ history }) => (
-              <SignIn history={history} />
-            )}
+            component={SignIn}
           />
         </BrowserRouter>
       </Provider>,

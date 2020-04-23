@@ -3,7 +3,6 @@ import { Offer } from '@/types';
 import OfferCard from '@/components/offer-card';
 
 interface Props {
-  history?: { push: Function };
   className: string;
   cardsType: string;
   offers: Offer[];
@@ -12,7 +11,7 @@ interface Props {
 
 const OffersList: React.FC<Props> = (props: Props) => {
   const {
-    history, className, cardsType, offers, onCardHover,
+    className, cardsType, offers, onCardHover,
   } = props;
 
   return (
@@ -22,7 +21,6 @@ const OffersList: React.FC<Props> = (props: Props) => {
         return (
           <OfferCard
             key={id}
-            history={history}
             cardType={cardsType}
             offer={offer}
             onCardHover={onCardHover}

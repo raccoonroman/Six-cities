@@ -103,9 +103,8 @@ it('Should <OffersList /> render correctly', () => {
           <Route
             exact
             path={AppRoute.ROOT}
-            render={({ history }) => (
+            render={() => (
               <OffersList
-                history={history}
                 className="near-places__list places__list"
                 cardsType={CardType.NEAR}
                 offers={offers}

@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Comment } from '@/types';
 import isAuthorized from '@/utils/is-authorized';
 import getRatingStarsStyle from '@/utils/get-rating-stars-style';
 import { getAuthorizationStatus, getTenSortedComments } from '@/store/selectors';
@@ -13,10 +12,10 @@ interface Props {
 
 const Reviews: React.FC<Props> = (props: Props) => {
   const { offerId } = props;
-  const authorizationStatus: string = useSelector(getAuthorizationStatus);
-  const comments: Comment[] = useSelector(getTenSortedComments);
+  const authorizationStatus = useSelector(getAuthorizationStatus);
+  const comments = useSelector(getTenSortedComments);
 
-  const authorized: boolean = isAuthorized(authorizationStatus);
+  const authorized = isAuthorized(authorizationStatus);
 
   const renderReviewItems = () => comments.map((comment) => {
     const {

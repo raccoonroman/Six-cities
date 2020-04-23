@@ -107,9 +107,7 @@ it('Render <Main />', () => {
         <Route
           exact
           path={AppRoute.ROOT}
-          render={({ history }) => (
-            <Main history={history} />
-          )}
+          component={Main}
         />
       </BrowserRouter>
     </Provider>,

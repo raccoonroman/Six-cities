@@ -13,7 +13,7 @@ const CitiesList: React.FC<Props> = (props: Props) => {
   const dispatch = useDispatch();
   const { currentCity } = props;
 
-  const cities: string[] = useSelector(getCitiesList);
+  const cities = useSelector(getCitiesList);
 
   const getTabClass = (city: string) => cn({
     'locations__item-link tabs__item': true,

@@ -1,17 +1,14 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { login } from '@/store/actions/login';
 import Header from '@/components/header';
 
-interface Props {
-  history: { goBack: Function };
-}
-
 type ChangeEvent = React.ChangeEvent<HTMLInputElement>;
 
-const SignIn: React.FC<Props> = (props: Props) => {
+const SignIn: React.FC = () => {
   const dispatch = useDispatch();
-  const { history } = props;
+  const history = useHistory();
 
   const [formState, setFormState] = React.useState({
     email: '',

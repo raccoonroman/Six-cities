@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   BrowserRouter, Switch, Route, Redirect,
 } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { loadOffers } from '@/store/actions/load-offers';
+import { checkAuth } from '@/store/actions/check-auth';
 import { AppRoute } from '@/const';
 import isAuthorized from '@/utils/is-authorized';
 import { getAuthorizationStatus } from '@/store/selectors';
@@ -11,10 +13,15 @@ import SignIn from '@/components/sign-in';
 import OfferDetails from '@/components/offer-details';
 import Favorites from '@/components/favorites';
 
-
 const App: React.FC = () => {
-  const authorizationStatus: string = useSelector(getAuthorizationStatus);
-  const authorized: boolean = isAuthorized(authorizationStatus);
+  const dispatch = useDispatch();
+  const authorizationStatus = useSelector(getAuthorizationStatus);
+  const authorized = isAuthorized(authorizationStatus);
+
+  useEffect(() => {
+    dispatch(loadOffers());
+    dispatch(checkAuth());
+  }, []);
 
   return (
     <BrowserRouter>
@@ -22,22 +29,18 @@ const App: React.FC = () => {
         <Route
           exact
           path={AppRoute.ROOT}
-          render={({ history }) => (
-            <Main history={history} />
-          )}
+          component={Main}
         />
         <Route
           exact
           path={`${AppRoute.OFFER}/:id`}
-          render={({ history, match }) => (
-            <OfferDetails history={history} match={match} />
-          )}
+          component={OfferDetails}
         />
         <Route
           exact
           path={AppRoute.LOGIN}
-          render={({ history }) => (
-            !authorized ? <SignIn history={history} /> : <Redirect to={AppRoute.ROOT} />
+          render={() => (
+            !authorized ? <SignIn /> : <Redirect to={AppRoute.ROOT} />
           )}
         />
         <Route

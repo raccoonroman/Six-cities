@@ -51,9 +51,8 @@ it('Should offer card render correctly', () => {
           <Route
             exact
             path={AppRoute.OFFER}
-            render={({ history }) => (
+            render={() => (
               <OfferCard
-                history={history}
                 cardType={CardType.NEAR}
                 offer={offer}
               />
