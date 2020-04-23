@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import cn from 'classnames';
 import { MapType } from '@/const';
@@ -19,7 +19,7 @@ const Main: React.FC = () => {
 
   const offersByCity = getOffersByCity(currentCity, offers);
 
-  const [hoveredCardId, setHoveredCardId] = React.useState<null | number>(null);
+  const [hoveredCardId, setHoveredCardId] = useState<null | number>(null);
 
   const handleOfferCardHover = (id: number | null) => () => setHoveredCardId(id);
 
@@ -48,13 +48,11 @@ const Main: React.FC = () => {
     );
   };
 
-  const mainClass = cn({
-    'page__main page__main--index': true,
+  const mainClass = cn('page__main page__main--index', {
     'page__main--index-empty': offersByCity.length === 0,
   });
 
-  const offersContainerClass = cn({
-    'cities__places-container container': true,
+  const offersContainerClass = cn('cities__places-container container', {
     'cities__places-container--empty': offersByCity.length === 0,
   });
 

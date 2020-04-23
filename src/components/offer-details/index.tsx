@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import cn from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
@@ -26,7 +26,7 @@ const OfferDetails: React.FC = () => {
   const offers = useSelector(getMappedOffers);
   const nearbyOffers = useSelector(getMappedNearbyOffers);
 
-  React.useEffect(() => {
+  useEffect(() => {
     dispatch(loadComments(+id!));
     dispatch(loadNearbyOffers(+id!));
   }, [id]);
@@ -72,13 +72,11 @@ const OfferDetails: React.FC = () => {
     images,
   } = currentOffer;
 
-  const bookmarkButtonClass = cn({
-    'property__bookmark-button button': true,
+  const bookmarkButtonClass = cn('property__bookmark-button button', {
     'property__bookmark-button--active': isFavorite,
   });
 
-  const hostAvatarWrapperClass = cn({
-    'property__avatar-wrapper user__avatar-wrapper': true,
+  const hostAvatarWrapperClass = cn('property__avatar-wrapper user__avatar-wrapper', {
     'property__avatar-wrapper--pro': hostIsPro,
   });
 

@@ -29,19 +29,16 @@ interface Props {
   currentOfferId: number | null;
 }
 
-
-const LeafletMap: React.FC<Props> = (props: Props) => {
-  const { mapType, offers, currentOfferId } = props;
+const LeafletMap: React.FC<Props> = ({ mapType, offers, currentOfferId }) => {
   const isStaticActiveOffer = mapType === MapType.STATIC_ACTIVE_OFFER;
   const isHoveredActiveOffer = mapType === MapType.HOVERED_ACTIVE_OFFER;
 
   const { location: cityLocation } = offers[0].city;
   const { latitude, longitude, zoom } = cityLocation;
 
-  const mapSectionClass = cn({
+  const mapSectionClass = cn('map', {
     cities__map: isHoveredActiveOffer,
     property__map: isStaticActiveOffer,
-    map: true,
   });
 
   const renderMarkers = () => offers.map(({ id, title, location }) => {

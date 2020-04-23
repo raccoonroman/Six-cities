@@ -10,21 +10,14 @@ interface Props {
   offerId: number;
 }
 
-const Reviews: React.FC<Props> = (props: Props) => {
-  const { offerId } = props;
-  const authorizationStatus = useSelector(getAuthorizationStatus);
+const Reviews: React.FC<Props> = ({ offerId }) => {
   const comments = useSelector(getTenSortedComments);
-
+  const authorizationStatus = useSelector(getAuthorizationStatus);
   const authorized = isAuthorized(authorizationStatus);
 
   const renderReviewItems = () => comments.map((comment) => {
     const {
-      commentId,
-      text,
-      date,
-      rating,
-      userAvatarUrl,
-      userName,
+      commentId, text, date, rating, userAvatarUrl, userName,
     } = comment;
 
     const dateISOString = date.slice(0, 10);

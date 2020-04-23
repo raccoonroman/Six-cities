@@ -4,6 +4,7 @@
     "project": "./tsconfig.json"
   },
   "rules": {
+    "react/prop-types": 0,
     "jsx-a11y/label-has-associated-control": ["error", {
       "required": {
         "some": ["nesting", "id"]
@@ -11,6 +12,6 @@
     }],
     "jsx-a11y/no-noninteractive-element-interactions": "off",
     "no-param-reassign": ["error", { "ignorePropertyModificationsFor": ["draft"] }],
-    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "_" }]
+    "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "_" }],
   }
 }

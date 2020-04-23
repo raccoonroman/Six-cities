@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { postComment } from '@/store/actions/post-comment';
 
@@ -27,13 +27,12 @@ interface Props {
   offerId: number;
 }
 
-const ReviewsForm: React.FC<Props> = (props: Props) => {
+const ReviewsForm: React.FC<Props> = ({ offerId }) => {
   const dispatch = useDispatch();
-  const { offerId } = props;
 
   const formInitialState = { rating: 0, review: '' };
-  const [formState, setFormState] = React.useState(formInitialState);
-  const [isFormDisabled, setIsFormDisabled] = React.useState(false);
+  const [formState, setFormState] = useState(formInitialState);
+  const [isFormDisabled, setIsFormDisabled] = useState(false);
   const { rating, review } = formState;
 
   const enableForm = () => setIsFormDisabled(false);

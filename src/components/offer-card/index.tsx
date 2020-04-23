@@ -16,13 +16,9 @@ interface Props {
   onCardHover?: (offerId: number | null) => (event: React.MouseEvent) => void;
 }
 
-const OfferCard: React.FC<Props> = (props: Props) => {
+const OfferCard: React.FC<Props> = ({ cardType, offer, onCardHover }) => {
   const dispatch = useDispatch();
   const history = useHistory();
-
-  const {
-    cardType, offer, onCardHover,
-  } = props;
 
   const {
     id, title, previewImage, price, rating, type, isFavorite, isPremium,
@@ -42,24 +38,20 @@ const OfferCard: React.FC<Props> = (props: Props) => {
 
   const ratingRounded = Math.round(rating);
 
-  const placeCardClass = cn({
+  const placeCardClass = cn('place-card', {
     'cities__place-card': cardType === CardType.CITY,
     'near-places__card': cardType === CardType.NEAR,
     favorites__card: cardType === CardType.FAVORITE,
-    'place-card': true,
   });
-  const imageWrapperClass = cn({
+  const imageWrapperClass = cn('place-card__image-wrapper', {
     'cities__image-wrapper': cardType === CardType.CITY,
     'near-places__image-wrapper': cardType === CardType.NEAR,
     'favorites__image-wrapper': cardType === CardType.FAVORITE,
-    'place-card__image-wrapper': true,
   });
-  const bookmarkButtonClass = cn({
-    'place-card__bookmark-button button': true,
+  const bookmarkButtonClass = cn('place-card__bookmark-button button', {
     'place-card__bookmark-button--active': isFavorite,
   });
-  const cardInfoClass = cn({
-    'place-card__info': true,
+  const cardInfoClass = cn('place-card__info', {
     'favorites__card-info': cardType === CardType.FAVORITE,
   });
 

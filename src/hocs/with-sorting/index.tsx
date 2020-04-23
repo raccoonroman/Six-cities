@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Offer } from '@/types';
 import { SortType, CardType } from '@/const';
 import Sorting from '@/components/sorting';
@@ -44,10 +44,8 @@ interface ComponentProps extends CommonProps {
 
 const withSorting = (Component: React.FC<ComponentProps>) => {
   const WithSorting: React.FC<Props> = (props: Props) => {
-    const {
-      offers, currentCity, onCardHover,
-    } = props;
-    const [sortMode, setSortMode] = React.useState<string>(SortType.POPULAR);
+    const { offers, currentCity, onCardHover } = props;
+    const [sortMode, setSortMode] = useState<string>(SortType.POPULAR);
 
     const handleSortTypeChange = (type: string) => setSortMode(type);
 

@@ -50,7 +50,9 @@ const Favorites: React.FC = () => {
           <h1 className="visually-hidden">Favorites (empty)</h1>
           <div className="favorites__status-wrapper">
             <b className="favorites__status">Nothing yet saved.</b>
-            <p className="favorites__status-description">Save properties to narrow down search or plan yor future trips.</p>
+            <p className="favorites__status-description">
+              Save properties to narrow down search or plan yor future trips.
+            </p>
           </div>
         </section>
       );
@@ -64,12 +66,10 @@ const Favorites: React.FC = () => {
     );
   };
 
-  const pageFavoritesClass = cn({
-    page: true,
+  const pageFavoritesClass = cn('page', {
     'page--favorites-empty': noFavorites,
   });
-  const mainFavoritesClass = cn({
-    'page__main page__main--favorites': true,
+  const mainFavoritesClass = cn('page__main page__main--favorites', {
     'page__main--favorites-empty': noFavorites,
   });
 

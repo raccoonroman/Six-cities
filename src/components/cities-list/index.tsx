@@ -11,11 +11,9 @@ interface Props {
 
 const CitiesList: React.FC<Props> = ({ currentCity }) => {
   const dispatch = useDispatch();
-
   const cities = useSelector(getCitiesList);
 
-  const getTabClass = (city: string) => cn({
-    'locations__item-link tabs__item': true,
+  const getTabClass = (city: string) => cn('locations__item-link tabs__item', {
     'tabs__item--active': city === currentCity,
   });
 

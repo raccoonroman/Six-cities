@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, Redirect } from 'react-router-dom';
 import { getAuthorizationStatus } from '@/store/selectors';
@@ -8,6 +8,7 @@ import isAuthorized from '@/utils/is-authorized';
 import Header from '@/components/header';
 
 type ChangeEvent = React.ChangeEvent<HTMLInputElement>;
+type DispatchState = React.Dispatch<React.SetStateAction<string>>;
 
 const SignIn: React.FC = () => {
   const dispatch = useDispatch();
@@ -16,17 +17,13 @@ const SignIn: React.FC = () => {
   const authorizationStatus = useSelector(getAuthorizationStatus);
   const authorized = isAuthorized(authorizationStatus);
 
-  const [formState, setFormState] = React.useState({
-    email: '',
-    password: '',
-  });
-
-  const { email, password } = formState;
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const goToPreviousPage = () => history.goBack();
 
-  const handleInputChange = ({ target }: ChangeEvent) => {
-    setFormState({ ...formState, [target.name]: target.value });
+  const handleInputChange = (fn: DispatchState) => (evt: ChangeEvent) => {
+    fn(evt.target.value);
   };
 
   const handleFormSubmit = (evt: React.FormEvent) => {
@@ -52,7 +49,7 @@ const SignIn: React.FC = () => {
                 <label htmlFor="login-email" className="visually-hidden">E-mail</label>
                 <input
                   value={email}
-                  onChange={handleInputChange}
+                  onChange={handleInputChange(setEmail)}
                   className="login__input form__input"
                   id="login-email"
                   type="email"
@@ -65,7 +62,7 @@ const SignIn: React.FC = () => {
                 <label htmlFor="login-password" className="visually-hidden">Password</label>
                 <input
                   value={password}
-                  onChange={handleInputChange}
+                  onChange={handleInputChange(setPassword)}
                   className="login__input form__input"
                   id="login-password"
                   type="password"

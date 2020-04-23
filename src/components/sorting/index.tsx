@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import cn from 'classnames';
 import { SortType } from '@/const';
 
@@ -8,9 +8,8 @@ interface Props {
   onSortTypeChange: (sortType: string) => void;
 }
 
-const Sorting: React.FunctionComponent<Props> = (props: Props) => {
-  const { sortBy, onSortTypeChange } = props;
-  const [sortListOpened, setSortListOpened] = React.useState(false);
+const Sorting: React.FC<Props> = ({ sortBy, onSortTypeChange }) => {
+  const [sortListOpened, setSortListOpened] = useState(false);
 
   const handleSortTypeClick = () => {
     setSortListOpened(!sortListOpened);
@@ -21,8 +20,7 @@ const Sorting: React.FunctionComponent<Props> = (props: Props) => {
     onSortTypeChange(sortType);
   };
 
-  const sortListClass = cn({
-    'places__options places__options--custom': true,
+  const sortListClass = cn('places__options places__options--custom', {
     'places__options--opened': sortListOpened,
   });
 
