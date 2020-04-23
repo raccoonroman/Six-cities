@@ -43,8 +43,7 @@ interface ComponentProps extends CommonProps {
 }
 
 const withSorting = (Component: React.FC<ComponentProps>) => {
-  const WithSorting: React.FC<Props> = (props: Props) => {
-    const { offers, currentCity, onCardHover } = props;
+  const WithSorting: React.FC<Props> = ({ offers, currentCity, onCardHover }) => {
     const [sortMode, setSortMode] = useState<string>(SortType.POPULAR);
 
     const handleSortTypeChange = (type: string) => setSortMode(type);

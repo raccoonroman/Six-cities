@@ -9,7 +9,7 @@ interface Props {
   onCardHover?: (offerId: number | null) => (event: React.MouseEvent) => void;
 }
 
-const OffersList: React.FC<Props> = (props: Props) => {
+const OffersList: React.FC<Props> = (props) => {
   const {
     className, cardsType, offers, onCardHover,
   } = props;

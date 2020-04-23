@@ -9,18 +9,20 @@ interface Props extends RouteProps {
   component: React.ComponentType;
 }
 
-const PrivateRoute: React.FC<Props> = (props: Props) => {
-  const { component: Component, exact, path } = props;
+const PrivateRoute: React.FC<Props> = (props) => {
+  const { component, exact, path } = props;
   const authorizationStatus = useSelector(getAuthorizationStatus);
   const authorized = isAuthorized(authorizationStatus);
+
+  if (!authorized) {
+    return <Redirect to={AppRoute.LOGIN} />;
+  }
 
   return (
     <Route
       exact={exact}
       path={path}
-      render={() => (
-        authorized ? <Component /> : <Redirect to={AppRoute.LOGIN} />
-      )}
+      component={component}
     />
   );
 };
