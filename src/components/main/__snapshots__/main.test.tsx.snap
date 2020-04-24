@@ -79,10 +79,10 @@ exports[`Render <Main /> 1`] = `
           >
             <a
               class="locations__item-link tabs__item tabs__item--active"
-              href="#"
+              href="#!"
             >
               <span>
-                Vinnytsya
+                Vinnytsia
               </span>
             </a>
           </li>
@@ -91,7 +91,7 @@ exports[`Render <Main /> 1`] = `
           >
             <a
               class="locations__item-link tabs__item"
-              href="#"
+              href="#!"
             >
               <span>
                 Lviv
@@ -103,7 +103,7 @@ exports[`Render <Main /> 1`] = `
           >
             <a
               class="locations__item-link tabs__item"
-              href="#"
+              href="#!"
             >
               <span>
                 Kyiv
@@ -131,8 +131,10 @@ exports[`Render <Main /> 1`] = `
             class="places__found"
           >
             2
-             places to stay in 
-            Vinnytsya
+             
+            places to stay in
+             
+            Vinnytsia
           </b>
           <form
             action="#"
@@ -146,6 +148,7 @@ exports[`Render <Main /> 1`] = `
             </span>
             <span
               class="places__sorting-type"
+              role="button"
               tabindex="0"
             >
               Popular
@@ -164,25 +167,21 @@ exports[`Render <Main /> 1`] = `
             >
               <li
                 class="places__option places__option--active"
-                tabindex="0"
               >
                 Popular
               </li>
               <li
                 class="places__option"
-                tabindex="0"
               >
                 Price: low to high
               </li>
               <li
                 class="places__option"
-                tabindex="0"
               >
                 Price: high to low
               </li>
               <li
                 class="places__option"
-                tabindex="0"
               >
                 Top rated first
               </li>
@@ -192,10 +191,10 @@ exports[`Render <Main /> 1`] = `
             class="cities__places-list places__list"
           >
             <article
-              class="cities__place-card place-card"
+              class="place-card cities__place-card"
             >
               <div
-                class="cities__image-wrapper place-card__image-wrapper"
+                class="place-card__image-wrapper cities__image-wrapper"
               >
                 <a
                   href="/offer/100490"
@@ -283,7 +282,7 @@ exports[`Render <Main /> 1`] = `
               </div>
             </article>
             <article
-              class="cities__place-card place-card"
+              class="place-card cities__place-card"
             >
               <div
                 class="place-card__mark"
@@ -293,7 +292,7 @@ exports[`Render <Main /> 1`] = `
                 </span>
               </div>
               <div
-                class="cities__image-wrapper place-card__image-wrapper"
+                class="place-card__image-wrapper cities__image-wrapper"
               >
                 <a
                   href="/offer/100491"
@@ -386,7 +385,7 @@ exports[`Render <Main /> 1`] = `
           class="cities__right-section"
         >
           <section
-            class="cities__map map"
+            class="map cities__map"
           >
             <div
               class="leaflet-container leaflet-grab leaflet-touch-drag"

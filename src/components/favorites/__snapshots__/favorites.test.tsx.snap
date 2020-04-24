@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render <Favorites /> When favorites list is empty 1`] = `
+exports[`Render <Favorites /> when favorites list is empty 1`] = `
 <div
   className="page page--favorites-empty"
 >
@@ -109,7 +109,7 @@ exports[`Render <Favorites /> When favorites list is empty 1`] = `
 </div>
 `;
 
-exports[`Render <Favorites /> When favorites list is not empty 1`] = `
+exports[`Render <Favorites /> when favorites list is not empty 1`] = `
 <div
   className="page"
 >
@@ -200,7 +200,7 @@ exports[`Render <Favorites /> When favorites list is not empty 1`] = `
                   onClick={[Function]}
                 >
                   <span>
-                    Vinnytsya
+                    Vinnytsia
                   </span>
                 </a>
               </div>
@@ -209,10 +209,10 @@ exports[`Render <Favorites /> When favorites list is not empty 1`] = `
               className="favorites__places"
             >
               <article
-                className="favorites__card place-card"
+                className="place-card favorites__card"
               >
                 <div
-                  className="favorites__image-wrapper place-card__image-wrapper"
+                  className="place-card__image-wrapper favorites__image-wrapper"
                 >
                   <a
                     href="/offer/100490"
@@ -332,7 +332,7 @@ exports[`Render <Favorites /> When favorites list is not empty 1`] = `
               className="favorites__places"
             >
               <article
-                className="favorites__card place-card"
+                className="place-card favorites__card"
               >
                 <div
                   className="place-card__mark"
@@ -342,7 +342,7 @@ exports[`Render <Favorites /> When favorites list is not empty 1`] = `
                   </span>
                 </div>
                 <div
-                  className="favorites__image-wrapper place-card__image-wrapper"
+                  className="place-card__image-wrapper favorites__image-wrapper"
                 >
                   <a
                     href="/offer/100491"

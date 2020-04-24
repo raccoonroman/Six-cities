@@ -9,7 +9,7 @@ import Reviews from '@/components/reviews';
 
 const mockStore = configureStore([]);
 
-const commentsByOffer: CommentRaw[] = [
+const comments: CommentRaw[] = [
   {
     id: 0,
     comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -38,44 +38,40 @@ const commentsByOffer: CommentRaw[] = [
 
 
 describe('Render <Reviews />', () => {
-  it('When user is not authorized', () => {
+  it('when user is not authorized', () => {
     const store = mockStore({
       authorization: {
-        authorizationStatus: AuthorizationStatus.NO_AUTH,
+        authorization: AuthorizationStatus.NO_AUTH,
       },
-      userData: {
-        email: '',
+      comments: {
+        comments,
       },
-      commentsByOffer,
     });
 
-    const tree = renderer
-      .create(
-        <Provider store={store}>
-          <Reviews offerId={0} />
-        </Provider>,
-      ).toJSON();
+    const tree = renderer.create(
+      <Provider store={store}>
+        <Reviews offerId={0} />
+      </Provider>,
+    ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
 
-  it('When user is authorized', () => {
+  it('when user is authorized', () => {
     const store = mockStore({
       authorization: {
-        authorizationStatus: AuthorizationStatus.AUTH,
+        authorization: AuthorizationStatus.AUTH,
       },
-      userData: {
-        email: 'name@gmail.com',
+      comments: {
+        comments,
       },
-      commentsByOffer,
     });
 
-    const tree = renderer
-      .create(
-        <Provider store={store}>
-          <Reviews offerId={0} />
-        </Provider>,
-      ).toJSON();
+    const tree = renderer.create(
+      <Provider store={store}>
+        <Reviews offerId={0} />
+      </Provider>,
+    ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

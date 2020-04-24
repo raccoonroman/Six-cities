@@ -18,12 +18,11 @@ it('Render <CitiesList />', () => {
     },
   });
 
-  const tree = renderer
-    .create(
-      <Provider store={store}>
-        <CitiesList currentCity={currentCity} />
-      </Provider>,
-    ).toJSON();
+  const tree = renderer.create(
+    <Provider store={store}>
+      <CitiesList currentCity={currentCity} />
+    </Provider>,
+  ).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

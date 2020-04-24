@@ -10,46 +10,44 @@ import Header from '@/components/header';
 const mockStore = configureStore([]);
 
 describe('Render <Header />', () => {
-  it('When user is not authorized', () => {
+  it('when user is not authorized', () => {
     const store = mockStore({
       authorization: {
-        authorizationStatus: AuthorizationStatus.NO_AUTH,
+        authorization: AuthorizationStatus.NO_AUTH,
       },
       userData: {
         email: '',
       },
     });
 
-    const tree = renderer
-      .create(
-        <Provider store={store}>
-          <BrowserRouter>
-            <Header />
-          </BrowserRouter>
-        </Provider>,
-      ).toJSON();
+    const tree = renderer.create(
+      <Provider store={store}>
+        <BrowserRouter>
+          <Header />
+        </BrowserRouter>
+      </Provider>,
+    ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
 
-  it('When user is authorized', () => {
+  it('when user is authorized', () => {
     const store = mockStore({
       authorization: {
-        authorizationStatus: AuthorizationStatus.AUTH,
+        authorization: AuthorizationStatus.AUTH,
       },
       userData: {
         email: 'name@gmail.com',
       },
     });
 
-    const tree = renderer
-      .create(
-        <Provider store={store}>
-          <BrowserRouter>
-            <Header />
-          </BrowserRouter>
-        </Provider>,
-      ).toJSON();
+    const tree = renderer.create(
+      <Provider store={store}>
+        <BrowserRouter>
+          <Header />
+        </BrowserRouter>
+      </Provider>,
+    ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

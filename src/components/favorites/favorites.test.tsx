@@ -3,8 +3,8 @@ import renderer from 'react-test-renderer';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { BrowserRouter } from 'react-router-dom';
-import { AuthorizationStatus } from '@/const';
 import { OfferRaw } from '@/api/types';
+import { AuthorizationStatus } from '@/const';
 import Favorites from '@/components/favorites';
 
 
@@ -28,7 +28,7 @@ const mockOffers: OfferRaw[] = [
       zoom: 14,
     },
     city: {
-      name: 'Vinnytsya',
+      name: 'Vinnytsia',
       location: {
         latitude: 52.370216,
         longitude: 4.895168,
@@ -83,48 +83,50 @@ const mockOffers: OfferRaw[] = [
 
 
 describe('Render <Favorites />', () => {
-  it('When favorites list is empty', () => {
+  it('when favorites list is empty', () => {
     const store = mockStore({
-      offers: [],
+      offers: {
+        offers: [],
+      },
       authorization: {
-        authorizationStatus: AuthorizationStatus.AUTH,
+        authorization: AuthorizationStatus.AUTH,
       },
       userData: {
         email: 'name@gmail.com',
       },
     });
 
-    const tree = renderer
-      .create(
-        <Provider store={store}>
-          <BrowserRouter>
-            <Favorites />
-          </BrowserRouter>
-        </Provider>,
-      ).toJSON();
+    const tree = renderer.create(
+      <Provider store={store}>
+        <BrowserRouter>
+          <Favorites />
+        </BrowserRouter>
+      </Provider>,
+    ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });
 
-  it('When favorites list is not empty', () => {
+  it('when favorites list is not empty', () => {
     const store = mockStore({
-      offers: mockOffers,
+      offers: {
+        offers: mockOffers,
+      },
       authorization: {
-        authorizationStatus: AuthorizationStatus.AUTH,
+        authorization: AuthorizationStatus.AUTH,
       },
       userData: {
         email: 'name@gmail.com',
       },
     });
 
-    const tree = renderer
-      .create(
-        <Provider store={store}>
-          <BrowserRouter>
-            <Favorites />
-          </BrowserRouter>
-        </Provider>,
-      ).toJSON();
+    const tree = renderer.create(
+      <Provider store={store}>
+        <BrowserRouter>
+          <Favorites />
+        </BrowserRouter>
+      </Provider>,
+    ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

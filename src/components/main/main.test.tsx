@@ -3,8 +3,8 @@ import { configure, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import { BrowserRouter, Route } from 'react-router-dom';
-import { AuthorizationStatus, AppRoute } from '@/const';
+import { BrowserRouter } from 'react-router-dom';
+import { AuthorizationStatus } from '@/const';
 import { OfferRaw } from '@/api/types';
 import Main from '@/components/main';
 
@@ -30,7 +30,7 @@ const mockOffers: OfferRaw[] = [
       zoom: 14,
     },
     city: {
-      name: 'Vinnytsya',
+      name: 'Vinnytsia',
       location: {
         latitude: 52.370216,
         longitude: 4.895168,
@@ -64,7 +64,7 @@ const mockOffers: OfferRaw[] = [
       zoom: 16,
     },
     city: {
-      name: 'Vinnytsya',
+      name: 'Vinnytsia',
       location: {
         latitude: 52,
         longitude: 4.9,
@@ -83,18 +83,20 @@ const mockOffers: OfferRaw[] = [
   },
 ];
 
-const cities: string[] = ['Vinnytsya', 'Lviv', 'Kyiv'];
+const cities: string[] = ['Vinnytsia', 'Lviv', 'Kyiv'];
 
 
 it('Render <Main />', () => {
   const store = mockStore({
-    offers: mockOffers,
+    offers: {
+      offers: mockOffers,
+    },
     cities: {
       currentCity: cities[0],
       cities,
     },
     authorization: {
-      authorizationStatus: AuthorizationStatus.NO_AUTH,
+      authorization: AuthorizationStatus.NO_AUTH,
     },
     userData: {
       email: '',
@@ -104,11 +106,7 @@ it('Render <Main />', () => {
   const tree = mount(
     <Provider store={store}>
       <BrowserRouter>
-        <Route
-          exact
-          path={AppRoute.ROOT}
-          component={Main}
-        />
+        <Main />
       </BrowserRouter>
     </Provider>,
   );

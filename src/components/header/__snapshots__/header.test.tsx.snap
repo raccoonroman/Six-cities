@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render <Header /> When user is authorized 1`] = `
+exports[`Render <Header /> when user is authorized 1`] = `
 <header
   className="header"
 >
@@ -58,7 +58,7 @@ exports[`Render <Header /> When user is authorized 1`] = `
 </header>
 `;
 
-exports[`Render <Header /> When user is not authorized 1`] = `
+exports[`Render <Header /> when user is not authorized 1`] = `
 <header
   className="header"
 >

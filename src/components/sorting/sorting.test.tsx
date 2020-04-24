@@ -4,18 +4,26 @@ import { SortType } from '@/const';
 import Sorting from '@/components/sorting';
 
 
-const handleSortTypeChange = () => {
-  // do nothing
-};
-
-it('Should <Sorting /> render correctly', () => {
-  const tree = renderer
-    .create(
+describe('Render <Sorting />', () => {
+  it('with "popular" sort type', () => {
+    const tree = renderer.create(
       <Sorting
         sortBy={SortType.POPULAR}
-        onSortTypeChange={handleSortTypeChange}
+        onSortTypeChange={() => {}}
       />,
     ).toJSON();
 
-  expect(tree).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('with "top rated first" sort type', () => {
+    const tree = renderer.create(
+      <Sorting
+        sortBy={SortType.TOP_RATED_FIRST}
+        onSortTypeChange={() => {}}
+      />,
+    ).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
 });

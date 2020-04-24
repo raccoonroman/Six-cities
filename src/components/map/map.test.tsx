@@ -8,7 +8,7 @@ import Map from '@/components/map';
 
 configure({ adapter: new Adapter() });
 
-const offers: Offer[] = [
+const mockOffers: Offer[] = [
   {
     id: 100500,
     title: 'Lorem ipsum',
@@ -93,13 +93,13 @@ interface Global {
 
 declare const global: Global;
 
-it('Should <Map /> render correctly', () => {
+it('Render <Map />', () => {
   const div = global.document.createElement('div');
   global.document.body.appendChild(div);
   const tree = mount(
     <Map
       mapType={MapType.STATIC_ACTIVE_OFFER}
-      offers={offers}
+      offers={mockOffers}
       currentOfferId={100501}
     />,
     { attachTo: div },

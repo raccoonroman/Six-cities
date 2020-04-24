@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render <Reviews /> When user is authorized 1`] = `
+exports[`Render <Reviews /> when user is authorized 1`] = `
 <section
   className="property__reviews reviews"
 >
@@ -292,13 +292,16 @@ exports[`Render <Reviews /> When user is authorized 1`] = `
       <p
         className="reviews__help"
       >
-        To submit review please make sure to set 
+        To submit review please make sure to set
+         
         <span
           className="reviews__star"
         >
           rating
         </span>
-         and describe your stay with 
+         
+        and describe your stay with
+         
         <b
           className="reviews__text-amount"
         >
@@ -318,7 +321,7 @@ exports[`Render <Reviews /> When user is authorized 1`] = `
 </section>
 `;
 
-exports[`Render <Reviews /> When user is not authorized 1`] = `
+exports[`Render <Reviews /> when user is not authorized 1`] = `
 <section
   className="property__reviews reviews"
 >

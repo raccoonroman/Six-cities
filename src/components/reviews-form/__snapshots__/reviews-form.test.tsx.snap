@@ -157,13 +157,16 @@ exports[`Render <ReviewsForm /> 1`] = `
     <p
       className="reviews__help"
     >
-      To submit review please make sure to set 
+      To submit review please make sure to set
+       
       <span
         className="reviews__star"
       >
         rating
       </span>
-       and describe your stay with 
+       
+      and describe your stay with
+       
       <b
         className="reviews__text-amount"
       >

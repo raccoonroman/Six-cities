@@ -10,12 +10,11 @@ const mockStore = configureStore([]);
 it('Render <ReviewsForm />', () => {
   const store = mockStore({});
 
-  const tree = renderer
-    .create(
-      <Provider store={store}>
-        <ReviewsForm offerId={0} />
-      </Provider>,
-    ).toJSON();
+  const tree = renderer.create(
+    <Provider store={store}>
+      <ReviewsForm offerId={0} />
+    </Provider>,
+  ).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

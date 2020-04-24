@@ -9,7 +9,7 @@ exports[`Render <CitiesList /> 1`] = `
   >
     <a
       className="locations__item-link tabs__item"
-      href="#"
+      href="#!"
       onClick={[Function]}
     >
       <span>
@@ -22,7 +22,7 @@ exports[`Render <CitiesList /> 1`] = `
   >
     <a
       className="locations__item-link tabs__item"
-      href="#"
+      href="#!"
       onClick={[Function]}
     >
       <span>
@@ -35,7 +35,7 @@ exports[`Render <CitiesList /> 1`] = `
   >
     <a
       className="locations__item-link tabs__item"
-      href="#"
+      href="#!"
       onClick={[Function]}
     >
       <span>
@@ -48,7 +48,7 @@ exports[`Render <CitiesList /> 1`] = `
   >
     <a
       className="locations__item-link tabs__item tabs__item--active"
-      href="#"
+      href="#!"
       onClick={[Function]}
     >
       <span>
@@ -61,7 +61,7 @@ exports[`Render <CitiesList /> 1`] = `
   >
     <a
       className="locations__item-link tabs__item"
-      href="#"
+      href="#!"
       onClick={[Function]}
     >
       <span>

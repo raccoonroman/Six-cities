@@ -1,227 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should <OffersList /> render correctly 1`] = `
+exports[`Render <OffersList /> 1`] = `
 <div
   className="near-places__list places__list"
 >
   <article
-    className="near-places__card place-card"
+    className="place-card near-places__card"
   >
     <div
-      className="near-places__image-wrapper place-card__image-wrapper"
+      className="place-card__image-wrapper near-places__image-wrapper"
     >
       <a
-        href="/offer/100500"
+        href="/offer/336"
         onClick={[Function]}
       >
         <img
-          alt="Lorem ipsum"
+          alt="Title 1"
           className="place-card__image"
           height="200"
-          src="https://i.picsum.photos/id/22/260/200.jpg"
-          width="260"
-        />
-      </a>
-    </div>
-    <div
-      className="place-card__info"
-    >
-      <div
-        className="place-card__price-wrapper"
-      >
-        <div
-          className="place-card__price"
-        >
-          <b
-            className="place-card__price-value"
-          >
-            €
-            100
-          </b>
-          <span
-            className="place-card__price-text"
-          >
-             / night
-          </span>
-        </div>
-        <button
-          className="place-card__bookmark-button button"
-          onClick={[Function]}
-          type="button"
-        >
-          <svg
-            className="place-card__bookmark-icon"
-            height="19"
-            width="18"
-          >
-            <use
-              xlinkHref="#icon-bookmark"
-            />
-          </svg>
-          <span
-            className="visually-hidden"
-          >
-            To bookmarks
-          </span>
-        </button>
-      </div>
-      <div
-        className="place-card__rating rating"
-      >
-        <div
-          className="place-card__stars rating__stars"
-        >
-          <span
-            style={
-              Object {
-                "width": "80%",
-              }
-            }
-          />
-          <span
-            className="visually-hidden"
-          >
-            Rating
-          </span>
-        </div>
-      </div>
-      <h2
-        className="place-card__name"
-      >
-        <a
-          href="/offer/100500"
-          onClick={[Function]}
-        >
-          Lorem ipsum
-        </a>
-      </h2>
-      <p
-        className="place-card__type"
-      >
-        apartment
-      </p>
-    </div>
-  </article>
-  <article
-    className="near-places__card place-card"
-  >
-    <div
-      className="place-card__mark"
-    >
-      <span>
-        Premium
-      </span>
-    </div>
-    <div
-      className="near-places__image-wrapper place-card__image-wrapper"
-    >
-      <a
-        href="/offer/100501"
-        onClick={[Function]}
-      >
-        <img
-          alt="Ut enim ad minim veniam"
-          className="place-card__image"
-          height="200"
-          src="https://i.picsum.photos/id/23/260/200.jpg"
-          width="260"
-        />
-      </a>
-    </div>
-    <div
-      className="place-card__info"
-    >
-      <div
-        className="place-card__price-wrapper"
-      >
-        <div
-          className="place-card__price"
-        >
-          <b
-            className="place-card__price-value"
-          >
-            €
-            9
-          </b>
-          <span
-            className="place-card__price-text"
-          >
-             / night
-          </span>
-        </div>
-        <button
-          className="place-card__bookmark-button button"
-          onClick={[Function]}
-          type="button"
-        >
-          <svg
-            className="place-card__bookmark-icon"
-            height="19"
-            width="18"
-          >
-            <use
-              xlinkHref="#icon-bookmark"
-            />
-          </svg>
-          <span
-            className="visually-hidden"
-          >
-            To bookmarks
-          </span>
-        </button>
-      </div>
-      <div
-        className="place-card__rating rating"
-      >
-        <div
-          className="place-card__stars rating__stars"
-        >
-          <span
-            style={
-              Object {
-                "width": "80%",
-              }
-            }
-          />
-          <span
-            className="visually-hidden"
-          >
-            Rating
-          </span>
-        </div>
-      </div>
-      <h2
-        className="place-card__name"
-      >
-        <a
-          href="/offer/100501"
-          onClick={[Function]}
-        >
-          Ut enim ad minim veniam
-        </a>
-      </h2>
-      <p
-        className="place-card__type"
-      >
-        room
-      </p>
-    </div>
-  </article>
-  <article
-    className="near-places__card place-card"
-  >
-    <div
-      className="near-places__image-wrapper place-card__image-wrapper"
-    >
-      <a
-        href="/offer/100502"
-        onClick={[Function]}
-      >
-        <img
-          alt="Excepteur sint occaecat cupidatat non proident"
-          className="place-card__image"
-          height="200"
-          src="https://i.picsum.photos/id/24/260/200.jpg"
+          src="https://i.picsum.photos/id/336/260/200.jpg"
           width="260"
         />
       </a>
@@ -292,16 +89,219 @@ exports[`Should <OffersList /> render correctly 1`] = `
         className="place-card__name"
       >
         <a
-          href="/offer/100502"
+          href="/offer/336"
           onClick={[Function]}
         >
-          Excepteur sint occaecat cupidatat non proident
+          Title 1
         </a>
       </h2>
       <p
         className="place-card__type"
       >
         house
+      </p>
+    </div>
+  </article>
+  <article
+    className="place-card near-places__card"
+  >
+    <div
+      className="place-card__mark"
+    >
+      <span>
+        Premium
+      </span>
+    </div>
+    <div
+      className="place-card__image-wrapper near-places__image-wrapper"
+    >
+      <a
+        href="/offer/337"
+        onClick={[Function]}
+      >
+        <img
+          alt="Title 2"
+          className="place-card__image"
+          height="200"
+          src="https://i.picsum.photos/id/337/260/200.jpg"
+          width="260"
+        />
+      </a>
+    </div>
+    <div
+      className="place-card__info"
+    >
+      <div
+        className="place-card__price-wrapper"
+      >
+        <div
+          className="place-card__price"
+        >
+          <b
+            className="place-card__price-value"
+          >
+            €
+            400
+          </b>
+          <span
+            className="place-card__price-text"
+          >
+             / night
+          </span>
+        </div>
+        <button
+          className="place-card__bookmark-button button"
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            className="place-card__bookmark-icon"
+            height="19"
+            width="18"
+          >
+            <use
+              xlinkHref="#icon-bookmark"
+            />
+          </svg>
+          <span
+            className="visually-hidden"
+          >
+            To bookmarks
+          </span>
+        </button>
+      </div>
+      <div
+        className="place-card__rating rating"
+      >
+        <div
+          className="place-card__stars rating__stars"
+        >
+          <span
+            style={
+              Object {
+                "width": "80%",
+              }
+            }
+          />
+          <span
+            className="visually-hidden"
+          >
+            Rating
+          </span>
+        </div>
+      </div>
+      <h2
+        className="place-card__name"
+      >
+        <a
+          href="/offer/337"
+          onClick={[Function]}
+        >
+          Title 2
+        </a>
+      </h2>
+      <p
+        className="place-card__type"
+      >
+        room
+      </p>
+    </div>
+  </article>
+  <article
+    className="place-card near-places__card"
+  >
+    <div
+      className="place-card__image-wrapper near-places__image-wrapper"
+    >
+      <a
+        href="/offer/338"
+        onClick={[Function]}
+      >
+        <img
+          alt="Title 3"
+          className="place-card__image"
+          height="200"
+          src="https://i.picsum.photos/id/338/260/200.jpg"
+          width="260"
+        />
+      </a>
+    </div>
+    <div
+      className="place-card__info"
+    >
+      <div
+        className="place-card__price-wrapper"
+      >
+        <div
+          className="place-card__price"
+        >
+          <b
+            className="place-card__price-value"
+          >
+            €
+            456
+          </b>
+          <span
+            className="place-card__price-text"
+          >
+             / night
+          </span>
+        </div>
+        <button
+          className="place-card__bookmark-button button"
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            className="place-card__bookmark-icon"
+            height="19"
+            width="18"
+          >
+            <use
+              xlinkHref="#icon-bookmark"
+            />
+          </svg>
+          <span
+            className="visually-hidden"
+          >
+            To bookmarks
+          </span>
+        </button>
+      </div>
+      <div
+        className="place-card__rating rating"
+      >
+        <div
+          className="place-card__stars rating__stars"
+        >
+          <span
+            style={
+              Object {
+                "width": "80%",
+              }
+            }
+          />
+          <span
+            className="visually-hidden"
+          >
+            Rating
+          </span>
+        </div>
+      </div>
+      <h2
+        className="place-card__name"
+      >
+        <a
+          href="/offer/338"
+          onClick={[Function]}
+        >
+          Title 3
+        </a>
+      </h2>
+      <p
+        className="place-card__type"
+      >
+        apartment
       </p>
     </div>
   </article>
