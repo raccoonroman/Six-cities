@@ -8,7 +8,13 @@ import getRatingStarsStyle from '@/utils/get-rating-stars-style';
 import { loadComments } from '@/store/actions/load-comments';
 import { loadNearbyOffers } from '@/store/actions/load-nearby-offers';
 import { updateFavoriteStatus } from '@/store/actions/update-favorite-status';
-import { getMappedOffers, getMappedNearbyOffers, getAuthorizationStatus } from '@/store/selectors';
+import {
+  getMappedOffers,
+  getMappedNearbyOffers,
+  getAuthorizationStatus,
+  getLoadOffersStatus,
+} from '@/store/selectors';
+import TeaLoader from '@/components/tea-loader';
 import Header from '@/components/header';
 import Reviews from '@/components/reviews';
 import Map from '@/components/map';
@@ -23,6 +29,7 @@ const OfferDetails: React.FC = () => {
   const { id } = useParams();
 
   const authorizationStatus = useSelector(getAuthorizationStatus);
+  const loadOffersStatus = useSelector(getLoadOffersStatus);
   const offers = useSelector(getMappedOffers);
   const nearbyOffers = useSelector(getMappedNearbyOffers);
 
@@ -50,6 +57,10 @@ const OfferDetails: React.FC = () => {
     }
     return 'There is no other places in the neighbourhood';
   };
+
+  if (loadOffersStatus.pending) {
+    return <TeaLoader />;
+  }
 
   if (!currentOffer) {
     return null;

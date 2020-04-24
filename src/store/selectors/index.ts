@@ -5,6 +5,9 @@ import getTime from '@/utils/get-time';
 import { mapOfferToClient, mapCommentToClient } from '@/store/selectors/adapter';
 
 
+export const getLoadOffersStatus = (state: State) => state.offers.loadOffersStatus;
+export const getLoginStatus = (state: State) => state.authorization.loginStatus;
+
 export const getOffers = (state: State) => state.offers.offers;
 export const getCitiesList = (state: State) => state.cities.cities;
 export const getCurrentCity = (state: State) => state.cities.currentCity;
