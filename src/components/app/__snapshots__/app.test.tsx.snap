@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render App 1`] = `
+exports[`Render <App /> 1`] = `
 <div
   className="page page--gray page--main"
 >
@@ -81,7 +81,7 @@ exports[`Render App 1`] = `
           >
             <a
               className="locations__item-link tabs__item tabs__item--active"
-              href="#"
+              href="#!"
               onClick={[Function]}
             >
               <span>
@@ -94,7 +94,7 @@ exports[`Render App 1`] = `
           >
             <a
               className="locations__item-link tabs__item"
-              href="#"
+              href="#!"
               onClick={[Function]}
             >
               <span>
@@ -125,7 +125,8 @@ exports[`Render App 1`] = `
             <p
               className="cities__status-description"
             >
-              We could not find any property available at the moment in 
+              We could not find any property available at the moment in
+               
               Vinnytsia
             </p>
           </div>

@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render <withSorting /> 1`] = `
+<section
+  className="cities__places places"
+>
+  <h2
+    className="visually-hidden"
+  >
+    Places
+  </h2>
+  <b
+    className="places__found"
+  >
+    3
+     
+    places to stay in
+     
+    Vinnytsia
+  </b>
+  <form
+    action="#"
+    className="places__sorting"
+    method="get"
+  >
+    <span
+      className="places__sorting-caption"
+    >
+      Sort by 
+    </span>
+    <span
+      className="places__sorting-type"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+      tabIndex={0}
+    >
+      Popular
+      <svg
+        className="places__sorting-arrow"
+        height="4"
+        width="7"
+      >
+        <use
+          xlinkHref="#icon-arrow-select"
+        />
+      </svg>
+    </span>
+    <ul
+      className="places__options places__options--custom"
+    >
+      <li
+        className="places__option places__option--active"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+      >
+        Popular
+      </li>
+      <li
+        className="places__option"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+      >
+        Price: low to high
+      </li>
+      <li
+        className="places__option"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+      >
+        Price: high to low
+      </li>
+      <li
+        className="places__option"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+      >
+        Top rated first
+      </li>
+    </ul>
+  </form>
+  <div
+    className="cities__places-list places__list"
+  />
+</section>
+`;

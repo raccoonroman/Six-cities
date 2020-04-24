@@ -1,9 +1,10 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { configure, mount } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { MemoryRouter, Route } from 'react-router-dom';
 import { AuthorizationStatus, AppRoute } from '@/const';
 import Api from '@/api';
 import { OfferRaw } from '@/api/types';
@@ -17,6 +18,8 @@ const onUnauthorized = () => {
 const api = new Api(onUnauthorized);
 const middlewares = [thunk.withExtraArgument(api)];
 const mockStore = configureStore(middlewares);
+
+configure({ adapter: new Adapter() });
 
 
 const mockOffers: OfferRaw[] = [
@@ -93,29 +96,34 @@ const mockOffers: OfferRaw[] = [
 
 it('Render <OfferDetails />', () => {
   const store = mockStore({
-    offers: mockOffers,
+    offers: {
+      offers: mockOffers,
+    },
     authorization: {
-      authorizationStatus: AuthorizationStatus.AUTH,
+      authorization: AuthorizationStatus.AUTH,
     },
     userData: {
       email: 'name@gmail.com',
     },
-    commentsByOffer: [],
-    nearbyOffers: mockOffers,
+    comments: {
+      comments: [],
+    },
+    nearbyOffers: {
+      nearbyOffers: mockOffers,
+    },
   });
 
-  const tree = renderer
-    .create(
-      <Provider store={store}>
-        <BrowserRouter>
-          <Route
-            exact
-            path={`${AppRoute.OFFER}/:id`}
-            component={OfferDetails}
-          />
-        </BrowserRouter>
-      </Provider>,
-    ).toJSON();
+  const tree = mount(
+    <Provider store={store}>
+      <MemoryRouter initialEntries={[`${AppRoute.OFFER}/100491`]}>
+        <Route
+          exact
+          path={`${AppRoute.OFFER}/:id`}
+          component={OfferDetails}
+        />
+      </MemoryRouter>
+    </Provider>,
+  );
 
-  expect(tree).toMatchSnapshot();
+  expect(tree.getDOMNode()).toMatchSnapshot();
 });
