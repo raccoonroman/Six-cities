@@ -12,6 +12,11 @@ const mockStore = configureStore([]);
 it('Render <SignIn />', () => {
   const store = mockStore({
     authorization: {
+      loginStatus: {
+        pending: false,
+        resolve: false,
+        reject: false,
+      },
       authorization: AuthorizationStatus.NO_AUTH,
     },
     userData: {

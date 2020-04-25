@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { postComment } from '@/store/actions/post-comment';
+import { getPostCommentStatus } from '@/store/selectors';
 
 
 const STARS_QUANTITY = 5;
@@ -30,6 +31,8 @@ interface Props {
 const ReviewsForm: React.FC<Props> = ({ offerId }) => {
   const dispatch = useDispatch();
 
+  const postCommentStatus = useSelector(getPostCommentStatus);
+
   const formInitialState = { rating: 0, review: '' };
   const [formState, setFormState] = useState(formInitialState);
   const [isFormDisabled, setIsFormDisabled] = useState(false);
@@ -51,7 +54,8 @@ const ReviewsForm: React.FC<Props> = ({ offerId }) => {
 
   const isSubmitAllowed = (+rating > 0)
     && (review.length >= TextLength.MIN)
-    && (review.length <= TextLength.MAX);
+    && (review.length <= TextLength.MAX)
+    && !postCommentStatus.pending;
 
   const renderStars = () => {
     const result = [];
@@ -108,7 +112,9 @@ const ReviewsForm: React.FC<Props> = ({ offerId }) => {
           <b className="reviews__text-amount">minimum 50 and maximum 300 characters</b>
           .
         </p>
-        <button className="reviews__submit form__submit button" type="submit" disabled={!isSubmitAllowed}>Submit</button>
+        <button className="reviews__submit form__submit button" type="submit" disabled={!isSubmitAllowed}>
+          {postCommentStatus.pending ? 'Submitting...' : 'Submit'}
+        </button>
       </div>
     </form>
   );

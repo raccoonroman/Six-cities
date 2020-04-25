@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory, Redirect } from 'react-router-dom';
-import { getAuthorizationStatus } from '@/store/selectors';
+import { getAuthorizationStatus, getLoginStatus } from '@/store/selectors';
 import { login } from '@/store/actions/login';
 import { AppRoute } from '@/const';
 import isAuthorized from '@/utils/is-authorized';
 import Header from '@/components/header';
+import TeaLoader from '../tea-loader';
 
 type ChangeEvent = React.ChangeEvent<HTMLInputElement>;
 type DispatchState = React.Dispatch<React.SetStateAction<string>>;
@@ -15,6 +16,7 @@ const SignIn: React.FC = () => {
   const history = useHistory();
 
   const authorizationStatus = useSelector(getAuthorizationStatus);
+  const loginStatus = useSelector(getLoginStatus);
   const authorized = isAuthorized(authorizationStatus);
 
   const [email, setEmail] = useState('');
@@ -31,6 +33,10 @@ const SignIn: React.FC = () => {
     const authData = { email, password };
     dispatch(login(authData, goToPreviousPage));
   };
+
+  if (loginStatus.pending) {
+    return <TeaLoader />;
+  }
 
   if (authorized) {
     return <Redirect to={AppRoute.ROOT} />;

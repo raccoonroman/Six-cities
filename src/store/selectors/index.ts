@@ -7,6 +7,7 @@ import { mapOfferToClient, mapCommentToClient } from '@/store/selectors/adapter'
 
 export const getLoadOffersStatus = (state: State) => state.offers.loadOffersStatus;
 export const getLoginStatus = (state: State) => state.authorization.loginStatus;
+export const getPostCommentStatus = (state: State) => state.comments.postCommentStatus;
 
 export const getOffers = (state: State) => state.offers.offers;
 export const getCitiesList = (state: State) => state.cities.cities;

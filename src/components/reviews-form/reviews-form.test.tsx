@@ -8,7 +8,15 @@ import ReviewsForm from '@/components/reviews-form';
 const mockStore = configureStore([]);
 
 it('Render <ReviewsForm />', () => {
-  const store = mockStore({});
+  const store = mockStore({
+    comments: {
+      postCommentStatus: {
+        pending: false,
+        resolve: false,
+        reject: false,
+      },
+    },
+  });
 
   const tree = renderer.create(
     <Provider store={store}>

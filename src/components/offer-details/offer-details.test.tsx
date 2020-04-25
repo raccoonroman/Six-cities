@@ -97,6 +97,11 @@ const mockOffers: OfferRaw[] = [
 it('Render <OfferDetails />', () => {
   const store = mockStore({
     offers: {
+      loadOffersStatus: {
+        pending: false,
+        resolve: false,
+        reject: false,
+      },
       offers: mockOffers,
     },
     authorization: {
@@ -106,6 +111,11 @@ it('Render <OfferDetails />', () => {
       email: 'name@gmail.com',
     },
     comments: {
+      postCommentStatus: {
+        pending: false,
+        resolve: false,
+        reject: false,
+      },
       comments: [],
     },
     nearbyOffers: {

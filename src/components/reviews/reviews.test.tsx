@@ -44,6 +44,11 @@ describe('Render <Reviews />', () => {
         authorization: AuthorizationStatus.NO_AUTH,
       },
       comments: {
+        postCommentStatus: {
+          pending: false,
+          resolve: false,
+          reject: false,
+        },
         comments,
       },
     });
@@ -63,6 +68,11 @@ describe('Render <Reviews />', () => {
         authorization: AuthorizationStatus.AUTH,
       },
       comments: {
+        postCommentStatus: {
+          pending: false,
+          resolve: false,
+          reject: false,
+        },
         comments,
       },
     });
