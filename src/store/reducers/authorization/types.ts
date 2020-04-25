@@ -1,15 +1,16 @@
+import { AuthorizationStatus } from '@/const';
 import { Status } from '@/store/reducers/common';
 import {
-  checkAuthPending, checkAuthResolve, checkAuthReject,
+  checkAuthPending,
+  checkAuthResolve,
+  checkAuthReject,
 } from '@/store/actions/check-auth';
-import {
-  loginPending, loginResolve, loginReject,
-} from '@/store/actions/login';
+import { loginPending, loginResolve, loginReject } from '@/store/actions/login';
 
 export interface AuthorizationState {
   checkAuthStatus: Status;
   loginStatus: Status;
-  authorization: string;
+  authorization: AuthorizationStatus;
 }
 
 export type AuthorizationActions =

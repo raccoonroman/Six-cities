@@ -20,7 +20,6 @@ import Reviews from '@/components/reviews';
 import Map from '@/components/map';
 import OffersList from '@/components/offers-list';
 
-
 const MAX_IMAGES = 6;
 
 const OfferDetails: React.FC = () => {
@@ -34,6 +33,7 @@ const OfferDetails: React.FC = () => {
   const nearbyOffers = useSelector(getMappedNearbyOffers);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch(loadComments(+id!));
     dispatch(loadNearbyOffers(+id!));
   }, [id]);
@@ -115,8 +115,16 @@ const OfferDetails: React.FC = () => {
               )}
               <div className="property__name-wrapper">
                 <h1 className="property__name">{title}</h1>
-                <button onClick={handleBookmarkButtonClick} className={bookmarkButtonClass} type="button">
-                  <svg className="property__bookmark-icon" width="31" height="33">
+                <button
+                  onClick={handleBookmarkButtonClick}
+                  className={bookmarkButtonClass}
+                  type="button"
+                >
+                  <svg
+                    className="property__bookmark-icon"
+                    width="31"
+                    height="33"
+                  >
                     <use xlinkHref="#icon-bookmark" />
                   </svg>
                   <span className="visually-hidden">To bookmarks</span>
@@ -127,23 +135,19 @@ const OfferDetails: React.FC = () => {
                   <span style={getRatingStarsStyle(rating)} />
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="property__rating-value rating__value">{rating}</span>
+                <span className="property__rating-value rating__value">
+                  {rating}
+                </span>
               </div>
               <ul className="property__features">
                 <li className="property__feature property__feature--entire">
                   {type}
                 </li>
                 <li className="property__feature property__feature--bedrooms">
-                  {bedrooms}
-                  {' '}
-                  Bedrooms
+                  {`${bedrooms} Bedrooms`}
                 </li>
                 <li className="property__feature property__feature--adults">
-                  Max
-                  {' '}
-                  {maxAdults}
-                  {' '}
-                  adults
+                  {`Max ${maxAdults} adults`}
                 </li>
               </ul>
               <div className="property__price">

@@ -3,9 +3,8 @@ import { Offer } from '@/types';
 import { SortType, CardType } from '@/const';
 import Sorting from '@/components/sorting';
 
-
 interface SortMode {
-  name: string;
+  name: SortType;
   sort: (offers: Offer[]) => Offer[];
 }
 
@@ -44,9 +43,9 @@ interface ComponentProps extends CommonProps {
 
 const withSorting = (Component: React.FC<ComponentProps>) => {
   const WithSorting: React.FC<Props> = ({ offers, currentCity, onCardHover }) => {
-    const [sortMode, setSortMode] = useState<string>(SortType.POPULAR);
+    const [sortMode, setSortMode] = useState<SortType>(SortType.POPULAR);
 
-    const handleSortTypeChange = (type: string) => setSortMode(type);
+    const handleSortTypeChange = (type: SortType) => setSortMode(type);
 
     const getSortedOffers = () => {
       const foundSortMode = sortModes.find(({ name }) => sortMode === name);
@@ -57,16 +56,9 @@ const withSorting = (Component: React.FC<ComponentProps>) => {
       <section className="cities__places places">
         <h2 className="visually-hidden">Places</h2>
         <b className="places__found">
-          {offers.length}
-          {' '}
-          places to stay in
-          {' '}
-          {currentCity}
+          {`${offers.length} places to stay in ${currentCity}`}
         </b>
-        <Sorting
-          sortBy={sortMode}
-          onSortTypeChange={handleSortTypeChange}
-        />
+        <Sorting sortBy={sortMode} onSortTypeChange={handleSortTypeChange} />
         <Component
           className="cities__places-list places__list"
           cardsType={CardType.CITY}
@@ -79,6 +71,5 @@ const withSorting = (Component: React.FC<ComponentProps>) => {
 
   return WithSorting;
 };
-
 
 export default withSorting;

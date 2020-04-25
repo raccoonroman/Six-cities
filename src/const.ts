@@ -1,4 +1,11 @@
-export const DEFAULT_CITIES: string[] = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf'];
+export const DEFAULT_CITIES: string[] = [
+  'Paris',
+  'Cologne',
+  'Brussels',
+  'Amsterdam',
+  'Hamburg',
+  'Dusseldorf',
+];
 
 export enum SortType {
   POPULAR = 'Popular',

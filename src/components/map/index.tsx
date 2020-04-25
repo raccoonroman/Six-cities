@@ -7,7 +7,6 @@ import {
 import { Offer } from '@/types';
 import { MapType } from '@/const';
 
-
 const TitleLayer = {
   PATH: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
   ATTRIBUTION: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
@@ -41,27 +40,30 @@ const LeafletMap: React.FC<Props> = ({ mapType, offers, currentOfferId }) => {
     property__map: isStaticActiveOffer,
   });
 
-  const renderMarkers = () => offers.map(({ id, title, location }) => {
-    const { latitude: offerLatitude, longitude: offerLongitude } = location;
-    const pinType = id === currentOfferId ? orangePin : bluePin;
-    return (
-      <Marker
-        key={isStaticActiveOffer ? Math.random() : id}
-        position={[offerLatitude, offerLongitude]}
-        icon={pinType}
-      >
-        <Popup>{title}</Popup>
-      </Marker>
-    );
-  });
+  const renderMarkers = () => (
+    offers.map(({ id, title, location }) => {
+      const { latitude: offerLatitude, longitude: offerLongitude } = location;
+      const pinType = id === currentOfferId ? orangePin : bluePin;
+      return (
+        <Marker
+          key={isStaticActiveOffer ? Math.random() : id}
+          position={[offerLatitude, offerLongitude]}
+          icon={pinType}
+        >
+          <Popup>{title}</Popup>
+        </Marker>
+      );
+    })
+  );
 
   return (
     <section className={mapSectionClass}>
-      <Map center={[latitude, longitude]} zoom={zoom} scrollWheelZoom={!isStaticActiveOffer}>
-        <TileLayer
-          url={TitleLayer.PATH}
-          attribution={TitleLayer.ATTRIBUTION}
-        />
+      <Map
+        center={[latitude, longitude]}
+        zoom={zoom}
+        scrollWheelZoom={!isStaticActiveOffer}
+      >
+        <TileLayer url={TitleLayer.PATH} attribution={TitleLayer.ATTRIBUTION} />
         {renderMarkers()}
       </Map>
     </section>
