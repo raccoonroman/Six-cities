@@ -137,9 +137,7 @@ exports[`Render <Reviews /> when user is authorized 1`] = `
     </li>
   </ul>
   <form
-    action="#"
     className="reviews__form form"
-    method="post"
     onSubmit={[Function]}
   >
     <label

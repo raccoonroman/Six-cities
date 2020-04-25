@@ -1,10 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Render <Sorting /> with "popular" sort type 1`] = `
-<form
-  action="#"
+<div
   className="places__sorting"
-  method="get"
 >
   <span
     className="places__sorting-caption"
@@ -61,14 +59,12 @@ exports[`Render <Sorting /> with "popular" sort type 1`] = `
       Top rated first
     </li>
   </ul>
-</form>
+</div>
 `;
 
 exports[`Render <Sorting /> with "top rated first" sort type 1`] = `
-<form
-  action="#"
+<div
   className="places__sorting"
-  method="get"
 >
   <span
     className="places__sorting-caption"
@@ -125,5 +121,5 @@ exports[`Render <Sorting /> with "top rated first" sort type 1`] = `
       Top rated first
     </li>
   </ul>
-</form>
+</div>
 `;

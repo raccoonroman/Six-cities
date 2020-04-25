@@ -125,9 +125,7 @@ exports[`Render <App /> 1`] = `
             <p
               className="cities__status-description"
             >
-              We could not find any property available at the moment in
-               
-              Vinnytsia
+              We could not find any property available at the moment in Vinnytsia
             </p>
           </div>
         </section>

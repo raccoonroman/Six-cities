@@ -198,18 +198,12 @@ exports[`Render <OfferDetails /> 1`] = `
             <li
               class="property__feature property__feature--bedrooms"
             >
-              2
-               
-              Bedrooms
+              2 Bedrooms
             </li>
             <li
               class="property__feature property__feature--adults"
             >
-              Max
-               
-              4
-               
-              adults
+              Max 4 adults
             </li>
           </ul>
           <div
@@ -305,9 +299,7 @@ exports[`Render <OfferDetails /> 1`] = `
               class="reviews__list"
             />
             <form
-              action="#"
               class="reviews__form form"
-              method="post"
             >
               <label
                 class="reviews__label form__label"

@@ -2,9 +2,7 @@
 
 exports[`Render <ReviewsForm /> 1`] = `
 <form
-  action="#"
   className="reviews__form form"
-  method="post"
   onSubmit={[Function]}
 >
   <label
