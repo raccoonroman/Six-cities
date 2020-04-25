@@ -2,20 +2,19 @@ import React, { useState } from 'react';
 import cn from 'classnames';
 import { SortType } from '@/const';
 
-
 interface Props {
-  sortBy: string;
-  onSortTypeChange: (sortType: string) => void;
+  sortBy: SortType;
+  onSortTypeChange: (sortType: SortType) => void;
 }
 
 const Sorting: React.FC<Props> = ({ sortBy, onSortTypeChange }) => {
-  const [sortListOpened, setSortListOpened] = useState(false);
+  const [sortListOpened, setSortListOpened] = useState<boolean>(false);
 
   const handleSortTypeClick = () => {
     setSortListOpened(!sortListOpened);
   };
 
-  const handleSortItemClick = (sortType: string) => () => {
+  const handleSortItemClick = (sortType: SortType) => () => {
     setSortListOpened(false);
     onSortTypeChange(sortType);
   };
@@ -27,11 +26,11 @@ const Sorting: React.FC<Props> = ({ sortBy, onSortTypeChange }) => {
   const renderSortItems = () => {
     const sortTypes = Object.values(SortType);
 
-    return sortTypes.map((sortType: string) => {
-      const sortItemClass = cn({
-        places__option: true,
+    return sortTypes.map((sortType) => {
+      const sortItemClass = cn('places__option', {
         'places__option--active': sortType === sortBy,
       });
+
       return (
         <li
           key={sortType}
@@ -46,7 +45,7 @@ const Sorting: React.FC<Props> = ({ sortBy, onSortTypeChange }) => {
   };
 
   return (
-    <form className="places__sorting" action="#" method="get">
+    <div className="places__sorting">
       <span className="places__sorting-caption">Sort by </span>
       <span
         onClick={handleSortTypeClick}
@@ -61,7 +60,7 @@ const Sorting: React.FC<Props> = ({ sortBy, onSortTypeChange }) => {
         </svg>
       </span>
       <ul className={sortListClass}>{renderSortItems()}</ul>
-    </form>
+    </div>
   );
 };
 

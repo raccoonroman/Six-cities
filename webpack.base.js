@@ -6,13 +6,13 @@ module.exports = {
   entry: 'index.tsx',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public')
+    path: path.resolve(__dirname, 'public'),
   },
   module: {
     rules: [{ test: /\.(tsx|ts)?$/, loader: 'ts-loader' }],
   },
   resolve: {
     plugins: [new TsconfigPathsPlugin()],
-    extensions: ['.ts', '.tsx', '.js']
+    extensions: ['.ts', '.tsx', '.js'],
   },
 };

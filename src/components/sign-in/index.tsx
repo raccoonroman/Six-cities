@@ -50,7 +50,7 @@ const SignIn: React.FC = () => {
         <div className="page__login-container container">
           <section className="login">
             <h1 className="login__title">Sign in</h1>
-            <form onSubmit={handleFormSubmit} className="login__form form" action="#" method="post">
+            <form onSubmit={handleFormSubmit} className="login__form form">
               <div className="login__input-wrapper form__input-wrapper">
                 <label htmlFor="login-email" className="visually-hidden">E-mail</label>
                 <input

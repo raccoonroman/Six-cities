@@ -10,7 +10,6 @@ import CitiesList from '@/components/cities-list';
 import OffersList from '@/components/offers-list';
 import Map from '@/components/map';
 
-
 const OffersListWithSorting = withSorting(OffersList);
 
 const Main: React.FC = () => {
@@ -30,9 +29,7 @@ const Main: React.FC = () => {
           <div className="cities__status-wrapper tabs__content">
             <b className="cities__status">No places to stay available</b>
             <p className="cities__status-description">
-              We could not find any property available at the moment in
-              {' '}
-              {currentCity}
+              {`We could not find any property available at the moment in ${currentCity}`}
             </p>
           </div>
         </section>

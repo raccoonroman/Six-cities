@@ -10,7 +10,6 @@ import setCity from '@/store/actions/set-city';
 import Header from '@/components/header';
 import OffersList from '@/components/offers-list';
 
-
 const Favorites: React.FC = () => {
   const dispatch = useDispatch();
   const favoriteOffers = useSelector(getFavoriteOffers);
@@ -22,26 +21,31 @@ const Favorites: React.FC = () => {
     dispatch(setCity(city));
   };
 
-  const renderCities = () => cities.map((city) => {
-    const offersByCity = getOffersByCity(city, favoriteOffers);
+  const renderCities = () => (
+    cities.map((city) => {
+      const offersByCity = getOffersByCity(city, favoriteOffers);
 
-    return (
-      <li key={`${city}-favorites`} className="favorites__locations-items">
-        <div className="favorites__locations locations locations--current">
-          <div className="locations__item">
-            <Link onClick={handleCityNameClick(city)} to={AppRoute.ROOT} className="locations__item-link">
-              <span>{city}</span>
-            </Link>
+      return (
+        <li key={`${city}-favorites`} className="favorites__locations-items">
+          <div className="favorites__locations locations locations--current">
+            <div className="locations__item">
+              <Link
+                onClick={handleCityNameClick(city)}
+                to={AppRoute.ROOT}
+                className="locations__item-link"
+              >
+                <span>{city}</span>
+              </Link>
+            </div>
           </div>
-        </div>
-        <OffersList
-          className="favorites__places"
-          cardsType={CardType.FAVORITE}
-          offers={offersByCity}
-        />
-      </li>
-    );
-  });
+          <OffersList
+            className="favorites__places"
+            cardsType={CardType.FAVORITE}
+            offers={offersByCity}
+          />
+        </li>
+      );
+    }));
 
   const renderFavorites = () => {
     if (noFavorites) {
@@ -84,7 +88,13 @@ const Favorites: React.FC = () => {
       </main>
       <footer className="footer">
         <a className="footer__logo-link" href="main.html">
-          <img className="footer__logo" src="img/logo.svg" alt="6 cities logo" width="64" height="33" />
+          <img
+            className="footer__logo"
+            src="img/logo.svg"
+            alt="6 cities logo"
+            width="64"
+            height="33"
+          />
         </a>
       </footer>
     </div>

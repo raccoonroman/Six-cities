@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { postComment } from '@/store/actions/post-comment';
 import { getPostCommentStatus } from '@/store/selectors';
 
-
 const STARS_QUANTITY = 5;
 const TextLength = {
   MIN: 50,
@@ -22,7 +21,9 @@ const StarValue: StarValue = {
   1: 'terribly',
 };
 
-type ChangeEvent = React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>;
+type ChangeEvent =
+  | React.ChangeEvent<HTMLInputElement>
+  | React.ChangeEvent<HTMLTextAreaElement>;
 
 interface Props {
   offerId: number;
@@ -73,7 +74,11 @@ const ReviewsForm: React.FC<Props> = ({ offerId }) => {
             type="radio"
             disabled={isFormDisabled}
           />
-          <label htmlFor={`${i}-stars`} className="reviews__rating-label form__rating-label" title={StarValue[i]}>
+          <label
+            htmlFor={`${i}-stars`}
+            className="reviews__rating-label form__rating-label"
+            title={StarValue[i]}
+          >
             <svg className="form__star-image" width="37" height="33">
               <use xlinkHref="#icon-star" />
             </svg>
@@ -85,13 +90,12 @@ const ReviewsForm: React.FC<Props> = ({ offerId }) => {
     return result;
   };
 
-
   return (
-    <form onSubmit={handleFormSubmit} className="reviews__form form" action="#" method="post">
-      <label className="reviews__label form__label" htmlFor="review">Your review</label>
-      <div className="reviews__rating-form form__rating">
-        {renderStars()}
-      </div>
+    <form onSubmit={handleFormSubmit} className="reviews__form form">
+      <label className="reviews__label form__label" htmlFor="review">
+        Your review
+      </label>
+      <div className="reviews__rating-form form__rating">{renderStars()}</div>
       <textarea
         value={review}
         onChange={handleInputChange}
@@ -112,7 +116,11 @@ const ReviewsForm: React.FC<Props> = ({ offerId }) => {
           <b className="reviews__text-amount">minimum 50 and maximum 300 characters</b>
           .
         </p>
-        <button className="reviews__submit form__submit button" type="submit" disabled={!isSubmitAllowed}>
+        <button
+          className="reviews__submit form__submit button"
+          type="submit"
+          disabled={!isSubmitAllowed}
+        >
           {postCommentStatus.pending ? 'Submitting...' : 'Submit'}
         </button>
       </div>
