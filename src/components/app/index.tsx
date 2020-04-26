@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { HashRouter, Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { loadOffers } from '@/store/actions/load-offers';
 import { checkAuth } from '@/store/actions/check-auth';
@@ -19,7 +19,7 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Switch>
         <Route
           exact
@@ -42,7 +42,7 @@ const App: React.FC = () => {
           component={Favorites}
         />
       </Switch>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
