@@ -14,5 +14,7 @@ node_modules/
 # Файлы сборки
 public/bundle.js
 public/bundle.js.map
+build/bundle.js
+build/bundle.js.map
 
 markup/

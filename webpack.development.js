@@ -6,7 +6,7 @@ const webpackDevConfig = {
   mode: 'development',
   devtool: 'eval',
   devServer: {
-    contentBase: path.join(__dirname, 'public'),
+    contentBase: path.join(__dirname, 'build'),
     open: true,
     port: process.env.PORT,
     historyApiFallback: true,

@@ -2,7 +2,7 @@
   "name": "six-cities",
   "version": "1.0.0",
   "description": "service for travelers",
-  "homepage": "https://raccoonroman.github.io/ss",
+  "homepage": "https://raccoonroman.github.io/six-cities",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config webpack.production.js",
     "start": "cross-env NODE_ENV=development PORT=3000 webpack-dev-server --config webpack.development.js",
@@ -10,7 +10,7 @@
     "test": "npm run eslint && npm run test.jest",
     "test.jest": "jest",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d public"
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "@types/classnames": "2.2.10",
