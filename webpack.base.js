@@ -7,7 +7,7 @@ module.exports = {
   entry: 'index.tsx',
   output: {
     filename: 'bundle.[hash].js',
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, 'public'),
   },
   module: {
     rules: [{ test: /\.(tsx|ts)?$/, loader: 'ts-loader' }],
