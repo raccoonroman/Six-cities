@@ -88,7 +88,7 @@ const Favorites: React.FC = () => {
         </div>
       </main>
       <footer className="footer">
-        <a className="footer__logo-link" href="main.html">
+        <Link className="footer__logo-link" to={AppRoute.ROOT}>
           <img
             className="footer__logo"
             src="img/logo.svg"
@@ -96,7 +96,7 @@ const Favorites: React.FC = () => {
             width="64"
             height="33"
           />
-        </a>
+        </Link>
       </footer>
     </div>
   );
